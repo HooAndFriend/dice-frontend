@@ -4,7 +4,7 @@ import { useState, useCallback, ChangeEvent } from 'react'
 function useInput<T extends Record<string, any>>(initialValue: T) {
   const [data, setData] = useState<T>(initialValue)
 
-  const handler = useCallback(
+  const handleInput = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { value, name } = e.target
       setData({
@@ -15,7 +15,7 @@ function useInput<T extends Record<string, any>>(initialValue: T) {
     [data],
   )
 
-  const selectHandler = useCallback(
+  const handleSelect = useCallback(
     (e: SelectChangeEvent<HTMLInputElement>) => {
       const { value, name } = e.target
       setData({
@@ -26,7 +26,9 @@ function useInput<T extends Record<string, any>>(initialValue: T) {
     [data],
   )
 
-  return { data, handler, setData, selectHandler } as const
+  const handleInit = useCallback(() => setData(initialValue), [data])
+
+  return { data, handleInit, setData, handleInput, handleSelect } as const
 }
 
 export default useInput
