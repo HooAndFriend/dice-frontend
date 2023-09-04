@@ -15,13 +15,14 @@ export function ProtectRoute() {
   const token = useSelector(getAccessToken)
 
   const isAuthorization = useMemo(() => isNull(token), [])
-
-  return isAuthorization ? <Outlet /> : <Navigate to="/" />
+  return <Outlet />
+  // return isAuthorization ? <Outlet /> : <Navigate to="/" />
 }
 
 export function PublicRoute() {
   const token = useSelector(getAccessToken)
   const isAuthorization = useMemo(() => isNull(token), [])
 
-  return isAuthorization ? <Navigate to="/" /> : <Outlet />
+  return <Outlet />
+  // return isAuthorization ? <Navigate to="/" /> : <Outlet />
 }
