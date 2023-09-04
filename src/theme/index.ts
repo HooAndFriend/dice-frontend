@@ -1,7 +1,18 @@
 // ** Mui Imports
 import { createTheme } from '@mui/material'
 
+// ** Constant Imports
+import Color from '@/constants/color'
+
 const theme = createTheme({
+  palette: {
+    text: {
+      primary: '#fff',
+    },
+    background: {
+      default: Color.darkGrey,
+    },
+  },
   typography: {
     button: {
       fontWeight: 600,
