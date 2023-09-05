@@ -1,5 +1,5 @@
 // ** React Imports
-import TestPage from '@/pages/test-page'
+import TestPage from '@/pages/api-page'
 import { ReactNode } from 'react'
 
 interface MenuType {
