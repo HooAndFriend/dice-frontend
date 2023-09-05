@@ -11,7 +11,7 @@ interface MenuType {
 
 export const MenuList: MenuType[] = [
   {
-    route: 'test',
+    route: '',
     name: '테스트 페이지',
     element: <TestPage />,
     onlyPath: false,

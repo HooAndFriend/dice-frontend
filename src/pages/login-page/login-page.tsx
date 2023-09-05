@@ -1,13 +1,17 @@
 // ** Mui Imports
 import AppleIcon from '@/components/icons/apple'
 import Color from '@/constants/color'
-import { Box, Button, TextField, Typography, styled } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { IconBox, InputTextField } from './component'
 import GithubIcon from '@/components/icons/github'
 import MicrosoftIcon from '@/components/icons/microsoft'
 import GoogleIcon from '@/components/icons/google'
 
-const LoginPageView = () => {
+interface PropsType {
+  handleLogin: () => void
+}
+
+const LoginPageView = ({ handleLogin }: PropsType) => {
   return (
     <Box
       sx={{
@@ -88,6 +92,7 @@ const LoginPageView = () => {
                 backgroundColor: Color.green,
               },
             }}
+            onClick={handleLogin}
           >
             LOGIN
           </Button>
