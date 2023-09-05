@@ -6,12 +6,14 @@ interface MenuType {
   route: string
   name: string
   element?: ReactNode
+  onlyPath?: boolean
 }
 
 export const MenuList: MenuType[] = [
   {
-    route: '/test',
+    route: 'test',
     name: '테스트 페이지',
     element: <TestPage />,
+    onlyPath: false,
   },
 ]
