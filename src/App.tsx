@@ -5,6 +5,8 @@ import { ProtectRoute, PublicRoute } from './utils/protect-route'
 // ** Router Imports
 import LoginPage from './pages/login-page'
 import Dashboard from './pages/dashboard-page'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme'
 
 const App = () => {
   return (

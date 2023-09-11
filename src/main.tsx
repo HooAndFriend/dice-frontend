@@ -12,7 +12,7 @@ import { store } from '@/store'
 // ** Style Imports
 import '@/style/global.css'
 import { ThemeProvider } from '@mui/material'
-import theme from '@/theme'
+import { theme } from '@/theme'
 import { GlobalStyles } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 
