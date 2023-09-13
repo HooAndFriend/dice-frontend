@@ -6,6 +6,7 @@ import { IconBox, InputTextField } from './component'
 import GithubIcon from '@/components/icons/github'
 import MicrosoftIcon from '@/components/icons/microsoft'
 import GoogleIcon from '@/components/icons/google'
+import { Link } from 'react-router-dom'
 
 interface PropsType {
   handleLogin: () => void
@@ -96,6 +97,13 @@ const LoginPageView = ({ handleLogin }: PropsType) => {
           >
             LOGIN
           </Button>
+        </Box>
+        <Box sx={{ float: 'right' }}>
+          <Link to="/signup" style={{ textDecoration: 'none', color: 'grey' }}>
+            <Typography variant="body2" sx={{ mr: 1 }}>
+              signup
+            </Typography>
+          </Link>
         </Box>
       </Box>
     </Box>
