@@ -5,8 +5,7 @@ import { ProtectRoute, PublicRoute } from './utils/protect-route'
 // ** Router Imports
 import LoginPage from './pages/login-page'
 import Dashboard from './pages/dashboard-page'
-import { ThemeProvider } from '@mui/material'
-import { theme } from './theme'
+import SignupPage from './pages/signup-page'
 
 const App = () => {
   return (
@@ -14,6 +13,7 @@ const App = () => {
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Route>
         <Route element={<ProtectRoute />}>
           <Route path="/dashboard/*" element={<Dashboard />} />
