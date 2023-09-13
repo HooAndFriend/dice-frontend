@@ -1,6 +1,6 @@
-import type { UserLoginResponse } from '@/types/api/user'
+import type { UserLoginResponse, UserRegisterResponse } from '@/types/api/user'
 import { api } from '..'
-import type { UserLoginParams } from '@/types/user'
+import type { UserLoginParams, UserRegisterParams } from '@/types/user'
 
 // Auth Api CreateApi
 export const authApi = api
@@ -19,7 +19,14 @@ export const authApi = api
           body: args,
         }),
       }),
+      register: builder.mutation<UserRegisterResponse, UserRegisterParams>({
+        query: (args) => ({
+          url: '/auth/user',
+          method: 'POST',
+          body: args,
+        }),
+      }),
     }),
   })
 
-export const { useLoginMutation } = authApi
+export const { useLoginMutation, useRegisterMutation } = authApi

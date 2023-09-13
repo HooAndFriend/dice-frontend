@@ -6,3 +6,10 @@ export interface UserLoginResponse extends Response {
     refreshToken: string
   }
 }
+
+export interface UserRegisterResponse extends Response {
+  data: {
+    accessToken: string
+    refreshToken: string
+  }
+}

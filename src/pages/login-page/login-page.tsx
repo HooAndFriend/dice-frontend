@@ -1,3 +1,6 @@
+// ** React Imports
+import { ChangeEvent } from 'react'
+
 // ** Router Imports
 import { Link } from 'react-router-dom'
 
@@ -14,8 +17,9 @@ import { IconBox } from '@/components/icon-box'
 
 // ** Utils Imports
 import Color from '@/constants/color'
-import { UserLoginParams } from '@/types/user'
-import { ChangeEvent } from 'react'
+
+// ** Type Imporst
+import type { UserLoginParams } from '@/types/user'
 
 interface PropsType {
   user: UserLoginParams

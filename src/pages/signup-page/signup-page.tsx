@@ -1,3 +1,6 @@
+// ** React Imports
+import { ChangeEvent } from 'react'
+
 // ** Mui Imports
 import { Box, Button, Typography } from '@mui/material'
 
@@ -7,11 +10,24 @@ import { InputTextField } from '@/components/text-input'
 // ** Utils Imports
 import Color from '@/constants/color'
 
+// ** Type Imports
+import type { UserRegisterParams } from '@/types/user'
+
 interface PropsType {
+  user: UserRegisterParams
+  passwordC: string
+  setUser: (e: ChangeEvent<HTMLInputElement>) => void
+  handleChangePasswordC: (e: ChangeEvent<HTMLInputElement>) => void
   handleJoin: () => void
 }
 
-const SignupPageView = ({ handleJoin }: PropsType) => {
+const SignupPageView = ({
+  handleJoin,
+  user,
+  setUser,
+  passwordC,
+  handleChangePasswordC,
+}: PropsType) => {
   return (
     <Box
       sx={{
@@ -50,6 +66,9 @@ const SignupPageView = ({ handleJoin }: PropsType) => {
             fullWidth
             defaultValue="admin"
             label="username"
+            value={user.username}
+            name="username"
+            onChange={setUser}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -59,6 +78,9 @@ const SignupPageView = ({ handleJoin }: PropsType) => {
             fullWidth
             defaultValue="1234"
             label="password"
+            value={user.password}
+            name="password"
+            onChange={setUser}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -68,6 +90,8 @@ const SignupPageView = ({ handleJoin }: PropsType) => {
             fullWidth
             defaultValue="1234"
             label="password check"
+            value={passwordC}
+            onChange={handleChangePasswordC}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -75,8 +99,11 @@ const SignupPageView = ({ handleJoin }: PropsType) => {
             type="text"
             variant="standard"
             fullWidth
-            defaultValue="1234"
+            defaultValue="pinomaker"
             label="nickname"
+            value={user.nickname}
+            name="nickname"
+            onChange={setUser}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>

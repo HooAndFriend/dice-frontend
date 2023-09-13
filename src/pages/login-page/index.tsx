@@ -1,10 +1,16 @@
-// ** Component Imports
-import useInput from '@/hooks/useInput'
-import LoginPageView from './login-page'
-
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
-import { UserLoginParams } from '@/types/user'
+
+// ** Component Imports
+import LoginPageView from './login-page'
+
+// ** Utils Imports
+import useInput from '@/hooks/useInput'
+
+// ** Type Imports
+import type { UserLoginParams } from '@/types/user'
+
+// ** Service Imports
 import { useLoginMutation } from '@/services'
 
 const LoginPage = () => {
