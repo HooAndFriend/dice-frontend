@@ -4,12 +4,11 @@ import { RootState } from '@/store'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface UserType {
-  user: { accessToken: string; email: string; refreshToken: string }
+  user: { accessToken: string; refreshToken: string }
 }
 
 const initialState: UserType = {
   user: {
-    email: '',
     accessToken: '',
     refreshToken: '',
   },

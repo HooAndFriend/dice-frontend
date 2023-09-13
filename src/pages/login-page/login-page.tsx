@@ -14,12 +14,16 @@ import { IconBox } from '@/components/icon-box'
 
 // ** Utils Imports
 import Color from '@/constants/color'
+import { UserLoginParams } from '@/types/user'
+import { ChangeEvent } from 'react'
 
 interface PropsType {
+  user: UserLoginParams
+  setUser: (e: ChangeEvent<HTMLInputElement>) => void
   handleLogin: () => void
 }
 
-const LoginPageView = ({ handleLogin }: PropsType) => {
+const LoginPageView = ({ handleLogin, user, setUser }: PropsType) => {
   return (
     <Box
       sx={{
@@ -58,6 +62,9 @@ const LoginPageView = ({ handleLogin }: PropsType) => {
             fullWidth
             defaultValue="admin"
             label="username"
+            value={user.username}
+            name="username"
+            onChange={setUser}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -67,6 +74,9 @@ const LoginPageView = ({ handleLogin }: PropsType) => {
             fullWidth
             defaultValue="1234"
             label="password"
+            value={user.password}
+            name="password"
+            onChange={setUser}
           />
         </Box>
         <Box
