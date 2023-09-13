@@ -1,12 +1,19 @@
+// ** Router Imports
+import { Link } from 'react-router-dom'
+
 // ** Mui Imports
-import AppleIcon from '@/components/icons/apple'
-import Color from '@/constants/color'
 import { Box, Button, Typography } from '@mui/material'
-import { IconBox, InputTextField } from './component'
+
+// ** Component Imports
+import AppleIcon from '@/components/icons/apple'
 import GithubIcon from '@/components/icons/github'
 import MicrosoftIcon from '@/components/icons/microsoft'
 import GoogleIcon from '@/components/icons/google'
-import { Link } from 'react-router-dom'
+import { InputTextField } from '@/components/text-input'
+import { IconBox } from '@/components/icon-box'
+
+// ** Utils Imports
+import Color from '@/constants/color'
 
 interface PropsType {
   handleLogin: () => void
