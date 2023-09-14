@@ -35,3 +35,15 @@ export interface UserRegisterResponse extends Response {
     }
   }
 }
+
+export interface UserSocialRegisterResponse extends Response {
+  data: {
+    token: {
+      accessToken: string
+      refreshToken: string
+    }
+    user: {
+      nickname: string
+    }
+  }
+}

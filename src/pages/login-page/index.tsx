@@ -58,7 +58,7 @@ const LoginPage = () => {
           })
           .catch((err) => {
             if (err.data.statusCode === 404) {
-              navigate('/signup')
+              navigate(`/social/signup?token=${res}&type=${type}`)
             }
           })
       })

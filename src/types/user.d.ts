@@ -14,4 +14,16 @@ export interface UserRegisterParams {
   nickname: string
 }
 
-export type SocialType = 'GOOGLE' | 'DICE' | 'APPLE' | 'GITHUB' | 'MICROSOFT'
+export interface UserSocialRegisterParams {
+  token: string
+  nickname: string
+  type: string
+}
+
+export type SocialType =
+  | 'GOOGLE'
+  | 'DICE'
+  | 'APPLE'
+  | 'GITHUB'
+  | 'MICROSOFT'
+  | ''

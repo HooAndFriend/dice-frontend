@@ -44,7 +44,13 @@ export const authSlice = createSlice({
       (state, { payload }) => {
         state.user = { ...payload.data }
       },
-    )
+    ),
+      builder.addMatcher(
+        authApi.endpoints.socialRegister.matchFulfilled,
+        (state, { payload }) => {
+          state.user = { ...payload.data }
+        },
+      )
   },
 })
 

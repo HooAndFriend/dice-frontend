@@ -2,12 +2,14 @@ import type {
   UserLoginResponse,
   UserRegisterResponse,
   UserSocialLoginResponse,
+  UserSocialRegisterResponse,
 } from '@/types/api/user'
 import { api } from '..'
 import type {
   UserLoginParams,
   UserRegisterParams,
   UserSocialLoginParams,
+  UserSocialRegisterParams,
 } from '@/types/user'
 
 // Auth Api CreateApi
@@ -44,8 +46,22 @@ export const authApi = api
           body: args,
         }),
       }),
+      socialRegister: builder.mutation<
+        UserSocialRegisterResponse,
+        UserSocialRegisterParams
+      >({
+        query: (args) => ({
+          url: '/auth/social/user',
+          method: 'POST',
+          body: args,
+        }),
+      }),
     }),
   })
 
-export const { useLoginMutation, useRegisterMutation, useSocialLoginMutation } =
-  authApi
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useSocialLoginMutation,
+  useSocialRegisterMutation,
+} = authApi

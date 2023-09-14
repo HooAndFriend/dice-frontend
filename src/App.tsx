@@ -6,6 +6,7 @@ import { ProtectRoute, PublicRoute } from './utils/protect-route'
 import LoginPage from './pages/login-page'
 import Dashboard from './pages/dashboard-page'
 import SignupPage from './pages/signup-page'
+import SocialSignupPage from './pages/social-signup-page'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route element={<PublicRoute />}>
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/social/signup" element={<SocialSignupPage />} />
         </Route>
         <Route element={<ProtectRoute />}>
           <Route path="/dashboard/*" element={<Dashboard />} />
