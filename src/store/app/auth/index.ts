@@ -3,14 +3,22 @@ import { authApi } from '@/services'
 import { RootState } from '@/store'
 import { createSlice } from '@reduxjs/toolkit'
 
-interface UserType {
-  user: { accessToken: string; refreshToken: string }
+export interface UserTypeProps {
+  user: {
+    token: { accessToken: string; refreshToken: string }
+    user: { nickname: string }
+  }
 }
 
-const initialState: UserType = {
+const initialState: UserTypeProps = {
   user: {
-    accessToken: '',
-    refreshToken: '',
+    token: {
+      accessToken: '',
+      refreshToken: '',
+    },
+    user: {
+      nickname: '',
+    },
   },
 }
 
@@ -31,9 +39,16 @@ export const authSlice = createSlice({
         state.user = { ...payload.data }
       },
     )
+    builder.addMatcher(
+      authApi.endpoints.socialLogin.matchFulfilled,
+      (state, { payload }) => {
+        state.user = { ...payload.data }
+      },
+    )
   },
 })
 
 export default authSlice.reducer
 
-export const getAccessToken = (state: RootState) => state.auth.user.accessToken
+export const getAccessToken = (state: RootState) =>
+  state.auth.user.token.accessToken

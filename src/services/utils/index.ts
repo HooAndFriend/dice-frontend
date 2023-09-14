@@ -1,11 +1,27 @@
 /* eslint-disable */
-import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { RootState } from '@/store'
+import {
+  BaseQueryApi,
+  FetchArgs,
+  fetchBaseQuery,
+} from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
 
 const baseUrl = import.meta.env.VITE_SERVER_URL + '/api'
 
 const baseQuery = fetchBaseQuery({
-  prepareHeaders: (headers, { getState }: any) => {
+  prepareHeaders: (headers, { getState }) => {
+    const {
+      auth: {
+        user: {
+          token: { accessToken },
+        },
+      },
+    } = getState() as RootState
+
+    if (accessToken) {
+      headers.set('authorization', `Bearer ${accessToken}`)
+    }
     return headers
   },
   baseUrl,
@@ -13,9 +29,9 @@ const baseQuery = fetchBaseQuery({
 
 const mutex = new Mutex()
 export const customFetchBase = async (
-  args: any,
-  api: any,
-  extraOptions: any,
+  args: string | FetchArgs,
+  api: BaseQueryApi,
+  extraOptions: object,
 ) => {
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
