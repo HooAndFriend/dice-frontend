@@ -1,54 +1,46 @@
-import {
-  styled,
-  AppBar,
-  Toolbar as MuiToolbar,
-  Typography,
-  Breadcrumbs,
-  Grid,
-  Avatar,
-} from '@mui/material'
-import Link from '@mui/material/Link'
+import Color from '@/constants/color'
+import { Avatar, Box, Typography, styled } from '@mui/material'
+import SettingsIcon from '@mui/icons-material/Settings'
+import NotificationsIcon from '@mui/icons-material/Notifications'
 
-const Toolbar = styled(MuiToolbar)(({ theme }) => ({
-  ...theme.mixins.toolbar,
-  display: 'flex',
-  boxShadow: 'none',
-}))
-
-const AppBarWrapper = styled(AppBar)({
-  Index: (theme) => theme.zIndex.drawer + 1,
-  boxShadow: 'none',
+const Header = styled('header')({
+  background: 'lightblue',
+  padding: '10px',
+  height: '75px',
+  backgroundColor: Color.blueRed,
 })
 
-const Hori = () => {
+const TextBox = styled('div')({
+  marginLeft: 50,
+})
+
+const HeaderBox = () => {
   return (
-    <AppBarWrapper position="fixed">
-      <Toolbar sx={{ backgroundColor: 'white' }}>
-        <Grid container spacing={6}>
-          <Grid item xs={1.5} />
-          <Grid item xs={4}>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link underline="hover" color="inherit" href="/">
-                MUI
-              </Link>
-              <Link
-                underline="hover"
-                color="inherit"
-                href="/material-ui/getting-started/installation/"
-              >
-                Core
-              </Link>
-              <Typography color="text.primary">Breadcrumbs</Typography>
-            </Breadcrumbs>
-          </Grid>
-          <Grid item xs={5.5} />
-          <Grid item xs={1}>
-            <Avatar src="/broken-image.jpg" />
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBarWrapper>
+    <Header>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+        <Box>
+          <img src="/img/logo.png" alt="logo" width={40} />
+        </Box>
+        <TextBox>
+          <Typography variant="h5">HOME</Typography>
+        </TextBox>
+        <TextBox>
+          <Typography variant="h5">API</Typography>
+        </TextBox>
+        <TextBox>
+          <Typography variant="h5">ERD</Typography>
+        </TextBox>
+        <TextBox>
+          <Typography variant="h5">SETTING</Typography>
+        </TextBox>
+        <Box sx={{ marginLeft: 'auto' }}>
+          <NotificationsIcon sx={{ mr: 5, mt: 1 }} fontSize="large" />
+          <SettingsIcon sx={{ mr: 5, mt: 1 }} fontSize="large" />
+        </Box>
+        <Avatar sx={{ mr: 3 }}>H</Avatar>
+      </Box>
+    </Header>
   )
 }
 
-export default Hori
+export default HeaderBox
