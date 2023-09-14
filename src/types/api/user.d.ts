@@ -2,14 +2,36 @@ import type { Response } from '.'
 
 export interface UserLoginResponse extends Response {
   data: {
-    accessToken: string
-    refreshToken: string
+    token: {
+      accessToken: string
+      refreshToken: string
+    }
+    user: {
+      nickname: string
+    }
+  }
+}
+
+export interface UserSocialLoginResponse extends Response {
+  data: {
+    token: {
+      accessToken: string
+      refreshToken: string
+    }
+    user: {
+      nickname: string
+    }
   }
 }
 
 export interface UserRegisterResponse extends Response {
   data: {
-    accessToken: string
-    refreshToken: string
+    token: {
+      accessToken: string
+      refreshToken: string
+    }
+    user: {
+      nickname: string
+    }
   }
 }

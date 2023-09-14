@@ -1,6 +1,14 @@
-import type { UserLoginResponse, UserRegisterResponse } from '@/types/api/user'
+import type {
+  UserLoginResponse,
+  UserRegisterResponse,
+  UserSocialLoginResponse,
+} from '@/types/api/user'
 import { api } from '..'
-import type { UserLoginParams, UserRegisterParams } from '@/types/user'
+import type {
+  UserLoginParams,
+  UserRegisterParams,
+  UserSocialLoginParams,
+} from '@/types/user'
 
 // Auth Api CreateApi
 export const authApi = api
@@ -19,6 +27,16 @@ export const authApi = api
           body: args,
         }),
       }),
+      socialLogin: builder.mutation<
+        UserSocialLoginResponse,
+        UserSocialLoginParams
+      >({
+        query: (args) => ({
+          url: '/auth/social',
+          method: 'POST',
+          body: args,
+        }),
+      }),
       register: builder.mutation<UserRegisterResponse, UserRegisterParams>({
         query: (args) => ({
           url: '/auth/user',
@@ -29,4 +47,5 @@ export const authApi = api
     }),
   })
 
-export const { useLoginMutation, useRegisterMutation } = authApi
+export const { useLoginMutation, useRegisterMutation, useSocialLoginMutation } =
+  authApi

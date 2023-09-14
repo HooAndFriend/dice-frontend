@@ -19,15 +19,21 @@ import { IconBox } from '@/components/icon-box'
 import Color from '@/constants/color'
 
 // ** Type Imporst
-import type { UserLoginParams } from '@/types/user'
+import type { SocialType, UserLoginParams } from '@/types/user'
 
 interface PropsType {
   user: UserLoginParams
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
   handleLogin: () => void
+  handleSocial: (type: SocialType) => void
 }
 
-const LoginPageView = ({ handleLogin, user, setUser }: PropsType) => {
+const LoginPageView = ({
+  handleLogin,
+  user,
+  setUser,
+  handleSocial,
+}: PropsType) => {
   return (
     <Box
       sx={{
@@ -98,7 +104,11 @@ const LoginPageView = ({ handleLogin, user, setUser }: PropsType) => {
             <GithubIcon width={20} height={20} />
           </IconBox>
           <IconBox>
-            <GoogleIcon width={20} height={20} />
+            <GoogleIcon
+              width={20}
+              height={20}
+              onClick={() => handleSocial('GOOGLE')}
+            />
           </IconBox>
           <IconBox>
             <MicrosoftIcon width={20} height={20} />
