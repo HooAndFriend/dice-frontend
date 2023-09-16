@@ -70,7 +70,6 @@ const LoginPageView = ({
             type="text"
             variant="standard"
             fullWidth
-            defaultValue="admin"
             label="username"
             value={user.username}
             name="username"
@@ -82,7 +81,6 @@ const LoginPageView = ({
             type="password"
             variant="standard"
             fullWidth
-            defaultValue="1234"
             label="password"
             value={user.password}
             name="password"
