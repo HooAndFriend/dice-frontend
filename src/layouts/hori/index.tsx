@@ -7,6 +7,7 @@ import UserDropdown from '@/components/user-dropdown'
 
 // ** Utils Imports
 import Color from '@/constants/color'
+import AlarmDropdown from '@/components/alarm-dropdown'
 
 const Header = styled('header')({
   background: 'lightblue',
@@ -65,12 +66,11 @@ const HeaderBox = () => {
           </Link>
         </TextBox>
         <Box sx={{ marginLeft: 'auto' }}>
-          <NotificationsIcon
-            sx={{ mr: 2, mt: 1, width: 30 }}
-            fontSize="large"
-          />
+          <AlarmDropdown />
         </Box>
-        <UserDropdown />
+        <Box>
+          <UserDropdown />
+        </Box>
       </Box>
     </Header>
   )
