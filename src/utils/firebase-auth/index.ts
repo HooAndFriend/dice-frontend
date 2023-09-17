@@ -1,16 +1,28 @@
 import { auth } from '@/config/firebaseConfig'
 import { SocialType } from '@/types/user'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
+} from 'firebase/auth'
 
 export const socialLogin = async (type: SocialType) => {
   switch (type) {
     case 'GOOGLE':
-      const provider = new GoogleAuthProvider()
+      const googleProvider = new GoogleAuthProvider()
       const {
-        user: { uid },
-      } = await signInWithPopup(auth, provider)
+        user: { uid: googleUid },
+      } = await signInWithPopup(auth, googleProvider)
 
-      return uid
+      return googleUid
+
+    case 'GITHUB':
+      const githubProvider = new GithubAuthProvider()
+      const {
+        user: { uid: githubUid },
+      } = await signInWithPopup(auth, githubProvider)
+
+      return githubUid
 
     default:
       break

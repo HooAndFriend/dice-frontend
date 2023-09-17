@@ -99,7 +99,11 @@ const LoginPageView = ({
             <AppleIcon width={20} height={20} />
           </IconBox>
           <IconBox>
-            <GithubIcon width={20} height={20} />
+            <GithubIcon
+              width={20}
+              height={20}
+              onClick={() => handleSocial('GITHUB')}
+            />
           </IconBox>
           <IconBox>
             <GoogleIcon
