@@ -2,11 +2,13 @@
 import { useState, Fragment } from 'react'
 
 // ** MUI Imports
-import { Button, MenuItem, Avatar, Menu } from '@mui/material'
+import { Button, MenuItem, Avatar, Menu, Link } from '@mui/material'
 
 // ** Redux Imports
 import { useDispatch } from 'react-redux'
 import { logout } from '@/store/app/auth'
+
+// ** Router Imports
 import { useNavigate } from 'react-router-dom'
 
 const UserDropdown = () => {
@@ -42,9 +44,11 @@ const UserDropdown = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose} sx={{ color: 'black' }}>
-          Setting
-        </MenuItem>
+        <Link href="/setting">
+          <MenuItem onClick={handleClose} sx={{ color: 'black' }}>
+            Setting
+          </MenuItem>
+        </Link>
         <MenuItem onClick={handleLogout} sx={{ color: 'black' }}>
           Logout
         </MenuItem>
