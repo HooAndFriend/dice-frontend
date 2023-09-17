@@ -64,7 +64,6 @@ const SignupPageView = ({
             type="text"
             variant="standard"
             fullWidth
-            defaultValue="admin"
             label="username"
             value={user.username}
             name="username"
@@ -76,7 +75,6 @@ const SignupPageView = ({
             type="password"
             variant="standard"
             fullWidth
-            defaultValue="1234"
             label="password"
             value={user.password}
             name="password"
@@ -88,7 +86,6 @@ const SignupPageView = ({
             type="password"
             variant="standard"
             fullWidth
-            defaultValue="1234"
             label="password check"
             value={passwordC}
             onChange={handleChangePasswordC}
@@ -99,7 +96,6 @@ const SignupPageView = ({
             type="text"
             variant="standard"
             fullWidth
-            defaultValue="pinomaker"
             label="nickname"
             value={user.nickname}
             name="nickname"
