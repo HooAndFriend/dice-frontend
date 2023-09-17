@@ -59,9 +59,10 @@ const LoginPageView = ({
           position: 'absolute',
           right: 0,
           bottom: 0,
+          zIndex: 1,
         }}
       >
-        {/* <img src="/img/dice1.png" /> */}
+        <img src="/img/dice1.png" />
       </Box>
       <Box sx={{ mt: -10 }}>
         <Typography variant="h1">Login</Typography>
