@@ -1,7 +1,12 @@
-import Color from '@/constants/color'
-import { Avatar, Box, Typography, styled } from '@mui/material'
-import SettingsIcon from '@mui/icons-material/Settings'
+// ** Mui Imports
+import { Box, Typography, styled } from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+
+// ** Component Imports
+import UserDropdown from '@/components/user-dropdown'
+
+// ** Utils Imports
+import Color from '@/constants/color'
 
 const Header = styled('header')({
   background: 'lightblue',
@@ -35,9 +40,8 @@ const HeaderBox = () => {
         </TextBox>
         <Box sx={{ marginLeft: 'auto' }}>
           <NotificationsIcon sx={{ mr: 5, mt: 1 }} fontSize="large" />
-          <SettingsIcon sx={{ mr: 5, mt: 1 }} fontSize="large" />
         </Box>
-        <Avatar sx={{ mr: 3 }}>H</Avatar>
+        <UserDropdown />
       </Box>
     </Header>
   )
