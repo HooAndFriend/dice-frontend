@@ -1,5 +1,5 @@
 // ** React Imports
-import TestPage from '@/pages/api-page'
+import HomePage from '@/pages/home-page'
 import { ReactNode } from 'react'
 
 interface MenuType {
@@ -12,8 +12,8 @@ interface MenuType {
 export const MenuList: MenuType[] = [
   {
     route: '',
-    name: '테스트 페이지',
-    element: <TestPage />,
+    name: '메인 페이지',
+    element: <HomePage />,
     onlyPath: false,
   },
 ]
