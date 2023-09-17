@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
+  OAuthProvider,
 } from 'firebase/auth'
 
 export const socialLogin = async (type: SocialType) => {
@@ -24,6 +25,17 @@ export const socialLogin = async (type: SocialType) => {
 
       return githubUid
 
+    case 'MICROSOFT':
+      const msProvider = new OAuthProvider('microsoft.com')
+      try {
+        const {
+          user: { uid: msUid },
+        } = await signInWithPopup(auth, msProvider)
+        return msUid
+      } catch (err) {
+        alert('이미 가입된 유저 입니다.')
+      }
+      break
     default:
       break
   }

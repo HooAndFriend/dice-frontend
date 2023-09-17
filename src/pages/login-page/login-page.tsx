@@ -61,7 +61,7 @@ const LoginPageView = ({
           bottom: 0,
         }}
       >
-        <img src="/img/dice1.png" />
+        {/* <img src="/img/dice1.png" /> */}
       </Box>
       <Box sx={{ mt: -10 }}>
         <Typography variant="h1">Login</Typography>
@@ -113,7 +113,11 @@ const LoginPageView = ({
             />
           </IconBox>
           <IconBox>
-            <MicrosoftIcon width={20} height={20} />
+            <MicrosoftIcon
+              width={20}
+              height={20}
+              onClick={() => handleSocial('MICROSOFT')}
+            />
           </IconBox>
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
