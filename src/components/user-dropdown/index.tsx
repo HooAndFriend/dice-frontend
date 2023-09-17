@@ -44,7 +44,7 @@ const UserDropdown = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link href="/setting">
+        <Link href="/dashboard/setting">
           <MenuItem onClick={handleClose} sx={{ color: 'black' }}>
             Setting
           </MenuItem>
