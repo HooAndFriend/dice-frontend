@@ -25,7 +25,11 @@ const initialState: UserTypeProps = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.user = { ...initialState.user }
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
@@ -58,3 +62,5 @@ export default authSlice.reducer
 
 export const getAccessToken = (state: RootState) =>
   state.auth.user.token.accessToken
+
+export const { logout } = authSlice.actions
