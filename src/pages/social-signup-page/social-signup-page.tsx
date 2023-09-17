@@ -56,7 +56,6 @@ const SocialSignupPageView = ({ handleJoin, user, setUser }: PropsType) => {
             type="text"
             variant="standard"
             fullWidth
-            defaultValue="pinomaker"
             label="nickname"
             value={user.nickname}
             name="nickname"
