@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import HomePage from '@/pages/home-page'
 import SettingPage from '@/pages/setting-page'
 import ApiPage from '@/pages/api-page'
+import ErdPage from '@/pages/erd-page'
 
 interface MenuType {
   route: string
@@ -30,6 +31,12 @@ export const MenuList: MenuType[] = [
     route: '/api',
     name: 'API 페이지',
     element: <ApiPage />,
+    onlyPath: false,
+  },
+  {
+    route: '/erd',
+    name: 'ERD 페이지',
+    element: <ErdPage />,
     onlyPath: false,
   },
 ]
