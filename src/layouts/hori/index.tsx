@@ -1,5 +1,5 @@
 // ** Mui Imports
-import { Box, Typography, styled } from '@mui/material'
+import { Box, Typography, styled, Link } from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 
 // ** Component Imports
@@ -31,24 +31,38 @@ const HeaderBox = () => {
         }}
       >
         <Box>
-          <img
-            src="/img/logo.png"
-            alt="logo"
-            width={30}
-            style={{ marginLeft: 10 }}
-          />
+          <Link href="/dashboard">
+            <img
+              src="/img/logo.png"
+              alt="logo"
+              width={30}
+              style={{ marginLeft: 10 }}
+            />
+          </Link>
         </Box>
         <TextBox>
-          <Typography variant="h6">HOME</Typography>
+          <Link
+            href="/dashboard/api"
+            sx={{ textDecoration: 'none', color: 'white' }}
+          >
+            <Typography variant="h6">API</Typography>
+          </Link>
         </TextBox>
         <TextBox>
-          <Typography variant="h6">API</Typography>
+          <Link
+            href="/dashboard/erd"
+            sx={{ textDecoration: 'none', color: 'white' }}
+          >
+            <Typography variant="h6">ERD</Typography>
+          </Link>
         </TextBox>
         <TextBox>
-          <Typography variant="h6">ERD</Typography>
-        </TextBox>
-        <TextBox>
-          <Typography variant="h6">SETTING</Typography>
+          <Link
+            href="/dashboard/workspace"
+            sx={{ textDecoration: 'none', color: 'white' }}
+          >
+            <Typography variant="h6">SETTING</Typography>
+          </Link>
         </TextBox>
         <Box sx={{ marginLeft: 'auto' }}>
           <NotificationsIcon
