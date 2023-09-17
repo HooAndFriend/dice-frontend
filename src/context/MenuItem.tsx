@@ -6,6 +6,7 @@ import HomePage from '@/pages/home-page'
 import SettingPage from '@/pages/setting-page'
 import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
+import WorkspacePage from '@/pages/workspace-page'
 
 interface MenuType {
   route: string
@@ -37,6 +38,12 @@ export const MenuList: MenuType[] = [
     route: '/erd',
     name: 'ERD 페이지',
     element: <ErdPage />,
+    onlyPath: false,
+  },
+  {
+    route: '/workspace',
+    name: 'Workspace 페이지',
+    element: <WorkspacePage />,
     onlyPath: false,
   },
 ]
