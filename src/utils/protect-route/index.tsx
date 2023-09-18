@@ -8,21 +8,16 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getAccessToken } from '@/store/app/auth'
 
-// ** Other Imports
-import { isNull } from 'lodash'
-
 export function ProtectRoute() {
   const token = useSelector(getAccessToken)
+  const isAuthorization = useMemo(() => (token === '' ? false : true), [token])
 
-  const isAuthorization = useMemo(() => isNull(token), [])
-  return <Outlet />
-  // return isAuthorization ? <Outlet /> : <Navigate to="/" />
+  return isAuthorization ? <Outlet /> : <Navigate to="/" />
 }
 
 export function PublicRoute() {
   const token = useSelector(getAccessToken)
-  const isAuthorization = useMemo(() => isNull(token), [])
+  const isAuthorization = useMemo(() => (token === '' ? false : true), [token])
 
-  return <Outlet />
-  // return isAuthorization ? <Navigate to="/" /> : <Outlet />
+  return isAuthorization ? <Navigate to="/dashboard" /> : <Outlet />
 }
