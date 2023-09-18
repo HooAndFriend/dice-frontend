@@ -1,6 +1,6 @@
 # Dice Frontend
 
-### Version
+### Stack Version
 
 ```
 React : 18
