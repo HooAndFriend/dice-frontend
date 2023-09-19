@@ -1,11 +1,32 @@
+// ** React Imports
+import { useMemo } from 'react'
+
 // ** Mui Imports
 import { Box } from '@mui/material'
 
-import Color from '@/constants/color'
+// ** Component Imports
 import { IconBox } from '@/components/icon-box'
 import AppleIcon from '@/components/icons/apple'
 
+// ** Service Imports
+import { useGetWorkspaceV0ListQuery } from '@/services'
+
+// ** Utils Imports
+import { isUndefined } from 'lodash'
+import Color from '@/constants/color'
+import { WorkspaceBox } from './component'
+
 const VerticalNavigation = () => {
+  const { data } = useGetWorkspaceV0ListQuery()
+
+  const workspaceData = useMemo(
+    () =>
+      isUndefined(data)
+        ? { data: [], count: 0 }
+        : { data: data.data, count: data.count },
+    [data],
+  )
+
   return (
     <Box
       sx={{
@@ -13,15 +34,14 @@ const VerticalNavigation = () => {
         height: '100vh',
         float: 'left',
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
         backgroundColor: Color.lightGrey,
       }}
     >
-      <Box sx={{ mt: 2 }}>
-        <IconBox>
-          <AppleIcon width={20} height={20} />
-        </IconBox>
-      </Box>
+      {workspaceData.data.map((item) => (
+        <WorkspaceBox data={item} key={item.id} />
+      ))}
     </Box>
   )
 }
