@@ -11,6 +11,7 @@ import SocialSignupPage from './pages/social-signup-page'
 // ** Context Imports
 import { ErrorProvider } from './context/ErrorContext'
 import { DialogProvider } from './context/DialogContext'
+import { WorkspaceProvider } from './context/WorkspaceContext'
 
 const App = () => {
   return (
@@ -26,9 +27,11 @@ const App = () => {
             <Route
               path="/dashboard/*"
               element={
-                <DialogProvider>
-                  <Dashboard />
-                </DialogProvider>
+                <WorkspaceProvider>
+                  <DialogProvider>
+                    <Dashboard />
+                  </DialogProvider>
+                </WorkspaceProvider>
               }
             />
           </Route>
