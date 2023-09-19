@@ -4,17 +4,15 @@ import { useMemo } from 'react'
 // ** Mui Imports
 import { Box } from '@mui/material'
 
-// ** Component Imports
-import { IconBox } from '@/components/icon-box'
-import AppleIcon from '@/components/icons/apple'
-
 // ** Service Imports
 import { useGetWorkspaceV0ListQuery } from '@/services'
+
+// ** Component Imports
+import { WorkspaceBox } from './component'
 
 // ** Utils Imports
 import { isUndefined } from 'lodash'
 import Color from '@/constants/color'
-import { WorkspaceBox } from './component'
 
 const VerticalNavigation = () => {
   const { data } = useGetWorkspaceV0ListQuery()

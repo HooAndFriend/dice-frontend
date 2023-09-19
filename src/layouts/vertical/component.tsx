@@ -6,19 +6,21 @@ import AppleIcon from '@/components/icons/apple'
 
 // ** Type Imports
 import type { WorkspaceV0 } from '@/types/workspace'
+import { useWorkspace } from '@/context/WorkspaceContext'
 
 interface WorkspaceBoxProps {
   data: WorkspaceV0
 }
 
 export const WorkspaceBox = ({ data }: WorkspaceBoxProps) => {
+  const { handleWorkspaceId, workspaceId } = useWorkspace()
+
   return (
     <Box
       sx={{
         mt: 2,
-        borderRadius: 2,
-        border: data.workspace.isPersonal ? '2px solid black' : '',
       }}
+      onClick={() => handleWorkspaceId(data.workspace.id)}
     >
       <Box
         sx={{
@@ -30,6 +32,7 @@ export const WorkspaceBox = ({ data }: WorkspaceBoxProps) => {
           justifyContent: 'center',
           alignItems: 'center',
           float: 'left',
+          border: data.workspace.id === workspaceId ? '2px solid black' : '',
         }}
       >
         <AppleIcon width={20} height={20} />
