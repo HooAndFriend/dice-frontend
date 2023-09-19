@@ -1,5 +1,5 @@
 // ** React Imports
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 // ** Mui Imports
 import { Box } from '@mui/material'
@@ -14,8 +14,13 @@ import { WorkspaceBox } from './component'
 import { isUndefined } from 'lodash'
 import Color from '@/constants/color'
 
+// ** Context Imports
+import { useWorkspace } from '@/context/WorkspaceContext'
+
 const VerticalNavigation = () => {
   const { data } = useGetWorkspaceV0ListQuery()
+
+  const { handleWorkspaceId } = useWorkspace()
 
   const workspaceData = useMemo(
     () =>
@@ -24,6 +29,14 @@ const VerticalNavigation = () => {
         : { data: data.data, count: data.count },
     [data],
   )
+
+  useEffect(() => {
+    const arr = workspaceData.data.filter((item) => item.workspace.isPersonal)
+
+    if (arr.length > 0) {
+      handleWorkspaceId(arr[0].workspace.id)
+    }
+  }, [data])
 
   return (
     <Box

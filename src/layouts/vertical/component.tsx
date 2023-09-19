@@ -6,6 +6,8 @@ import AppleIcon from '@/components/icons/apple'
 
 // ** Type Imports
 import type { WorkspaceV0 } from '@/types/workspace'
+
+// ** Context Imports
 import { useWorkspace } from '@/context/WorkspaceContext'
 
 interface WorkspaceBoxProps {
