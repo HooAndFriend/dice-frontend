@@ -14,6 +14,9 @@ import type { SocialType, UserLoginParams } from '@/types/user'
 // ** Service Imports
 import { useLoginMutation, useSocialLoginMutation } from '@/services'
 
+// ** Context Imports
+import { useError } from '@/context/ErrorContext'
+
 const LoginPage = () => {
   const navigate = useNavigate()
 
@@ -21,6 +24,8 @@ const LoginPage = () => {
     username: '',
     password: '',
   })
+
+  const { onError } = useError()
 
   const [loginApi] = useLoginMutation()
   const [socialLoginApi] = useSocialLoginMutation()
@@ -42,7 +47,9 @@ const LoginPage = () => {
       .then((res) => {
         navigate('/dashboard')
       })
-      .catch((err) => alert(err.data.message))
+      .catch((err) => {
+        onError('알림', err.data.message)
+      })
   }
 
   const handleSocial = async (type: SocialType) => {
@@ -59,10 +66,16 @@ const LoginPage = () => {
           .catch((err) => {
             if (err.data.statusCode === 404) {
               navigate(`/social/signup?token=${res}&type=${type}`)
+
+              return
             }
+
+            onError('알림', err.data.message)
           })
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        onError('알림', err.data.message)
+      })
   }
 
   return (

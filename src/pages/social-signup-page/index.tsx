@@ -16,6 +16,9 @@ import { useSocialRegisterMutation } from '@/services'
 // ** Utils Imports
 import useInput from '@/hooks/useInput'
 
+// ** Context Imports
+import { useError } from '@/context/ErrorContext'
+
 const SocialSignupPage = () => {
   const navigate = useNavigate()
 
@@ -28,6 +31,8 @@ const SocialSignupPage = () => {
     nickname: '',
     type: '',
   })
+
+  const { onError } = useError()
 
   const [socialRegisterApi] = useSocialRegisterMutation()
 
@@ -43,7 +48,9 @@ const SocialSignupPage = () => {
       .then((res) => {
         navigate('/dashboard')
       })
-      .catch((err) => alert(err.data.message))
+      .catch((err) => {
+        onError('알림', err.data.message)
+      })
   }
 
   useEffect(() => {

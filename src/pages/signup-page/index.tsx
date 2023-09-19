@@ -16,6 +16,9 @@ import { useRegisterMutation } from '@/services'
 // ** Utils Imports
 import useInput from '@/hooks/useInput'
 
+// ** Context Imports
+import { useError } from '@/context/ErrorContext'
+
 const SignupPage = () => {
   const navigate = useNavigate()
 
@@ -25,6 +28,8 @@ const SignupPage = () => {
     nickname: '',
   })
   const [passwordC, setPasswordC] = useState<string>('')
+
+  const { onError } = useError()
 
   const [registerApi] = useRegisterMutation()
 
@@ -68,7 +73,9 @@ const SignupPage = () => {
       .then((res) => {
         navigate('/dashboard')
       })
-      .catch((err) => alert(err.data.message))
+      .catch((err) => {
+        onError('알림', err.data.message)
+      })
   }
 
   return (
