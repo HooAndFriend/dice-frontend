@@ -4,7 +4,8 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/parser", // 여기
+    "plugin:@typescript-eslint/parser",
+    "plugin:storybook/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
