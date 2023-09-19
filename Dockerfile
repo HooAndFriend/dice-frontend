@@ -10,17 +10,22 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN yarn build
+RUN yarn build:dev
 
+FROM nginx:latest
+ 
+RUN mkdir /app
+ 
+WORKDIR /app
+ 
+RUN mkdir ./dist
+ 
+ADD ./dist ./dist
+ 
+RUN rm /etc/nginx/conf.d/default.conf
+ 
+COPY conf/default.conf /etc/nginx/conf.d
 
-FROM httpd:2.4
+EXPOSE 80
 
-RUN apt-get update && apt-get install -y apache2
-
-COPY --from=builder /app/dist /var/www/html/
-
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
-
-RUN a2enmod rewrite
-
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["nginx", "-g", "daemon off;"]
