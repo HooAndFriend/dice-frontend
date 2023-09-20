@@ -1,5 +1,8 @@
+// ** React Imports
+import { useMemo } from 'react'
+
 // ** Router Imports
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { ProtectRoute, PublicRoute } from './utils/protect-route'
 
 // ** Router Imports
@@ -13,10 +16,25 @@ import { ErrorProvider } from './context/ErrorContext'
 import { DialogProvider } from './context/DialogContext'
 import { WorkspaceProvider } from './context/WorkspaceContext'
 
+// ** Style Imports
+import { ThemeProvider } from '@mui/material'
+import { theme, dashboardTheme } from '@/theme'
+import { GlobalStyles } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
+
 const App = () => {
+  const { pathname } = useLocation()
+
+  const muiTheme = useMemo(
+    () => (pathname.startsWith('/dashboard/') ? dashboardTheme : theme),
+    [pathname],
+  )
+
   return (
-    <ErrorProvider>
-      <BrowserRouter>
+    <ThemeProvider theme={muiTheme}>
+      <GlobalStyles styles={{ backgroundColor: 'blue' }} />
+      <CssBaseline />
+      <ErrorProvider>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<LoginPage />} />
@@ -36,8 +54,8 @@ const App = () => {
             />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </ErrorProvider>
+      </ErrorProvider>
+    </ThemeProvider>
   )
 }
 
