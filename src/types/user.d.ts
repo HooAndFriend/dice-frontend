@@ -1,3 +1,13 @@
+export interface AuthV0 {
+  token: {
+    accessToken: string
+    refreshToken: string
+  }
+  user: {
+    nickname: string
+  }
+}
+
 export interface UserLoginParams {
   username: string
   password: string

@@ -1,49 +1,17 @@
 import type { Response } from '.'
-
+import type { AuthV0 } from '../user'
 export interface UserLoginResponse extends Response {
-  data: {
-    token: {
-      accessToken: string
-      refreshToken: string
-    }
-    user: {
-      nickname: string
-    }
-  }
+  data: AuthV0
 }
 
 export interface UserSocialLoginResponse extends Response {
-  data: {
-    token: {
-      accessToken: string
-      refreshToken: string
-    }
-    user: {
-      nickname: string
-    }
-  }
+  data: AuthV0
 }
 
 export interface UserRegisterResponse extends Response {
-  data: {
-    token: {
-      accessToken: string
-      refreshToken: string
-    }
-    user: {
-      nickname: string
-    }
-  }
+  data: AuthV0
 }
 
 export interface UserSocialRegisterResponse extends Response {
-  data: {
-    token: {
-      accessToken: string
-      refreshToken: string
-    }
-    user: {
-      nickname: string
-    }
-  }
+  data: AuthV0
 }
