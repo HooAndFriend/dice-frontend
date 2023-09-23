@@ -58,7 +58,9 @@ const SignupPageView = ({
         <img src="/img/dice1.png" />
       </Box>
       <Box sx={{ mt: -10 }}>
-        <Typography variant="h1">Sign up</Typography>
+        <Typography variant="h1" sx={{ color: 'black' }}>
+          Sign up
+        </Typography>
         <Box sx={{ width: 400, mt: 3 }}>
           <InputTextField
             type="text"
