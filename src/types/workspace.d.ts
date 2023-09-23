@@ -5,6 +5,7 @@ export interface WorkspaceV0 {
     id: number
     name: string
     profile: string
+    comment: string
     isPersonal: boolean
   }
 }
@@ -13,6 +14,7 @@ export interface WorkspaceV1 {
   id: number
   name: string
   profile: string
+  comment: string
   isPersonal: boolean
 }
 

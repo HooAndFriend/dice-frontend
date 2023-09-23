@@ -1,5 +1,5 @@
 // ** Mui Imports
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 // ** Type Imports
 import type { WorkspaceV1 } from '@/types/workspace'
@@ -10,9 +10,27 @@ interface PropsType {
 
 const HomePageView = ({ worksapce }: PropsType) => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        mt: 10,
+        ml: 10,
+      }}
+    >
       <Box>
         <img src={worksapce.profile} />
+      </Box>
+      <Box sx={{ ml: 10, mt: 5 }}>
+        <Typography variant="h1" sx={{ color: 'black' }}>
+          Welcome to
+        </Typography>
+        <Typography variant="h1" sx={{ color: 'black' }}>
+          {worksapce.name}
+        </Typography>
+        <Typography variant="body1" sx={{ color: 'black', mt: 5 }}>
+          {worksapce.comment}
+        </Typography>
       </Box>
     </Box>
   )

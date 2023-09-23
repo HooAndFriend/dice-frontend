@@ -18,6 +18,7 @@ const HomePage = () => {
     id: 0,
     name: '',
     profile: '',
+    comment: '',
     isPersonal: false,
   })
 
