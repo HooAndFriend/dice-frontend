@@ -28,16 +28,24 @@ export const WorkspaceBox = ({ data }: WorkspaceBoxProps) => {
         sx={{
           width: 40,
           height: 40,
-          backgroundColor: 'white',
-          borderRadius: 2,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           float: 'left',
-          border: data.workspace.id === workspaceId ? '2px solid black' : '',
         }}
       >
-        <AppleIcon width={20} height={20} />
+        <img
+          src={data.workspace.profile}
+          width={40}
+          height={40}
+          style={{
+            border:
+              workspaceId === data.workspace.id
+                ? '2px solid red'
+                : '2px solid black',
+            borderRadius: '10px',
+          }}
+        />
       </Box>
     </Box>
   )
