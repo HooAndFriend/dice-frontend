@@ -1,8 +1,5 @@
-// ** React Imports
-import { useMemo } from 'react'
-
 // ** Router Imports
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { ProtectRoute, PublicRoute } from './utils/protect-route'
 
 // ** Router Imports
@@ -18,20 +15,13 @@ import { WorkspaceProvider } from './context/WorkspaceContext'
 
 // ** Style Imports
 import { ThemeProvider } from '@mui/material'
-import { theme, dashboardTheme } from '@/theme'
+import { theme } from '@/theme'
 import { GlobalStyles } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 
 const App = () => {
-  const { pathname } = useLocation()
-
-  const muiTheme = useMemo(
-    () => (pathname.startsWith('/dashboard/') ? dashboardTheme : theme),
-    [pathname],
-  )
-
   return (
-    <ThemeProvider theme={muiTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles styles={{ backgroundColor: 'blue' }} />
       <CssBaseline />
       <ErrorProvider>
