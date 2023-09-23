@@ -65,7 +65,9 @@ const LoginPageView = ({
         <img src="/img/dice1.png" />
       </Box>
       <Box sx={{ mt: -10 }}>
-        <Typography variant="h1">Login</Typography>
+        <Typography variant="h1" sx={{ color: 'black' }}>
+          Login
+        </Typography>
         <Box sx={{ width: 400, mt: 3 }}>
           <InputTextField
             type="text"
