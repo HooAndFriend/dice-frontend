@@ -1,5 +1,8 @@
 import { api } from '..'
-import type { WorkspaceV0Response } from '@/types/api/workspace'
+import type {
+  WorkspaceV0Response,
+  WorkspaceV1Respons,
+} from '@/types/api/workspace'
 
 // Workspace Api CreateApi
 export const workspaceApi = api
@@ -15,8 +18,15 @@ export const workspaceApi = api
           url: '/workspace-user',
         }),
       }),
+      getWorkspaceV1: builder.query<WorkspaceV1Respons, number>({
+        query: (id) => ({
+          url: `/workspace/home/${id}`,
+        }),
+      }),
+
       // Mutation
     }),
   })
 
-export const { useGetWorkspaceV0ListQuery } = workspaceApi
+export const { useGetWorkspaceV0ListQuery, useLazyGetWorkspaceV1Query } =
+  workspaceApi
