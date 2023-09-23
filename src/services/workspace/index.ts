@@ -1,5 +1,6 @@
 import { api } from '..'
 import type {
+  WorksapceV2Response,
   WorkspaceV0Response,
   WorkspaceV1Respons,
 } from '@/types/api/workspace'
@@ -23,10 +24,17 @@ export const workspaceApi = api
           url: `/workspace/home/${id}`,
         }),
       }),
-
+      getWorksapceV2: builder.query<WorksapceV2Response, number>({
+        query: (id) => ({
+          url: `/workspace/${id}`,
+        }),
+      }),
       // Mutation
     }),
   })
 
-export const { useGetWorkspaceV0ListQuery, useLazyGetWorkspaceV1Query } =
-  workspaceApi
+export const {
+  useGetWorkspaceV0ListQuery,
+  useLazyGetWorkspaceV1Query,
+  useLazyGetWorksapceV2Query,
+} = workspaceApi

@@ -5,7 +5,6 @@ export interface WorkspaceV0 {
     id: number
     name: string
     profile: string
-    comment: string
     isPersonal: boolean
   }
 }
@@ -16,6 +15,24 @@ export interface WorkspaceV1 {
   profile: string
   comment: string
   isPersonal: boolean
+}
+
+export interface WorkspaceV2 {
+  id: number
+  name: string
+  comment: string
+  profile: string
+  isPersonal: boolean
+  workspaceUser: WorksapceUser[]
+}
+
+export interface WorksapceUser {
+  role: WorkspaceRole
+  user: {
+    nickname: string
+    email: string
+    profile: string
+  }
 }
 
 export type WorkspaceRole = 'WRITER' | 'VIEWER' | 'ADMIN' | 'OWNER'

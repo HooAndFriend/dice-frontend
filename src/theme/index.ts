@@ -6,9 +6,6 @@ import Color from '@/constants/color'
 
 export const theme = createTheme({
   palette: {
-    text: {
-      primary: '#fff',
-    },
     background: {
       default: Color.grey,
     },
