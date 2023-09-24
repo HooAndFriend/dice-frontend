@@ -16,6 +16,7 @@
     "preview": "vite preview",
     "docker": "docker build --no-cache --rm -f Dockerfile -t pinomaker/dice-frontend:latest . --platform linux/amd64",
     "docker-push": "docker push pinomaker/dice-frontend:latest",
+    "docker-buildx": "docker buildx build --platform linux/arm64,linux/amd64 -t pinomaker/dice-frontend:latest-arm64 -t pinomaker/dice-frontend:latest-amd64 --file Dockerfile . --push",
     "electron-mac": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "electron-window": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "electron-pack": "yarn build && electron-builder build -c.extraMetadata.main=Electron.cjs",
