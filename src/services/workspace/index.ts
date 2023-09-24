@@ -1,9 +1,11 @@
+import type { Response } from '@/types/api'
 import { api } from '..'
 import type {
   WorksapceV2Response,
   WorkspaceV0Response,
   WorkspaceV1Respons,
 } from '@/types/api/workspace'
+import type { WorkspaceUpdateParams } from '@/types/workspace'
 
 // Workspace Api CreateApi
 export const workspaceApi = api
@@ -30,6 +32,13 @@ export const workspaceApi = api
         }),
       }),
       // Mutation
+      updateWorkspace: builder.mutation<Response, WorkspaceUpdateParams>({
+        query: (args) => ({
+          url: '/workspace',
+          method: 'PUT',
+          body: args,
+        }),
+      }),
     }),
   })
 
@@ -37,4 +46,5 @@ export const {
   useGetWorkspaceV0ListQuery,
   useLazyGetWorkspaceV1Query,
   useLazyGetWorksapceV2Query,
+  useUpdateWorkspaceMutation,
 } = workspaceApi

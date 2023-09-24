@@ -2,13 +2,21 @@ import { Box, Button, Typography } from '@mui/material'
 import { InputTextField } from '@/components/text-input'
 import { WorkspaceV2 } from '@/types/workspace'
 import Color from '@/constants/color'
+import ImagePreview from '@/components/imagePreview'
 
 interface PropsType {
   worksapce: WorkspaceV2
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleSetPath: (path: string) => void
+  handleWorkspaceUpdate: () => void
 }
 
-const WorkspacePageView = ({ worksapce, handleInput }: PropsType) => {
+const WorkspacePageView = ({
+  worksapce,
+  handleInput,
+  handleSetPath,
+  handleWorkspaceUpdate,
+}: PropsType) => {
   return (
     <Box sx={{ px: 30 }}>
       <Box
@@ -31,12 +39,12 @@ const WorkspacePageView = ({ worksapce, handleInput }: PropsType) => {
               borderRadius: 12,
             }}
           >
-            <img width="100%" height="100%" src={worksapce.profile} />
+            <ImagePreview image={worksapce.profile} setPath={handleSetPath} />
           </Box>
         </Box>
         <Box sx={{ ml: 10 }}>
           <Typography variant="h5" sx={{ color: 'black' }}>
-            Workspace Image
+            Workspace Name
           </Typography>
           <InputTextField
             sx={{ mt: 1, width: 600 }}
@@ -61,6 +69,7 @@ const WorkspacePageView = ({ worksapce, handleInput }: PropsType) => {
         <Button
           variant="contained"
           sx={{ backgroundColor: Color.green, width: 150 }}
+          onClick={handleWorkspaceUpdate}
         >
           Save
         </Button>
@@ -137,6 +146,7 @@ const WorkspacePageView = ({ worksapce, handleInput }: PropsType) => {
           {worksapce.workspaceUser.map((item) => (
             <Box
               sx={{ px: 5, display: 'flex', justifyContent: 'space-between' }}
+              key={item.user.email}
             >
               <Box sx={{ display: 'flex' }}>
                 <Box sx={{ width: 50, height: 50, borderRadius: 25 }}>

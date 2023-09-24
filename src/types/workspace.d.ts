@@ -26,6 +26,13 @@ export interface WorkspaceV2 {
   workspaceUser: WorksapceUser[]
 }
 
+export interface WorkspaceUpdateParams {
+  id: number
+  name: string
+  comment: string
+  profile: string
+}
+
 export interface WorksapceUser {
   role: WorkspaceRole
   user: {

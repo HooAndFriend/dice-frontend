@@ -1,42 +1,28 @@
 // ** React Imports
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 
 // ** Mui Imports
 import { Box } from '@mui/material'
-
-// ** Service Imports
-import { useGetWorkspaceV0ListQuery } from '@/services'
 
 // ** Component Imports
 import { WorkspaceBox } from './component'
 
 // ** Utils Imports
-import { isUndefined } from 'lodash'
 import Color from '@/constants/color'
 
 // ** Context Imports
 import { useWorkspace } from '@/context/WorkspaceContext'
 
 const VerticalNavigation = () => {
-  const { data } = useGetWorkspaceV0ListQuery()
-
-  const { handleWorkspaceId } = useWorkspace()
-
-  const workspaceData = useMemo(
-    () =>
-      isUndefined(data)
-        ? { data: [], count: 0 }
-        : { data: data.data, count: data.count },
-    [data],
-  )
+  const { handleWorkspaceId, workspaceList } = useWorkspace()
 
   useEffect(() => {
-    const arr = workspaceData.data.filter((item) => item.workspace.isPersonal)
+    const arr = workspaceList.data.filter((item) => item.workspace.isPersonal)
 
     if (arr.length > 0) {
       handleWorkspaceId(arr[0].workspace.id)
     }
-  }, [data])
+  }, [workspaceList])
 
   return (
     <Box
@@ -50,7 +36,7 @@ const VerticalNavigation = () => {
         backgroundColor: Color.lightGrey,
       }}
     >
-      {workspaceData.data.map((item) => (
+      {workspaceList.data.map((item) => (
         <WorkspaceBox data={item} key={item.id} />
       ))}
     </Box>
