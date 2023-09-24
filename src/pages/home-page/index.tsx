@@ -35,8 +35,6 @@ const HomePage = () => {
       })
   }, [workspaceId])
 
-  console.log(workspace)
-
   return <HomePageView worksapce={workspace} />
 }
 
