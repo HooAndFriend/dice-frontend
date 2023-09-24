@@ -1,8 +1,11 @@
 // ** React Imports
 import { useState, Fragment } from 'react'
 
+// ** Router Imports
+import { Link } from 'react-router-dom'
+
 // ** MUI Imports
-import { Button, MenuItem, Avatar, Menu, Link } from '@mui/material'
+import { Button, MenuItem, Avatar, Menu } from '@mui/material'
 
 // ** Redux Imports
 import { useDispatch } from 'react-redux'
@@ -44,7 +47,7 @@ const UserDropdown = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link href="/dashboard/setting">
+        <Link to="/dashboard/setting">
           <MenuItem onClick={handleClose} sx={{ color: 'black' }}>
             Setting
           </MenuItem>

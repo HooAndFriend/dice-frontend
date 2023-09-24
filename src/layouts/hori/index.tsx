@@ -1,6 +1,8 @@
+// ** Router Imports
+import { Link } from 'react-router-dom'
+
 // ** Mui Imports
-import { Box, Typography, styled, Link } from '@mui/material'
-import NotificationsIcon from '@mui/icons-material/Notifications'
+import { Box, Typography, styled } from '@mui/material'
 
 // ** Component Imports
 import UserDropdown from '@/components/user-dropdown'
@@ -32,7 +34,7 @@ const HeaderBox = () => {
         }}
       >
         <Box>
-          <Link href="/dashboard">
+          <Link to="/dashboard">
             <img
               src="/img/logo.png"
               alt="logo"
@@ -43,24 +45,24 @@ const HeaderBox = () => {
         </Box>
         <TextBox>
           <Link
-            href="/dashboard/api"
-            sx={{ textDecoration: 'none', color: 'white' }}
+            to="/dashboard/api"
+            style={{ textDecoration: 'none', color: 'white' }}
           >
             <Typography variant="h6">API</Typography>
           </Link>
         </TextBox>
         <TextBox>
           <Link
-            href="/dashboard/erd"
-            sx={{ textDecoration: 'none', color: 'white' }}
+            to="/dashboard/erd"
+            style={{ textDecoration: 'none', color: 'white' }}
           >
             <Typography variant="h6">ERD</Typography>
           </Link>
         </TextBox>
         <TextBox>
           <Link
-            href="/dashboard/workspace"
-            sx={{ textDecoration: 'none', color: 'white' }}
+            to="/dashboard/workspace"
+            style={{ textDecoration: 'none', color: 'white' }}
           >
             <Typography variant="h6">SETTING</Typography>
           </Link>
