@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { RootState } from '@/store'
+import { logout, updateToken } from '@/store/app/auth'
 import {
   BaseQueryApi,
   FetchArgs,
@@ -36,37 +37,39 @@ export const customFetchBase = async (
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
   if (result.error?.status === 401) {
-    // if (!mutex.isLocked()) {
-    //   const release = await mutex.acquire()
-    //   try {
-    //     const {
-    //       auth: {
-    //         user: { refreshToken, accessToken },
-    //       },
-    //     } = api.getState()
-    //     const { data }: any = await baseQuery(
-    //       {
-    //         url: '/user/token',
-    //         method: 'POST',
-    //         body: { refreshToken, accessToken },
-    //       },
-    //       api,
-    //       extraOptions
-    //     )
-    //     if (data.status === 200) {
-    //       const { accessToken, refreshToken } = data.responseData
-    //       api.dispatch(updateToken({ accessToken, refreshToken }))
-    //       result = await baseQuery(args, api, extraOptions)
-    //     } else {
-    //       api.dispatch(userLogout())
-    //     }
-    //   } finally {
-    //     release()
-    //   }
-    // } else {
-    //   await mutex.waitForUnlock()
-    //   result = await baseQuery(args, api, extraOptions)
-    // }
+    if (!mutex.isLocked()) {
+      const release = await mutex.acquire()
+      try {
+        const {
+          auth: {
+            user: {
+              token: { refreshToken },
+            },
+          },
+        } = api.getState() as RootState
+        const { data }: any = await baseQuery(
+          {
+            url: '/auth/reissue',
+            method: 'POST',
+            body: { refreshToken },
+          },
+          api,
+          extraOptions,
+        )
+        if (data.statusCode === 200) {
+          const { accessToken } = data.responseData
+          api.dispatch(updateToken(accessToken))
+          result = await baseQuery(args, api, extraOptions)
+        } else {
+          api.dispatch(logout())
+        }
+      } finally {
+        release()
+      }
+    } else {
+      await mutex.waitForUnlock()
+      result = await baseQuery(args, api, extraOptions)
+    }
   }
 
   return result
