@@ -8,6 +8,21 @@ export interface AuthV0 {
   }
 }
 
+export interface UserV0 {
+  nickname: string
+  email: string
+  profile: string
+  link: string | null
+  comment: string
+}
+
+export interface UserUpdateParams {
+  nickname: string
+  email: string
+  profile: string
+  comment: string
+}
+
 export interface UserLoginParams {
   username: string
   password: string
