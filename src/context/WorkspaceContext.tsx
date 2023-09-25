@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, createContext, useContext, useMemo } from 'react'
+import { useState, createContext, useContext, useMemo, useEffect } from 'react'
 
 // ** Service Imports
 import { useGetWorkspaceV0ListQuery } from '@/services'
@@ -13,6 +13,8 @@ import { isUndefined } from 'lodash'
 interface ContextProps {
   workspaceId: number
   workspaceList: { data: WorkspaceV0[]; count: number }
+  workspaceProfile: string
+  workspaceName: string
   handleWorkspaceRefetch: () => void
   handleWorkspaceId: (workspaceId: number) => void
 }
@@ -25,6 +27,8 @@ export const WorkspaceProvider = ({
   children: React.ReactNode
 }) => {
   const [workspaceId, setWorkspaceId] = useState<number>(0)
+  const [workspaceProfile, setWorkspaceProfile] = useState<string>('')
+  const [workspaceName, setWorkspaceName] = useState<string>('')
 
   const { data, refetch: handleWorkspaceRefetch } = useGetWorkspaceV0ListQuery()
 
@@ -40,6 +44,27 @@ export const WorkspaceProvider = ({
     setWorkspaceId(workspaceId)
   }
 
+  useEffect(() => {
+    if (workspaceList.data.length > 0) {
+      const arr = workspaceList.data.filter((item) => item.workspace.isPersonal)
+      if (arr.length > 0) {
+        setWorkspaceId(arr[0].workspace.id)
+      }
+    }
+  }, [workspaceList])
+
+  useEffect(() => {
+    if (workspaceList.data.length > 0) {
+      const arr = workspaceList.data.filter(
+        (item) => item.workspace.id === workspaceId,
+      )
+      if (arr.length > 0) {
+        setWorkspaceProfile(arr[0].workspace.profile)
+        setWorkspaceName(arr[0].workspace.name)
+      }
+    }
+  }, [workspaceId])
+
   return (
     <Context.Provider
       value={{
@@ -47,6 +72,8 @@ export const WorkspaceProvider = ({
         handleWorkspaceId,
         workspaceList,
         handleWorkspaceRefetch,
+        workspaceName,
+        workspaceProfile,
       }}
     >
       {children}

@@ -10,7 +10,11 @@ import { useWorkspace } from '@/context/WorkspaceContext'
 // ** Color Imports
 import Color from '@/constants/color'
 
-const WorkspaceDowndown = () => {
+interface PropsType {
+  profile: string
+}
+
+const WorkspaceDowndown = ({ profile }: PropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const { handleWorkspaceId, workspaceList, workspaceId } = useWorkspace()
@@ -32,11 +36,7 @@ const WorkspaceDowndown = () => {
     <Fragment>
       <Button onClick={handleClick}>
         <Avatar sx={{ width: 40, height: 40 }}>
-          <img
-            width="100%"
-            height="100%"
-            src="https://firebasestorage.googleapis.com/v0/b/dice-dev-a5b63.appspot.com/o/images%2FKakaoTalk_Image_2023-04-20-18-16-20.jpeg?alt=media&token=a347e6ca-ed4c-424a-9a0b-e4b7e44974aa"
-          />
+          <img width="100%" height="100%" src={profile} />
         </Avatar>
       </Button>
       <Menu

@@ -10,9 +10,12 @@ import { MenuList } from '@/context/MenuItem'
 // ** Router Imports
 import { Link, useLocation } from 'react-router-dom'
 import WorkspaceDowndown from '@/components/user-dropdown'
+import { useWorkspace } from '@/context/WorkspaceContext'
 
 const VerticalNavigation = () => {
   const { pathname } = useLocation()
+
+  const { workspaceName, workspaceProfile } = useWorkspace()
 
   return (
     <Box
@@ -30,11 +33,11 @@ const VerticalNavigation = () => {
     >
       <Box sx={{ ml: -2 }}>
         <Box sx={{ display: 'flex', mt: 3, justifyContent: 'center' }}>
-          <WorkspaceDowndown />
+          <WorkspaceDowndown profile={workspaceProfile} />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
           <Typography variant="h6" sx={{ color: 'black' }}>
-            Pinomaker
+            {workspaceName}
           </Typography>
         </Box>
         {MenuList.filter((item) => item.isMenu).map((item) =>
