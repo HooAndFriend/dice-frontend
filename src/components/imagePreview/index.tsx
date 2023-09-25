@@ -45,15 +45,24 @@ const ImagePreview = ({ setPath, image }: PropsType) => {
   }, [image])
 
   return (
-    <Box onClick={click}>
+    <Box
+      onClick={click}
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       {image ? (
         <img
           src={image}
           alt="Preview"
-          style={{ width: '100%', height: '100%', border: 12 }}
+          style={{ width: '90%', height: '90%' }}
         />
       ) : (
-        <Box sx={{ border: 12, width: '100%', height: '100%' }} />
+        <Box sx={{ width: '90%', height: '90%' }} />
       )}
       <input
         type="file"
