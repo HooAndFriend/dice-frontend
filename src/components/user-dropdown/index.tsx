@@ -36,7 +36,7 @@ const UserDropdown = () => {
   return (
     <Fragment>
       <Button onClick={handleClick}>
-        <Avatar sx={{ width: 30, height: 30 }}>H</Avatar>
+        <Avatar sx={{ width: 40, height: 40 }}>H</Avatar>
       </Button>
       <Menu
         id="basic-menu"

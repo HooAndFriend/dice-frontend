@@ -7,19 +7,11 @@ import { Box, Typography, styled } from '@mui/material'
 // ** Component Imports
 import UserDropdown from '@/components/user-dropdown'
 
-// ** Utils Imports
-import Color from '@/constants/color'
-import AlarmDropdown from '@/components/alarm-dropdown'
-
 const Header = styled('header')({
   background: 'lightblue',
   padding: '10px',
-  height: '50px',
-  backgroundColor: Color.blueRed,
-})
-
-const TextBox = styled('div')({
-  marginLeft: 50,
+  height: '75px',
+  backgroundColor: 'white',
 })
 
 const HeaderBox = () => {
@@ -33,45 +25,28 @@ const HeaderBox = () => {
           height: '100%',
         }}
       >
-        <Box>
+        <Box sx={{ width: '85%' }}>
           <Link to="/dashboard">
             <img
-              src="/img/logo.png"
+              src="/img/main-logo.png"
               alt="logo"
-              width={30}
+              width={150}
               style={{ marginLeft: 10 }}
             />
           </Link>
         </Box>
-        <TextBox>
-          <Link
-            to="/dashboard/api"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            <Typography variant="h6">API</Typography>
-          </Link>
-        </TextBox>
-        <TextBox>
-          <Link
-            to="/dashboard/erd"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            <Typography variant="h6">ERD</Typography>
-          </Link>
-        </TextBox>
-        <TextBox>
-          <Link
-            to="/dashboard/workspace"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            <Typography variant="h6">SETTING</Typography>
-          </Link>
-        </TextBox>
-        <Box sx={{ marginLeft: 'auto' }}>
-          <AlarmDropdown />
-        </Box>
-        <Box>
-          <UserDropdown />
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box>
+            <UserDropdown />
+          </Box>
+          <Box sx={{ mx: 1 }}>
+            <Typography variant="h6" sx={{ fontSize: 16 }}>
+              Pinomaker
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: 12 }}>
+              inhoo987654321@gmail.com
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Header>

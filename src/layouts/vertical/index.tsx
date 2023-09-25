@@ -1,44 +1,43 @@
-// ** React Imports
-import { useEffect } from 'react'
-
 // ** Mui Imports
-import { Box } from '@mui/material'
-
-// ** Component Imports
-import { WorkspaceBox } from './component'
-
-// ** Utils Imports
-import Color from '@/constants/color'
-
-// ** Context Imports
-import { useWorkspace } from '@/context/WorkspaceContext'
+import { Box, Typography } from '@mui/material'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping'
+import GridViewIcon from '@mui/icons-material/GridView'
+import AccountTreeIcon from '@mui/icons-material/AccountTree'
+import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications'
 
 const VerticalNavigation = () => {
-  const { handleWorkspaceId, workspaceList } = useWorkspace()
-
-  useEffect(() => {
-    const arr = workspaceList.data.filter((item) => item.workspace.isPersonal)
-
-    if (arr.length > 0) {
-      handleWorkspaceId(arr[0].workspace.id)
-    }
-  }, [workspaceList])
-
   return (
     <Box
       sx={{
-        width: '75px',
+        mt: 2,
+        width: '12%',
         height: '100vh',
+        borderRadius: '0 10px 10px 0',
         float: 'left',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: Color.lightGrey,
+        backgroundColor: 'white',
       }}
     >
-      {workspaceList.data.map((item) => (
-        <WorkspaceBox data={item} key={item.id} />
-      ))}
+      <Box sx={{ ml: -2 }}>
+        <Box sx={{ display: 'flex', mt: 3 }}>
+          <GridViewIcon sx={{ mr: 2 }} />
+          <Typography sx={{ color: 'black' }}>Dashboard</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', mt: 3 }}>
+          <LocalShippingIcon sx={{ mr: 2 }} />
+          <Typography sx={{ color: 'black' }}>Collection</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', mt: 3 }}>
+          <AccountTreeIcon sx={{ mr: 2 }} />
+          <Typography sx={{ color: 'black' }}>ERD</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', mt: 3 }}>
+          <SettingsApplicationsIcon sx={{ mr: 2 }} />
+          <Typography sx={{ color: 'black' }}>Setting</Typography>
+        </Box>
+      </Box>
     </Box>
   )
 }

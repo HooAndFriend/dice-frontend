@@ -7,7 +7,7 @@ import Color from '@/constants/color'
 export const theme = createTheme({
   palette: {
     background: {
-      default: Color.grey,
+      default: Color.babeBlue,
     },
   },
   typography: {

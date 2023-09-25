@@ -1,7 +1,10 @@
-import { styled } from '@mui/material'
-import VerticalNavigation from './vertical'
-import { Box } from '@mui/system'
+// ** Mui Imports
+import { styled, Box } from '@mui/material'
+
+// ** Component Imports
 import HeaderBox from './hori'
+import ContentBox from './content'
+import VerticalNavigation from './vertical'
 
 const LayoutWrapper = styled('div')({
   display: 'flex',
@@ -16,8 +19,10 @@ const UseLayout = ({ children }) => {
     <LayoutWrapper>
       <MainContentWrapper>
         <HeaderBox />
-        <VerticalNavigation />
-        <Box sx={{ float: 'left' }}>{children}</Box>
+        <Box sx={{ display: 'flex' }}>
+          <VerticalNavigation />
+          <ContentBox>{children}</ContentBox>
+        </Box>
       </MainContentWrapper>
     </LayoutWrapper>
   )
