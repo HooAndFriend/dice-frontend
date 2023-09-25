@@ -7,8 +7,8 @@ import Color from '@/constants/color'
 export const IconBox = ({ children }) => (
   <Box
     sx={{
-      width: 40,
-      height: 40,
+      width: 50,
+      height: 50,
       backgroundColor: Color.lightGrey,
       borderRadius: 2,
       display: 'flex',
