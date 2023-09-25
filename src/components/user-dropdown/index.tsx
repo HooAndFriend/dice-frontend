@@ -1,23 +1,24 @@
 // ** React Imports
 import { useState, Fragment } from 'react'
 
+// ** Router Imports
+import { Link } from 'react-router-dom'
+
 // ** MUI Imports
 import { Button, MenuItem, Avatar, Menu } from '@mui/material'
 
-// ** Context Imports
-import { useWorkspace } from '@/context/WorkspaceContext'
+// ** Redux Imports
+import { useDispatch } from 'react-redux'
+import { logout } from '@/store/app/auth'
 
-// ** Color Imports
-import Color from '@/constants/color'
+// ** Router Imports
+import { useNavigate } from 'react-router-dom'
 
-interface PropsType {
-  profile: string
-}
+const UserDropdown = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-const WorkspaceDowndown = ({ profile }: PropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
-  const { handleWorkspaceId, workspaceList, workspaceId } = useWorkspace()
 
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,17 +28,15 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
     setAnchorEl(null)
   }
 
-  const handleWorkspace = (id: number) => {
-    handleWorkspaceId(id)
-    setAnchorEl(null)
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate('/')
   }
 
   return (
     <Fragment>
       <Button onClick={handleClick}>
-        <Avatar sx={{ width: 40, height: 40 }}>
-          <img width="100%" height="100%" src={profile} />
-        </Avatar>
+        <Avatar sx={{ width: 40, height: 40 }}>H</Avatar>
       </Button>
       <Menu
         id="basic-menu"
@@ -48,24 +47,17 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        {workspaceList.data.map((item) => (
-          <MenuItem
-            onClick={() => handleWorkspace(item.workspace.id)}
-            sx={{
-              color: 'black',
-              backgroundColor:
-                workspaceId === item.workspace.id ? Color.babeBlue : '',
-            }}
-          >
-            <Avatar sx={{ width: 30, height: 30, mr: 1 }}>
-              <img width="100%" height="100%" src={item.workspace.profile} />
-            </Avatar>
-            {item.workspace.name}
+        <Link to="/dashboard/setting">
+          <MenuItem onClick={handleClose} sx={{ color: 'black' }}>
+            Setting
           </MenuItem>
-        ))}
+        </Link>
+        <MenuItem onClick={handleLogout} sx={{ color: 'black' }}>
+          Logout
+        </MenuItem>
       </Menu>
     </Fragment>
   )
 }
 
-export default WorkspaceDowndown
+export default UserDropdown
