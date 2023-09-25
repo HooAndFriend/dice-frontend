@@ -1,14 +1,18 @@
 // ** Mui Imports
 import { Box, Typography } from '@mui/material'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import GridViewIcon from '@mui/icons-material/GridView'
-import AccountTreeIcon from '@mui/icons-material/AccountTree'
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications'
 
 // ** Color Imports
 import Color from '@/constants/color'
 
+// ** Context Imports
+import { MenuList } from '@/context/MenuItem'
+
+// ** Router Imports
+import { Link, useLocation } from 'react-router-dom'
+
 const VerticalNavigation = () => {
+  const { pathname } = useLocation()
+
   return (
     <Box
       sx={{
@@ -41,24 +45,44 @@ const VerticalNavigation = () => {
           </Box>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-          <Typography variant="h6">Pinomaker</Typography>
+          <Typography variant="h6" sx={{ color: 'black' }}>
+            Pinomaker
+          </Typography>
         </Box>
-        <Box sx={{ display: 'flex', mt: 5 }}>
-          <GridViewIcon sx={{ mr: 2 }} />
-          <Typography sx={{ color: 'black' }}>Dashboard</Typography>
-        </Box>
-        <Box sx={{ display: 'flex', mt: 3 }}>
-          <LocalShippingIcon sx={{ mr: 2 }} />
-          <Typography sx={{ color: 'black' }}>Collection</Typography>
-        </Box>
-        <Box sx={{ display: 'flex', mt: 3 }}>
-          <AccountTreeIcon sx={{ mr: 2 }} />
-          <Typography sx={{ color: 'black' }}>ERD</Typography>
-        </Box>
-        <Box sx={{ display: 'flex', mt: 3 }}>
-          <SettingsApplicationsIcon sx={{ mr: 2 }} />
-          <Typography sx={{ color: 'black' }}>Setting</Typography>
-        </Box>
+        {MenuList.filter((item) => item.isMenu).map((item) =>
+          `/dashboard${item.route}` === pathname ? (
+            <Link
+              to={`/dashboard${item.route}`}
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+              }}
+              key={item.route}
+            >
+              <Box
+                sx={{ display: 'flex', mt: 3, backgroundColor: Color.babeBlue }}
+              >
+                {item.selectIcon}
+                <Typography sx={{ color: 'white', ml: 2 }}>
+                  {item.name}
+                </Typography>
+              </Box>
+            </Link>
+          ) : (
+            <Link
+              to={`/dashboard${item.route}`}
+              style={{ textDecoration: 'none', color: 'black' }}
+              key={item.route}
+            >
+              <Box sx={{ display: 'flex', mt: 3 }}>
+                {item.icon}
+                <Typography sx={{ color: 'black', ml: 2 }}>
+                  {item.name}
+                </Typography>
+              </Box>
+            </Link>
+          ),
+        )}
       </Box>
     </Box>
   )
