@@ -14,7 +14,12 @@ import { logout } from '@/store/app/auth'
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
 
-const UserDropdown = () => {
+interface PropsType {
+  profile: string
+  nickname: string
+}
+
+const UserDropdown = ({ profile, nickname }: PropsType) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -36,7 +41,13 @@ const UserDropdown = () => {
   return (
     <Fragment>
       <Button onClick={handleClick}>
-        <Avatar sx={{ width: 40, height: 40 }}>H</Avatar>
+        <Avatar sx={{ width: 40, height: 40 }}>
+          {profile !== '' ? (
+            <img width="100%" height="100%" src={profile} />
+          ) : (
+            nickname
+          )}
+        </Avatar>
       </Button>
       <Menu
         id="basic-menu"

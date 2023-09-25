@@ -6,7 +6,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export interface UserTypeProps {
   user: {
     token: { accessToken: string; refreshToken: string }
-    user: { nickname: string }
+    user: { nickname: string; profile: string; email: string }
   }
 }
 
@@ -18,6 +18,8 @@ const initialState: UserTypeProps = {
     },
     user: {
       nickname: '',
+      profile: '',
+      email: '',
     },
   },
 }
@@ -65,5 +67,7 @@ export default authSlice.reducer
 
 export const getAccessToken = (state: RootState) =>
   state.auth.user.token.accessToken
+
+export const getUserInfo = (state: RootState) => state.auth.user.user
 
 export const { logout, updateToken } = authSlice.actions

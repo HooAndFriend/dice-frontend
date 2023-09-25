@@ -7,6 +7,11 @@ import { Box, Typography, styled } from '@mui/material'
 // ** Component Imports
 import UserDropdown from '@/components/user-dropdown'
 
+// ** Redux Imports
+
+import { getUserInfo } from '@/store/app/auth'
+import { useSelector } from 'react-redux'
+
 const Header = styled('header')({
   background: 'lightblue',
   padding: '10px',
@@ -15,6 +20,7 @@ const Header = styled('header')({
 })
 
 const HeaderBox = () => {
+  const { email, nickname, profile } = useSelector(getUserInfo)
   return (
     <Header>
       <Box
@@ -37,14 +43,14 @@ const HeaderBox = () => {
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box>
-            <UserDropdown />
+            <UserDropdown profile={profile} nickname={nickname} />
           </Box>
           <Box sx={{ mx: 1 }}>
             <Typography variant="h6" sx={{ fontSize: 16 }}>
-              Pinomaker
+              {nickname}
             </Typography>
             <Typography variant="body2" sx={{ fontSize: 12 }}>
-              inhoo987654321@gmail.com
+              {email}
             </Typography>
           </Box>
         </Box>

@@ -5,6 +5,8 @@ export interface AuthV0 {
   }
   user: {
     nickname: string
+    profile: string
+    email: string
   }
 }
 
