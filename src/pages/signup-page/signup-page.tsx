@@ -37,6 +37,7 @@ const SignupPageView = ({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
+        backgroundColor: 'white',
       }}
     >
       <Box
