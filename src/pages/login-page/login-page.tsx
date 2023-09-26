@@ -43,6 +43,7 @@ const LoginPageView = ({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
+        backgroundColor: 'white',
       }}
     >
       <Box
@@ -64,7 +65,11 @@ const LoginPageView = ({
       >
         <img src="/img/dice1.png" />
       </Box>
-      <Box sx={{ mt: -10 }}>
+      <Box
+        sx={{
+          mt: -10,
+        }}
+      >
         <Typography variant="h1" sx={{ color: 'black' }}>
           Login
         </Typography>
@@ -93,7 +98,8 @@ const LoginPageView = ({
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            gap: '16px',
             width: 400,
             mt: 3,
           }}
@@ -140,8 +146,8 @@ const LoginPageView = ({
         </Box>
         <Box sx={{ float: 'right' }}>
           <Link to="/signup" style={{ textDecoration: 'none', color: 'grey' }}>
-            <Typography variant="body2" sx={{ mr: 1 }}>
-              signup
+            <Typography variant="body2" sx={{ mr: 1, mt: 1 }}>
+              Dont have and account? Register
             </Typography>
           </Link>
         </Box>
