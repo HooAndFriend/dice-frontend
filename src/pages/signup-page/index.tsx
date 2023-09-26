@@ -71,7 +71,11 @@ const SignupPage = () => {
     registerApi(user)
       .unwrap()
       .then((res) => {
-        navigate('/dashboard')
+        if (res.statusCode === 200) {
+          navigate('/dashboard')
+
+          return
+        }
       })
       .catch((err) => {
         onError('알림', err.data.message)
