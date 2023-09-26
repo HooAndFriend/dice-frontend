@@ -29,6 +29,7 @@ const SocialSignupPageView = ({ handleJoin, user, setUser }: PropsType) => {
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
+        backgroundColor: 'white',
       }}
     >
       <Box
