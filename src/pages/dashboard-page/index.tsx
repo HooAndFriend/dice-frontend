@@ -10,8 +10,6 @@ import { compact } from 'lodash'
 // ** Layout Imports
 import UseLayout from '@/layouts'
 
-import './index.css'
-
 export default function Dashboard() {
   return (
     <UseLayout>
