@@ -56,6 +56,7 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
               backgroundColor:
                 workspaceId === item.workspace.id ? Color.babeBlue : '',
             }}
+            key={item.id}
           >
             <Avatar sx={{ width: 30, height: 30, mr: 1 }}>
               <img width="100%" height="100%" src={item.workspace.profile} />
