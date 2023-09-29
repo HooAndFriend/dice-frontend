@@ -13,6 +13,7 @@ import SettingPage from '@/pages/setting-page'
 import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
 import WorkspacePage from '@/pages/workspace-page'
+import Color from '@/constants/color'
 
 interface MenuType {
   route: string
@@ -30,7 +31,7 @@ export const MenuList: MenuType[] = [
     name: 'Dashboard',
     element: <HomePage />,
     icon: <GridViewIcon />,
-    selectIcon: <GridViewIcon sx={{ color: 'white' }} />,
+    selectIcon: <GridViewIcon sx={{ color: Color.babeBlue }} />,
     onlyPath: false,
     isMenu: true,
   },
@@ -39,7 +40,7 @@ export const MenuList: MenuType[] = [
     name: 'Setting',
     element: <SettingPage />,
     icon: <SettingsApplicationsIcon />,
-    selectIcon: <SettingsApplicationsIcon sx={{ color: 'white' }} />,
+    selectIcon: <SettingsApplicationsIcon sx={{ color: Color.babeBlue }} />,
     onlyPath: false,
     isMenu: false,
   },
@@ -48,7 +49,7 @@ export const MenuList: MenuType[] = [
     name: 'Collection',
     element: <ApiPage />,
     icon: <LocalShippingIcon />,
-    selectIcon: <LocalShippingIcon sx={{ color: 'white' }} />,
+    selectIcon: <LocalShippingIcon sx={{ color: Color.babeBlue }} />,
     onlyPath: false,
     isMenu: true,
   },
@@ -57,7 +58,7 @@ export const MenuList: MenuType[] = [
     name: 'ERD',
     element: <ErdPage />,
     icon: <AccountTreeIcon />,
-    selectIcon: <AccountTreeIcon sx={{ color: 'white' }} />,
+    selectIcon: <AccountTreeIcon sx={{ color: Color.babeBlue }} />,
     onlyPath: false,
     isMenu: true,
   },
@@ -66,7 +67,7 @@ export const MenuList: MenuType[] = [
     name: 'Workspace',
     element: <WorkspacePage />,
     icon: <SettingsApplicationsIcon />,
-    selectIcon: <SettingsApplicationsIcon sx={{ color: 'white' }} />,
+    selectIcon: <SettingsApplicationsIcon sx={{ color: Color.babeBlue }} />,
     onlyPath: false,
     isMenu: true,
   },

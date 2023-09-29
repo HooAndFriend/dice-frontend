@@ -50,11 +50,9 @@ const VerticalNavigation = () => {
               }}
               key={item.route}
             >
-              <Box
-                sx={{ display: 'flex', mt: 3, backgroundColor: Color.babeBlue }}
-              >
+              <Box sx={{ display: 'flex', mt: 3 }}>
                 {item.selectIcon}
-                <Typography sx={{ color: 'white', ml: 2 }}>
+                <Typography sx={{ color: Color.babeBlue, ml: 2 }}>
                   {item.name}
                 </Typography>
               </Box>
