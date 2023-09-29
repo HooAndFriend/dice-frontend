@@ -25,7 +25,7 @@ const SettingPageView = ({
   handleUpdateUser,
 }: PropsType) => {
   return (
-    <Box sx={{ px: 30 }}>
+    <Box>
       <Box
         sx={{
           display: 'flex',
