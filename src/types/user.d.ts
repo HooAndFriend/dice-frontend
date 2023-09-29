@@ -10,6 +10,10 @@ export interface AuthV0 {
   }
 }
 
+export interface AuthV1 {
+  accessToken: string
+}
+
 export interface UserV0 {
   nickname: string
   email: string

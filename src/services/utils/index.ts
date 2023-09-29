@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { RootState } from '@/store'
 import { logout, updateToken } from '@/store/app/auth'
+import { ReissuedTokenResponse } from '@/types/api/user'
 import {
   BaseQueryApi,
   FetchArgs,
@@ -47,7 +48,7 @@ export const customFetchBase = async (
             },
           },
         } = api.getState() as RootState
-        const { data }: any = await baseQuery(
+        const { data } = (await baseQuery(
           {
             url: '/auth/reissue',
             method: 'POST',
@@ -55,9 +56,9 @@ export const customFetchBase = async (
           },
           api,
           extraOptions,
-        )
+        )) as { data: ReissuedTokenResponse }
         if (data.statusCode === 200) {
-          const { accessToken } = data.responseData
+          const { accessToken } = data.data
           api.dispatch(updateToken(accessToken))
           result = await baseQuery(args, api, extraOptions)
         } else {
