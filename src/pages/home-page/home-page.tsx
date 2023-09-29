@@ -13,13 +13,12 @@ const HomePageView = ({ worksapce }: PropsType) => {
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'space-between',
         mt: 10,
         ml: 10,
       }}
     >
       <Box>
-        <img src={worksapce.profile} />
+        <img src={worksapce.profile} width={500} height={500} />
       </Box>
       <Box sx={{ ml: 10, mt: 5 }}>
         <Typography variant="h1" sx={{ color: 'black' }}>
