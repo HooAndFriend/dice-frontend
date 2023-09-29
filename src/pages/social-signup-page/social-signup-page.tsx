@@ -5,7 +5,7 @@ import { ChangeEvent } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import { InputTextField } from '@/components/text-input'
+import { InputTextField } from '@/components/TextInput'
 
 // ** Utils Imports
 import Color from '@/constants/color'

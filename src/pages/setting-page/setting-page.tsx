@@ -5,8 +5,8 @@ import { Box, Button, Typography } from '@mui/material'
 import Color from '@/constants/color'
 
 // ** Componet Imports
-import { InputTextField } from '@/components/text-input'
-import ImagePreview from '@/components/imagePreview'
+import { InputTextField } from '@/components/TextInput'
+import ImagePreview from '@/components/ImagePreview'
 
 // ** Type Imporst
 import type { UserV0 } from '@/types/user'

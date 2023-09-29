@@ -1,8 +1,8 @@
 import { Box, Button, Typography } from '@mui/material'
-import { InputTextField } from '@/components/text-input'
+import { InputTextField } from '@/components/TextInput'
 import { WorkspaceV2 } from '@/types/workspace'
 import Color from '@/constants/color'
-import ImagePreview from '@/components/imagePreview'
+import ImagePreview from '@/components/ImagePreview'
 
 interface PropsType {
   worksapce: WorkspaceV2

@@ -9,7 +9,7 @@ import { MenuList } from '@/context/MenuItem'
 
 // ** Router Imports
 import { Link, useLocation } from 'react-router-dom'
-import WorkspaceDowndown from '@/components/workspace-dropdown'
+import WorkspaceDowndown from '@/components/WorkspaceDropdown'
 import { useWorkspace } from '@/context/WorkspaceContext'
 
 const VerticalNavigation = () => {

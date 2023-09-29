@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Box, Typography, styled } from '@mui/material'
 
 // ** Component Imports
-import UserDropdown from '@/components/user-dropdown'
+import UserDropdown from '@/components/UserDropdown'
 
 // ** Redux Imports
 

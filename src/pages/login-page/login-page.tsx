@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import AppleIcon from '@/components/icons/apple'
-import GithubIcon from '@/components/icons/github'
-import MicrosoftIcon from '@/components/icons/microsoft'
-import GoogleIcon from '@/components/icons/google'
-import { InputTextField } from '@/components/text-input'
-import { IconBox } from '@/components/icon-box'
+import AppleIcon from '@/components/Icons/apple'
+import GithubIcon from '@/components/Icons/github'
+import MicrosoftIcon from '@/components/Icons/microsoft'
+import GoogleIcon from '@/components/Icons/google'
+import { InputTextField } from '@/components/TextInput'
+import { IconBox } from '@/components/IconBox'
 
 // ** Utils Imports
 import Color from '@/constants/color'
