@@ -8,10 +8,12 @@ const ContentBox = ({ children }) => {
         sx={{
           mt: 2,
           width: '95%',
+          height: '88vh',
           backgroundColor: 'white',
           borderRadius: '10px',
           px: 5,
           pb: 5,
+          overflow: 'scroll',
         }}
       >
         {children}
