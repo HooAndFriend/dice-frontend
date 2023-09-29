@@ -52,7 +52,7 @@ const VerticalNavigation = () => {
             >
               <Box sx={{ display: 'flex', mt: 3 }}>
                 {item.selectIcon}
-                <Typography sx={{ color: Color.babeBlue, ml: 2 }}>
+                <Typography sx={{ color: Color, ml: 2 }}>
                   {item.name}
                 </Typography>
               </Box>
