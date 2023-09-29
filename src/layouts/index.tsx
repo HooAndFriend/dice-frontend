@@ -2,7 +2,7 @@
 import { styled, Box } from '@mui/material'
 
 // ** Component Imports
-import HeaderBox from './hori'
+import HeaderBox from './horizon'
 import ContentBox from './content'
 import VerticalNavigation from './vertical'
 
