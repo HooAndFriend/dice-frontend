@@ -18,7 +18,7 @@ const WorkspacePageView = ({
   handleWorkspaceUpdate,
 }: PropsType) => {
   return (
-    <Box sx={{ px: 30 }}>
+    <Box>
       <Box
         sx={{
           display: 'flex',
