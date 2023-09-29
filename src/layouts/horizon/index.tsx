@@ -6,9 +6,9 @@ import { Box, Typography, styled } from '@mui/material'
 
 // ** Component Imports
 import UserDropdown from '@/components/UserDropdown'
+import ImageBox from '@/components/Image'
 
 // ** Redux Imports
-
 import { getUserInfo } from '@/store/app/auth'
 import { useSelector } from 'react-redux'
 
@@ -31,14 +31,9 @@ const HeaderBox = () => {
           height: '100%',
         }}
       >
-        <Box sx={{ width: '85%' }}>
+        <Box sx={{ width: '85%', ml: 1 }}>
           <Link to="/dashboard">
-            <img
-              src="/img/main-logo.png"
-              alt="logo"
-              width={150}
-              style={{ marginLeft: 10 }}
-            />
+            <ImageBox image="/img/main-logo.png" width={150} alt="logo" />
           </Link>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>

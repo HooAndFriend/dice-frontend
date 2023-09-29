@@ -14,6 +14,9 @@ import { logout } from '@/store/app/auth'
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
 
+// ** Component Imports
+import ImageBox from '../Image'
+
 interface PropsType {
   profile: string
   nickname: string
@@ -42,11 +45,7 @@ const UserDropdown = ({ profile, nickname }: PropsType) => {
     <Fragment>
       <Button onClick={handleClick}>
         <Avatar sx={{ width: 40, height: 40 }}>
-          {profile !== '' ? (
-            <img width="100%" height="100%" src={profile} />
-          ) : (
-            nickname
-          )}
+          <ImageBox width="100%" height="100%" image={profile} alt="profile" />
         </Avatar>
       </Button>
       <Menu

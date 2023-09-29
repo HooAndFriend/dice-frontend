@@ -9,6 +9,7 @@ import { useWorkspace } from '@/context/WorkspaceContext'
 
 // ** Color Imports
 import Color from '@/constants/color'
+import ImageBox from '../Image'
 
 interface PropsType {
   profile: string
@@ -36,7 +37,12 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
     <Fragment>
       <Button onClick={handleClick}>
         <Avatar sx={{ width: 40, height: 40 }}>
-          <img width="100%" height="100%" src={profile} />
+          <ImageBox
+            width="100%"
+            height="100%"
+            image={profile}
+            alt="workspace image"
+          />
         </Avatar>
       </Button>
       <Menu
@@ -59,7 +65,12 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
             key={item.id}
           >
             <Avatar sx={{ width: 30, height: 30, mr: 1 }}>
-              <img width="100%" height="100%" src={item.workspace.profile} />
+              <ImageBox
+                width="100%"
+                height="100%"
+                image={item.workspace.profile}
+                alt="workspace profile"
+              />
             </Avatar>
             {item.workspace.name}
           </MenuItem>

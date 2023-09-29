@@ -4,6 +4,9 @@ import { Box, Typography } from '@mui/material'
 // ** Type Imports
 import type { WorkspaceV1 } from '@/types/workspace'
 
+// ** Component Imports
+import ImageBox from '@/components/Image'
+
 interface PropsType {
   worksapce: WorkspaceV1
 }
@@ -18,7 +21,12 @@ const HomePageView = ({ worksapce }: PropsType) => {
       }}
     >
       <Box>
-        <img src={worksapce.profile} width={500} height={500} />
+        <ImageBox
+          image={worksapce.profile}
+          width={500}
+          height={500}
+          alt="workspace profile"
+        />
       </Box>
       <Box sx={{ ml: 10, mt: 5 }}>
         <Typography variant="h1" sx={{ color: 'black' }}>

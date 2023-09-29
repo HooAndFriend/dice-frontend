@@ -1,8 +1,16 @@
+// ** MUI Imports
 import { Box, Button, Typography } from '@mui/material'
-import { InputTextField } from '@/components/TextInput'
-import { WorkspaceV2 } from '@/types/workspace'
+
+// ** Type Imports
+import type { WorkspaceV2 } from '@/types/workspace'
+
+// ** Constant Imports
 import Color from '@/constants/color'
+
+// ** Component Imports
+import { InputTextField } from '@/components/TextInput'
 import ImagePreview from '@/components/ImagePreview'
+import ImageBox from '@/components/Image'
 
 interface PropsType {
   worksapce: WorkspaceV2
@@ -150,7 +158,12 @@ const WorkspacePageView = ({
             >
               <Box sx={{ display: 'flex' }}>
                 <Box sx={{ width: 50, height: 50, borderRadius: 25 }}>
-                  <img src={item.user.profile} width={50} height={50} />
+                  <ImageBox
+                    image={item.user.profile}
+                    width={50}
+                    height={50}
+                    alt="user profile"
+                  />
                 </Box>
                 <Box sx={{ ml: 2 }}>
                   <Typography variant="h6">{item.user.nickname}</Typography>

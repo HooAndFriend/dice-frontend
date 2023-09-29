@@ -36,7 +36,7 @@ const VerticalNavigation = () => {
           <WorkspaceDowndown profile={workspaceProfile} />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-          <Typography variant="h6" sx={{ color: 'black' }}>
+          <Typography variant="h6" sx={{ color: 'black', height: 20 }}>
             {workspaceName}
           </Typography>
         </Box>
