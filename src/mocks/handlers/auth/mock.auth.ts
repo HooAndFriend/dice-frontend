@@ -6,5 +6,5 @@ export const user: AuthV0 = {
     accessToken: '123123',
     refreshToken: '123123',
   },
-  user: { nickname: 'pinomaker' },
+  user: { nickname: 'pinomaker', profile: '', email: '' },
 }

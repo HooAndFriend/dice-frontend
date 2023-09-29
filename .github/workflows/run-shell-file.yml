@@ -1,4 +1,4 @@
-name: Dice Backend CI/CD
+name: DICE FRONTEND CI/CD
 
 on:
   push:
