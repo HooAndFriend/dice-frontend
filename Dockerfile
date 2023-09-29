@@ -19,7 +19,7 @@ WORKDIR /app
 
 RUN mkdir ./build
 
-ADD ./dist ./build
+ADD dist ./build
 
 RUN rm /etc/nginx/conf.d/default.conf
 
