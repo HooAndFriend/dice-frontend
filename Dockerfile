@@ -3,6 +3,7 @@ FROM node:16 as builder
 WORKDIR /app
 
 COPY package.json .
+
 COPY yarn.lock .
 
 RUN yarn install --frozen-lockfile
@@ -11,11 +12,9 @@ COPY . .
 
 RUN yarn build:dev
 
-FROM nginx
+FROM nginx:latest
 
-RUN mkdir /app
-
-WORKDIR /app
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 RUN rm /etc/nginx/conf.d/default.conf
 
