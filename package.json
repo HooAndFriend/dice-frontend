@@ -7,7 +7,7 @@
   "homepage": "./",
   "scripts": {
     "dev": "vite --port 3000 --mode development",
-    "local": "vite --port 3000 --mode local",
+    "local": "vite --port 3000",
     "test": "vite --port 3000 --mode test",
     "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
