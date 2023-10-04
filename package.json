@@ -80,7 +80,8 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-plugin-svgr": "^4.1.0"
   },
   "build": {
     "appId": "com.example.myapp",
