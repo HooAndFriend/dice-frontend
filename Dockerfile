@@ -10,7 +10,7 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN yarn build:dev
+RUN yarn build
 
 FROM nginx:latest
 
