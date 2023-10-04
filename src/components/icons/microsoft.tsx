@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-const MicrosoftIcon = (props: SVGProps<SVGSVGElement>) => (
+export const MicrosoftIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={800}
@@ -15,4 +15,3 @@ const MicrosoftIcon = (props: SVGProps<SVGSVGElement>) => (
     <path fill="#FFBA08" d="M8.5 8.5H15V15H8.5V8.5z" />
   </svg>
 )
-export default MicrosoftIcon

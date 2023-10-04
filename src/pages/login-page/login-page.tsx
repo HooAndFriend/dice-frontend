@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import AppleIcon from '@/components/Icons/apple'
-import GithubIcon from '@/components/Icons/github'
-import MicrosoftIcon from '@/components/Icons/microsoft'
-import GoogleIcon from '@/components/Icons/google'
+import {
+  AppleIcon,
+  GithubIcon,
+  MicrosoftIcon,
+  GoogleIcon,
+} from '@/components/Icons'
 import { InputTextField } from '@/components/TextInput'
 import { IconBox } from '@/components/IconBox'
 

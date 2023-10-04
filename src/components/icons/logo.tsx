@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-const LogoIcon = (props: SVGProps<SVGSVGElement>) => (
+export const LogoIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={500}
@@ -83,4 +83,3 @@ const LogoIcon = (props: SVGProps<SVGSVGElement>) => (
     <circle cx={249.999} cy={250} r={45} fill="#000" />
   </svg>
 )
-export default LogoIcon
