@@ -2,15 +2,13 @@ FROM node:16 as builder
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
-COPY yarn.lock .
-
-RUN yarn install --frozen-lockfile
+RUN yarn
 
 COPY . .
 
-RUN yarn build
+RUN yarn build:dev
 
 FROM nginx:latest
 
