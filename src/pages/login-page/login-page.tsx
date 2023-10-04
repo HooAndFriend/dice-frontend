@@ -8,7 +8,12 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import { AppleIcon } from '@/components/Icons/apple'
+import {
+  GithubIcon,
+  GoogleIcon,
+  MicrosoftIcon,
+  AppleIcon,
+} from '@/components/Icons'
 import { InputTextField } from '@/components/TextInput'
 import { IconBox } from '@/components/IconBox'
 
@@ -17,9 +22,6 @@ import Color from '@/constants/color'
 
 // ** Type Imporst
 import type { SocialType, UserLoginParams } from '@/types/user'
-import { GithubIcon } from '@/components/Icons/github'
-import { GoogleIcon } from '@/components/Icons/google'
-import { MicrosoftIcon } from '@/components/Icons/microsoft'
 
 interface PropsType {
   user: UserLoginParams
