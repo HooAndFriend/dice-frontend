@@ -1,7 +1,7 @@
+import type { Response } from '@/types/api'
+import type { UserV0Response } from '@/types/api/user'
 import type { UserUpdateParams } from '@/types/user'
 import { api } from '..'
-import type { UserV0Response } from '@/types/api/user'
-import type { Response } from '@/types/api'
 
 // Workspace Api CreateApi
 export const userApi = api
@@ -14,13 +14,13 @@ export const userApi = api
       // Query
       getUserV0: builder.query<UserV0Response, void>({
         query: () => ({
-          url: '/user',
+          url: '/v1/user',
         }),
       }),
       // Mutation
       updateUser: builder.mutation<Response, UserUpdateParams>({
         query: (args) => ({
-          url: '/user',
+          url: '/v1/user',
           method: 'PUT',
           body: args,
         }),
