@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite --port 3000 --mode development",
     "local": "vite --port 3000",
-    "test": "vite --port 3000 --mode test",
+    "test": "vite --port 3000 --mode staging",
     "build": "tsc && vite build --mode development",
     "build:dev": "tsc && vite build --mode development",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
