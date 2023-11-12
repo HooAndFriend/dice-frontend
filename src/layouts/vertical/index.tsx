@@ -1,16 +1,15 @@
 // ** Mui Imports
-import { Box, Typography } from '@mui/material'
-
-// ** Color Imports
-import Color from '@/constants/color'
+import { Box } from '@mui/material'
 
 // ** Context Imports
-import { MenuList } from '@/context/MenuItem'
+import { MenuList } from '@/constants/MenuItem'
+import { useWorkspace } from '@/context/WorkspaceContext'
 
 // ** Router Imports
 import { Link, useLocation } from 'react-router-dom'
+
+// ** Component Imports
 import WorkspaceDowndown from '@/components/WorkspaceDropdown'
-import { useWorkspace } from '@/context/WorkspaceContext'
 
 const VerticalNavigation = () => {
   const { pathname } = useLocation()
@@ -20,59 +19,47 @@ const VerticalNavigation = () => {
   return (
     <Box
       sx={{
-        mt: 2,
-        width: '12%',
-        height: '88vh',
-        borderRadius: '0 10px 10px 0',
-        float: 'left',
+        width: '100px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'white',
+        justifyContent: 'center',
       }}
     >
-      <Box sx={{ ml: -2 }}>
-        <Box sx={{ display: 'flex', mt: 3, justifyContent: 'center' }}>
-          <WorkspaceDowndown profile={workspaceProfile} />
-        </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-          <Typography variant="h6" sx={{ color: 'black', height: 20 }}>
-            {workspaceName}
-          </Typography>
-        </Box>
-        {MenuList.filter((item) => item.isMenu).map((item) =>
-          `/dashboard${item.route}` === pathname ? (
-            <Link
-              to={`/dashboard${item.route}`}
-              style={{
-                textDecoration: 'none',
-                color: 'black',
-              }}
-              key={item.route}
-            >
-              <Box sx={{ display: 'flex', mt: 3 }}>
-                {item.selectIcon}
-                <Typography sx={{ color: Color.babeBlue, ml: 2 }}>
-                  {item.name}
-                </Typography>
-              </Box>
-            </Link>
-          ) : (
-            <Link
-              to={`/dashboard${item.route}`}
-              style={{ textDecoration: 'none', color: 'black' }}
-              key={item.route}
-            >
-              <Box sx={{ display: 'flex', mt: 3 }}>
-                {item.icon}
-                <Typography sx={{ color: 'black', ml: 2 }}>
-                  {item.name}
-                </Typography>
-              </Box>
-            </Link>
-          ),
-        )}
+      <Box sx={{ display: 'flex', mt: 3, justifyContent: 'center' }}>
+        <WorkspaceDowndown profile={workspaceProfile} />
       </Box>
+      <Box
+        sx={{
+          width: '30px',
+          height: '1px',
+          mt: 3,
+          backgroundColor: 'white',
+          justifyContent: 'center',
+        }}
+      ></Box>
+      {MenuList.filter((item) => item.isMenu).map((item) =>
+        `/dashboard${item.route}` === pathname ? (
+          <Link
+            to={`/dashboard${item.route}`}
+            style={{
+              textDecoration: 'none',
+              color: 'black',
+            }}
+            key={item.route}
+          >
+            <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
+          </Link>
+        ) : (
+          <Link
+            to={`/dashboard${item.route}`}
+            style={{ textDecoration: 'none', color: 'black' }}
+            key={item.route}
+          >
+            <Box sx={{ display: 'flex', mt: 5, opacity: 0.5 }}>{item.icon}</Box>
+          </Link>
+        ),
+      )}
     </Box>
   )
 }

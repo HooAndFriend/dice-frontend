@@ -1,8 +1,8 @@
 // ** Router Imports
-import { Routes, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 // ** Menu Imports
-import { MenuList } from '@/context/MenuItem'
+import { MenuList } from '@/constants/MenuItem'
 
 // ** Utils Imports
 import { compact } from 'lodash'

@@ -1,8 +1,8 @@
 // ** React Imports
-import { useState, Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 // ** MUI Imports
-import { Button, MenuItem, Avatar, Menu } from '@mui/material'
+import { Avatar, Box, Button, Menu, MenuItem } from '@mui/material'
 
 // ** Context Imports
 import { useWorkspace } from '@/context/WorkspaceContext'
@@ -36,14 +36,15 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
   return (
     <Fragment>
       <Button onClick={handleClick}>
-        <Avatar sx={{ width: 40, height: 40 }}>
+        <Box sx={{ display: 'flex', pt: 5 }}>
           <ImageBox
-            width="100%"
-            height="100%"
+            width={60}
+            height={60}
             image={profile}
             alt="workspace image"
+            borderRadius={3}
           />
-        </Avatar>
+        </Box>
       </Button>
       <Menu
         id="basic-menu"

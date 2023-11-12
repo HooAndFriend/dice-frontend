@@ -1,26 +1,27 @@
 // ** React Imports
 import { ReactNode } from 'react'
 
-// ** Mui Imports
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import GridViewIcon from '@mui/icons-material/GridView'
-import AccountTreeIcon from '@mui/icons-material/AccountTree'
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications'
-
 // ** Component Imports
-import HomePage from '@/pages/home-page'
-import SettingPage from '@/pages/setting-page'
+import {
+  CollectionIcon,
+  DashboardIcon,
+  ErdIcon,
+  SettingIcon,
+  TicketIcon,
+  WorkspaceSettingIcon,
+} from '@/components/Icons'
 import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
+import HomePage from '@/pages/home-page'
+import SettingPage from '@/pages/setting-page'
 import WorkspacePage from '@/pages/workspace-page'
-import Color from '@/constants/color'
 
 interface MenuType {
   route: string
   name: string
   element?: ReactNode
   icon: ReactNode
-  selectIcon: ReactNode
+
   onlyPath?: boolean
   isMenu: boolean
 }
@@ -30,8 +31,7 @@ export const MenuList: MenuType[] = [
     route: '',
     name: 'Dashboard',
     element: <HomePage />,
-    icon: <GridViewIcon />,
-    selectIcon: <GridViewIcon sx={{ color: Color.babeBlue }} />,
+    icon: <DashboardIcon />,
     onlyPath: false,
     isMenu: true,
   },
@@ -39,8 +39,7 @@ export const MenuList: MenuType[] = [
     route: '/setting',
     name: 'Setting',
     element: <SettingPage />,
-    icon: <SettingsApplicationsIcon />,
-    selectIcon: <SettingsApplicationsIcon sx={{ color: Color.babeBlue }} />,
+    icon: <SettingIcon />,
     onlyPath: false,
     isMenu: false,
   },
@@ -48,8 +47,7 @@ export const MenuList: MenuType[] = [
     route: '/api',
     name: 'Collection',
     element: <ApiPage />,
-    icon: <LocalShippingIcon />,
-    selectIcon: <LocalShippingIcon sx={{ color: Color.babeBlue }} />,
+    icon: <CollectionIcon />,
     onlyPath: false,
     isMenu: true,
   },
@@ -57,8 +55,7 @@ export const MenuList: MenuType[] = [
     route: '/erd',
     name: 'ERD',
     element: <ErdPage />,
-    icon: <AccountTreeIcon />,
-    selectIcon: <AccountTreeIcon sx={{ color: Color.babeBlue }} />,
+    icon: <ErdIcon />,
     onlyPath: false,
     isMenu: true,
   },
@@ -66,8 +63,15 @@ export const MenuList: MenuType[] = [
     route: '/workspace',
     name: 'Workspace',
     element: <WorkspacePage />,
-    icon: <SettingsApplicationsIcon />,
-    selectIcon: <SettingsApplicationsIcon sx={{ color: Color.babeBlue }} />,
+    icon: <WorkspaceSettingIcon />,
+    onlyPath: false,
+    isMenu: true,
+  },
+  {
+    route: '/ticket',
+    name: 'Ticket',
+    element: <WorkspacePage />,
+    icon: <TicketIcon />,
     onlyPath: false,
     isMenu: true,
   },
