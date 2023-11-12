@@ -19,6 +19,14 @@ const UseLayout = ({ children }) => {
         {/* <HeaderBox /> */}
         <Box sx={{ display: 'flex' }}>
           <VerticalNavigation />
+          <Box
+            sx={{
+              width: '0.3px',
+              backgroundColor: 'white',
+              opacity: 0.5,
+              height: '100vh',
+            }}
+          />
           {/* <ContentBox>{children}</ContentBox> */}
         </Box>
       </MainContentWrapper>

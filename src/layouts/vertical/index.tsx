@@ -20,10 +20,7 @@ const VerticalNavigation = () => {
     <Box
       sx={{
         width: '100px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        height: '100vh',
       }}
     >
       <Box sx={{ display: 'flex', mt: 3, justifyContent: 'center' }}>
@@ -31,33 +28,57 @@ const VerticalNavigation = () => {
       </Box>
       <Box
         sx={{
-          width: '30px',
-          height: '1px',
           mt: 3,
-          backgroundColor: 'white',
+          display: 'flex',
           justifyContent: 'center',
         }}
-      ></Box>
+      >
+        <Box
+          sx={{
+            backgroundColor: 'white',
+            width: '30px',
+            height: '1px',
+          }}
+        ></Box>
+      </Box>
       {MenuList.filter((item) => item.isMenu).map((item) =>
         `/dashboard${item.route}` === pathname ? (
-          <Link
-            to={`/dashboard${item.route}`}
-            style={{
-              textDecoration: 'none',
-              color: 'black',
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
-            key={item.route}
           >
-            <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
-          </Link>
+            <Link
+              to={`/dashboard${item.route}`}
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+              }}
+              key={item.route}
+            >
+              <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
+            </Link>
+          </Box>
         ) : (
-          <Link
-            to={`/dashboard${item.route}`}
-            style={{ textDecoration: 'none', color: 'black' }}
-            key={item.route}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
-            <Box sx={{ display: 'flex', mt: 5, opacity: 0.5 }}>{item.icon}</Box>
-          </Link>
+            <Link
+              to={`/dashboard${item.route}`}
+              style={{ textDecoration: 'none', color: 'black' }}
+              key={item.route}
+            >
+              <Box sx={{ display: 'flex', mt: 5, opacity: 0.5 }}>
+                {item.icon}
+              </Box>
+            </Link>
+          </Box>
         ),
       )}
     </Box>
