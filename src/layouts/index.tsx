@@ -2,6 +2,7 @@
 import { Box, styled } from '@mui/material'
 
 // ** Component Imports
+import ContentBox from './content'
 import VerticalNavigation from './vertical'
 
 const LayoutWrapper = styled('div')({
@@ -26,7 +27,7 @@ const UseLayout = ({ children }) => {
               height: '100vh',
             }}
           />
-          {/* <ContentBox>{children}</ContentBox> */}
+          <ContentBox>{children}</ContentBox>
         </Box>
       </MainContentWrapper>
     </LayoutWrapper>

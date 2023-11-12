@@ -49,6 +49,7 @@ const VerticalNavigation = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}
+            key={item.route}
           >
             <Link
               to={`/dashboard${item.route}`}
@@ -56,7 +57,6 @@ const VerticalNavigation = () => {
                 textDecoration: 'none',
                 color: 'black',
               }}
-              key={item.route}
             >
               <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
             </Link>
