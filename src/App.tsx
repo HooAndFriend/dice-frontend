@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 // ** Router Imports
-import Dashboard from './pages/dashboard-page'
+import Dashboard from './components/Dashboard'
 import LoginPage from './pages/login-page'
 import SignupPage from './pages/signup-page'
 import SocialSignupPage from './pages/social-signup-page'
