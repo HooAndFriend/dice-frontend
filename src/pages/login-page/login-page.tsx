@@ -8,20 +8,24 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
+import { IconBox } from '@/components/IconBox'
 import {
+  AppleIcon,
   GithubIcon,
   GoogleIcon,
   MicrosoftIcon,
-  AppleIcon,
 } from '@/components/Icons'
 import { InputTextField } from '@/components/TextInput'
-import { IconBox } from '@/components/IconBox'
 
 // ** Utils Imports
 import Color from '@/constants/color'
 
 // ** Type Imporst
 import type { SocialType, UserLoginParams } from '@/types/user'
+
+// ** Lottie Imports
+import loginLottie from '@/lottie/lottie-login.json'
+import Lottie from 'lottie-react'
 
 interface PropsType {
   user: UserLoginParams
@@ -42,116 +46,114 @@ const LoginPageView = ({
         width: '100%',
         height: '100vh',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        backgroundColor: 'white',
       }}
     >
       <Box
         sx={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
+          width: '30%',
+          backgroundColor: Color.smallPurple,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <img src="/img/dice2.png" />
-      </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          right: 0,
-          bottom: 0,
-          zIndex: 1,
-        }}
-      >
-        <img src="/img/dice1.png" />
-      </Box>
-      <Box
-        sx={{
-          mt: -10,
-        }}
-      >
-        <Typography variant="h1" sx={{ color: 'black' }}>
-          Login
-        </Typography>
-        <Box sx={{ width: 400, mt: 3 }}>
-          <InputTextField
-            type="text"
-            variant="standard"
-            fullWidth
-            label="username"
-            value={user.username}
-            name="username"
-            onChange={setUser}
-          />
-        </Box>
-        <Box sx={{ width: 400, mt: 3 }}>
-          <InputTextField
-            type="password"
-            variant="standard"
-            fullWidth
-            label="password"
-            value={user.password}
-            name="password"
-            onChange={setUser}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '16px',
-            width: 400,
-            mt: 3,
-          }}
-        >
-          <IconBox>
-            <AppleIcon width={20} height={20} />
-          </IconBox>
-          <IconBox>
-            <GithubIcon
-              width={20}
-              height={20}
-              onClick={() => handleSocial('GITHUB')}
+        <Box>
+          <Typography variant="h1" sx={{ color: 'white' }}>
+            Login
+          </Typography>
+          <Box sx={{ width: 400, mt: 5 }}>
+            <InputTextField
+              type="text"
+              variant="standard"
+              fullWidth
+              label="username"
+              value={user.username}
+              name="username"
+              onChange={setUser}
             />
-          </IconBox>
-          <IconBox>
-            <GoogleIcon
-              width={20}
-              height={20}
-              onClick={() => handleSocial('GOOGLE')}
+          </Box>
+          <Box sx={{ width: 400, mt: 3 }}>
+            <InputTextField
+              type="password"
+              variant="standard"
+              fullWidth
+              label="password"
+              value={user.password}
+              name="password"
+              onChange={setUser}
             />
-          </IconBox>
-          <IconBox>
-            <MicrosoftIcon
-              width={20}
-              height={20}
-              onClick={() => handleSocial('MICROSOFT')}
-            />
-          </IconBox>
-        </Box>
-        <Box sx={{ width: 400, mt: 3 }}>
-          <Button
-            fullWidth
-            variant="contained"
+          </Box>
+          <Box
             sx={{
-              backgroundColor: Color.green,
-              '&:hover': {
-                backgroundColor: Color.green,
-              },
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '16px',
+              width: 400,
+              mt: 5,
             }}
-            onClick={handleLogin}
           >
-            LOGIN
-          </Button>
+            <IconBox>
+              <AppleIcon width={15} height={15} />
+            </IconBox>
+            <IconBox>
+              <GithubIcon
+                width={15}
+                height={15}
+                onClick={() => handleSocial('GITHUB')}
+              />
+            </IconBox>
+            <IconBox>
+              <GoogleIcon
+                width={15}
+                height={15}
+                onClick={() => handleSocial('GOOGLE')}
+              />
+            </IconBox>
+            <IconBox>
+              <MicrosoftIcon
+                width={15}
+                height={15}
+                onClick={() => handleSocial('MICROSOFT')}
+              />
+            </IconBox>
+          </Box>
+          <Box sx={{ width: 400, mt: 5 }}>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                backgroundColor: Color.green,
+                '&:hover': {
+                  backgroundColor: Color.green,
+                },
+              }}
+              onClick={handleLogin}
+            >
+              LOGIN
+            </Button>
+          </Box>
+          <Box sx={{ float: 'right' }}>
+            <Link
+              to="/signup"
+              style={{ textDecoration: 'none', color: 'grey' }}
+            >
+              <Typography variant="body2" sx={{ mr: 1, mt: 1 }}>
+                Dont have and account? Register
+              </Typography>
+            </Link>
+          </Box>
         </Box>
-        <Box sx={{ float: 'right' }}>
-          <Link to="/signup" style={{ textDecoration: 'none', color: 'grey' }}>
-            <Typography variant="body2" sx={{ mr: 1, mt: 1 }}>
-              Dont have and account? Register
-            </Typography>
-          </Link>
+      </Box>
+      <Box
+        sx={{
+          width: '70%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box sx={{ width: '50%' }}>
+          <Lottie animationData={loginLottie} />
         </Box>
       </Box>
     </Box>

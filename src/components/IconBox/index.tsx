@@ -4,8 +4,8 @@ import { Box } from '@mui/material'
 export const IconBox = ({ children }) => (
   <Box
     sx={{
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
       backgroundColor: 'white',
       boxShadow: 2,
       borderRadius: 2,
