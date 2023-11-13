@@ -28,6 +28,10 @@ const App = () => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/social/signup" element={<SocialSignupPage />} />
+
+          {/* <Route element={<ProtectRoute />}> */}
+          <Route path="/workspace" element={<LoginPage />} />
+          {/* </Route> */}
           {/* </Route> */}
           {/* <Route element={<ProtectRoute />}> */}
           <Route

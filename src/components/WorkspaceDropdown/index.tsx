@@ -1,6 +1,9 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
 
+// ** Router Imports
+import { Link } from 'react-router-dom'
+
 // ** MUI Imports
 import { Avatar, Box, Button, Menu, MenuItem } from '@mui/material'
 
@@ -9,6 +12,8 @@ import { useWorkspace } from '@/context/WorkspaceContext'
 
 // ** Color Imports
 import Color from '@/constants/color'
+
+// ** Component Imports
 import ImageBox from '../Image'
 
 interface PropsType {
@@ -76,6 +81,12 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
             {item.workspace.name}
           </MenuItem>
         ))}
+        <Link
+          to="/workspace"
+          style={{ textDecoration: 'none', color: 'black' }}
+        >
+          <MenuItem>Add Worksapce</MenuItem>
+        </Link>
       </Menu>
     </Fragment>
   )
