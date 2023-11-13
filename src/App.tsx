@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard'
 import LoginPage from './pages/login-page'
 import SignupPage from './pages/signup-page'
 import SocialSignupPage from './pages/social-signup-page'
+import WorksapceAddPage from './pages/workspace-add-page'
 
 // ** Context Imports
 import { DialogProvider } from './context/DialogContext'
@@ -30,7 +31,7 @@ const App = () => {
           <Route path="/social/signup" element={<SocialSignupPage />} />
 
           {/* <Route element={<ProtectRoute />}> */}
-          <Route path="/workspace" element={<LoginPage />} />
+          <Route path="/workspace" element={<WorksapceAddPage />} />
           {/* </Route> */}
           {/* </Route> */}
           {/* <Route element={<ProtectRoute />}> */}

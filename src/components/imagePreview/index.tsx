@@ -9,10 +9,17 @@ import { uploadImage } from '@/utils/firebase-upload'
 
 interface PropsType {
   image: string
+  boxColor?: string
+  borderRadius?: string | number
   setPath: (e: string) => void
 }
 
-const ImagePreview = ({ setPath, image }: PropsType) => {
+const ImagePreview = ({
+  setPath,
+  image,
+  boxColor,
+  borderRadius,
+}: PropsType) => {
   const inputRef = useRef<HTMLInputElement | any>(null)
 
   const clearInput = () => {
@@ -53,16 +60,24 @@ const ImagePreview = ({ setPath, image }: PropsType) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius,
       }}
     >
-      {image ? (
+      {image !== '' ? (
         <img
           src={image}
           alt="Preview"
-          style={{ width: '90%', height: '90%' }}
+          style={{ width: '90%', height: '90%', borderRadius }}
         />
       ) : (
-        <Box sx={{ width: '90%', height: '90%' }} />
+        <Box
+          sx={{
+            width: '90%',
+            height: '90%',
+            backgroundColor: boxColor ? boxColor : '',
+            borderRadius,
+          }}
+        />
       )}
       <input
         type="file"
