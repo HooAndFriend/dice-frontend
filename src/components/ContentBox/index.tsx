@@ -5,26 +5,14 @@ export const ContextBox = ({ children }) => {
   return (
     <Box
       sx={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-      style={{
-        width: 'calc(90% - 351px)',
+        width: '83%',
+        height: '96%',
+        backgroundColor: Color.smallPurple,
+        borderRadius: 10,
+        p: 3,
       }}
     >
-      <Box
-        sx={{
-          width: '96%',
-          height: '96%',
-          backgroundColor: Color.smallPurple,
-          borderRadius: '10px',
-          p: 5,
-        }}
-      >
-        {children}
-      </Box>
+      {children}
     </Box>
   )
 }
