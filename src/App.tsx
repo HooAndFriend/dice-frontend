@@ -24,29 +24,24 @@ const App = () => {
       <GlobalStyles styles={{ backgroundColor: 'blue' }} />
       <CssBaseline />
       <ErrorProvider>
-        <Routes>
-          {/* <Route element={<PublicRoute />}> */}
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/social/signup" element={<SocialSignupPage />} />
+        <WorkspaceProvider>
+          <DialogProvider>
+            <Routes>
+              {/* <Route element={<PublicRoute />}> */}
+              <Route path="/" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/social/signup" element={<SocialSignupPage />} />
 
-          {/* <Route element={<ProtectRoute />}> */}
-          <Route path="/workspace" element={<WorksapceAddPage />} />
-          {/* </Route> */}
-          {/* </Route> */}
-          {/* <Route element={<ProtectRoute />}> */}
-          <Route
-            path="/dashboard/*"
-            element={
-              <WorkspaceProvider>
-                <DialogProvider>
-                  <Dashboard />
-                </DialogProvider>
-              </WorkspaceProvider>
-            }
-          />
-          {/* </Route> */}
-        </Routes>
+              {/* <Route element={<ProtectRoute />}> */}
+              <Route path="/workspace" element={<WorksapceAddPage />} />
+              {/* </Route> */}
+              {/* </Route> */}
+              {/* <Route element={<ProtectRoute />}> */}
+              <Route path="/dashboard/*" element={<Dashboard />} />
+              {/* </Route> */}
+            </Routes>
+          </DialogProvider>
+        </WorkspaceProvider>
       </ErrorProvider>
     </ThemeProvider>
   )
