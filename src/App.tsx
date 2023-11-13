@@ -9,6 +9,7 @@ import SocialSignupPage from './pages/social-signup-page'
 import WorksapceAddPage from './pages/workspace-add-page'
 
 // ** Context Imports
+import { AlertProvider } from './context/AlertContext'
 import { DialogProvider } from './context/DialogContext'
 import { ErrorProvider } from './context/ErrorContext'
 import { WorkspaceProvider } from './context/WorkspaceContext'
@@ -25,22 +26,24 @@ const App = () => {
       <CssBaseline />
       <ErrorProvider>
         <WorkspaceProvider>
-          <DialogProvider>
-            <Routes>
-              {/* <Route element={<PublicRoute />}> */}
-              <Route path="/" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route path="/social/signup" element={<SocialSignupPage />} />
+          <AlertProvider>
+            <DialogProvider>
+              <Routes>
+                {/* <Route element={<PublicRoute />}> */}
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/social/signup" element={<SocialSignupPage />} />
 
-              {/* <Route element={<ProtectRoute />}> */}
-              <Route path="/workspace" element={<WorksapceAddPage />} />
-              {/* </Route> */}
-              {/* </Route> */}
-              {/* <Route element={<ProtectRoute />}> */}
-              <Route path="/dashboard/*" element={<Dashboard />} />
-              {/* </Route> */}
-            </Routes>
-          </DialogProvider>
+                {/* <Route element={<ProtectRoute />}> */}
+                <Route path="/workspace" element={<WorksapceAddPage />} />
+                {/* </Route> */}
+                {/* </Route> */}
+                {/* <Route element={<ProtectRoute />}> */}
+                <Route path="/dashboard/*" element={<Dashboard />} />
+                {/* </Route> */}
+              </Routes>
+            </DialogProvider>
+          </AlertProvider>
         </WorkspaceProvider>
       </ErrorProvider>
     </ThemeProvider>
