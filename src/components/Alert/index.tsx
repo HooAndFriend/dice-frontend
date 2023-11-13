@@ -6,8 +6,8 @@ import {
   Typography,
 } from '@mui/material'
 import { ChangeEvent } from 'react'
+import { Button, OutlinedButton } from '../Button'
 import { CloseIcon } from '../Icons'
-import { OutlinedButton, Button } from '../Button'
 
 interface PropTypes extends BackdropProps {
   title: string
