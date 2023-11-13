@@ -9,7 +9,6 @@ const ContentBox = ({ children }) => {
         width: '100%',
         height: '100vh',
         backgroundColor: Color.smallPurple,
-        borderRadius: 30,
       }}
     >
       {children}
