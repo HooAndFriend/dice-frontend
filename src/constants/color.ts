@@ -7,6 +7,7 @@ const Color = {
   blue: '##5DA0DD',
   babeBlue: '#D1E7FB',
   purple: '#38334B',
+  smallPurple: '#544F69',
 }
 
 export default Color
