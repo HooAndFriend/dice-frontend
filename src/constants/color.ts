@@ -8,6 +8,12 @@ const Color = {
   babeBlue: '#D1E7FB',
   purple: '#38334B',
   smallPurple: '#544F69',
+  middleGrey: '#BBBABF',
+  getColor: '#14FF00',
+  postColor: '#FF6B00',
+  putColor: 'B1C100',
+  deleteColor: '#FF0000',
+  patchColor: '#00FFF0',
 }
 
 export default Color
