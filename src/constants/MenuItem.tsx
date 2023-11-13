@@ -14,6 +14,7 @@ import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
 import HomePage from '@/pages/home-page'
 import SettingPage from '@/pages/setting-page'
+import TicketPage from '@/pages/ticket-page'
 import WorkspacePage from '@/pages/workspace-page'
 
 interface MenuType {
@@ -69,7 +70,7 @@ export const MenuList: MenuType[] = [
   {
     route: '/ticket',
     name: 'Ticket',
-    element: <WorkspacePage />,
+    element: <TicketPage />,
     icon: <TicketIcon />,
     onlyPath: false,
     isMenu: true,
