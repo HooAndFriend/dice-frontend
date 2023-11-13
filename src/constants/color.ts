@@ -9,11 +9,12 @@ const Color = {
   purple: '#38334B',
   smallPurple: '#544F69',
   middleGrey: '#BBBABF',
-  getColor: '#14FF00',
-  postColor: '#FF6B00',
-  putColor: 'B1C100',
-  deleteColor: '#FF0000',
-  patchColor: '#00FFF0',
+  getColor: '#269926',
+  postColor: '#F56D24',
+  putColor: '757A26',
+  deleteColor: '#9B1A26',
+  patchColor: '#1C999D',
+  glassGrey: '#9B99A5',
 }
 
 export default Color

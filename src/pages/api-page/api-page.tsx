@@ -30,7 +30,7 @@ const ApiPageView = ({
         alignItems: 'center',
       }}
     >
-      <Box sx={{ width: '16%' }}>
+      <Box sx={{ width: '20%' }}>
         <SideMenu
           data={data}
           handleSelectedCollection={handleSelectedCollection}

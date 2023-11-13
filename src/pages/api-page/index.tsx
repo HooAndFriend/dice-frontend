@@ -69,7 +69,7 @@ const CollectionTrash: Collection[] = [
       },
       {
         id: 4,
-        name: 'uodate message',
+        name: 'update message',
         method: 'PUT',
         url: '/api/v1/message',
       },

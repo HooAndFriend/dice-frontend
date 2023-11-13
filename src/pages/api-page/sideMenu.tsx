@@ -8,8 +8,14 @@ import {
   CollectionAddIcon,
   SearchIcon,
 } from '@/components/Icons'
+
+// ** Type Imports
+import type { Collection } from '@/types/collection'
+
+// ** Constant Imports
 import Color from '@/constants/color'
-import { Collection } from '@/types/collection'
+
+// ** Utils Imports
 import { getColorFromHttpMethod } from '@/utils/color'
 
 interface PropsType {
@@ -31,7 +37,7 @@ const SideMenu = ({
         backgroundColor: Color.purple,
       }}
     >
-      <Box sx={{ display: 'flex', justifyContent: 'right', pt: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'right', pt: 4, pr: 2 }}>
         <Box
           sx={{
             px: 1,
@@ -116,23 +122,36 @@ const SideMenu = ({
                     display: 'flex',
                     alignItems: 'center',
                     width: '100%',
-                    backgroundColor: Color.middleGrey,
-                    borderRadius: 1,
                     height: 40,
+                    justifyContent: 'center',
                   }}
                 >
                   <Box
                     sx={{
-                      width: 10,
-                      height: 10,
-                      ml: 5,
-                      borderRadius: 5,
-                      border: `solid 3px ${Color.purple}`,
+                      backgroundColor: Color.middleGrey,
+                      width: '90%',
+                      display: 'flex',
+                      height: '100%',
+                      borderRadius: 1,
+                      alignItems: 'center',
                     }}
-                  />
-                  <Typography variant="h6" sx={{ color: Color.purple, pl: 2 }}>
-                    user
-                  </Typography>
+                  >
+                    <Box
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        ml: 2,
+                        borderRadius: 5,
+                        border: `solid 3px ${Color.purple}`,
+                      }}
+                    />
+                    <Typography
+                      variant="h6"
+                      sx={{ color: Color.purple, pl: 2 }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </Box>
                 </Box>
                 {item.item.map((_) => (
                   <Box
@@ -146,8 +165,8 @@ const SideMenu = ({
                   >
                     <Box
                       sx={{
-                        width: 60,
-                        height: 20,
+                        width: 40,
+                        height: 15,
                         borderRadius: 10,
                         backgroundColor: getColorFromHttpMethod(_.method),
                         display: 'flex',
@@ -158,12 +177,12 @@ const SideMenu = ({
                     >
                       <Typography
                         variant="h6"
-                        sx={{ color: 'white', fontSize: 10 }}
+                        sx={{ color: 'white', fontSize: 8 }}
                       >
                         {_.method}
                       </Typography>
                     </Box>
-                    <Typography variant="body1" sx={{ color: 'white' }}>
+                    <Typography variant="body1" sx={{ color: Color.glassGrey }}>
                       {_.name}
                     </Typography>
                   </Box>
@@ -195,18 +214,16 @@ const SideMenu = ({
                   sx={{
                     width: 10,
                     height: 10,
-                    ml: 5,
+                    ml: 4,
                     borderRadius: 5,
-                    border: 'solid 3px white',
-                    opacity: 0.5,
+                    border: `solid 3px ${Color.glassGrey}`,
                   }}
                 />
                 <Typography
                   variant="h6"
                   sx={{
-                    color: 'white',
+                    color: Color.glassGrey,
                     pl: 2,
-                    opacity: 0.5,
                   }}
                 >
                   {item.name}
