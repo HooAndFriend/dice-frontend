@@ -12,7 +12,7 @@ export const ApiImportIcon = (props: SVGProps<SVGSVGElement>) => (
       stroke="#9B99A5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      d="M4.375 3.75h6.094a3.281 3.281 0 0 1 0 6.563H3.438a2.188 2.188 0 0 1 0-4.376h7.03a1.094 1.094 0 0 1 0 2.188H4.376"
+      d="M5.833 5h8.125a4.375 4.375 0 0 1 0 8.75H4.583a2.917 2.917 0 1 1 0-5.833h9.375a1.458 1.458 0 0 1 0 2.916H5.833"
     />
   </svg>
 )
