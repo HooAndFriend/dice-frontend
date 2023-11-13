@@ -13,6 +13,10 @@ import Color from '@/constants/color'
 // ** Type Imports
 import type { UserSocialRegisterParams } from '@/types/user'
 
+// ** Lottie Imports
+import registerLottie from '@/lottie/lottie-register.json'
+import Lottie from 'lottie-react'
+
 interface PropsType {
   user: UserSocialRegisterParams
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
@@ -26,58 +30,59 @@ const SocialSignupPageView = ({ handleJoin, user, setUser }: PropsType) => {
         width: '100%',
         height: '100vh',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
       }}
     >
       <Box
         sx={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
+          width: '30%',
+          backgroundColor: Color.smallPurple,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <img src="/img/dice2.png" />
+        <Box>
+          <Typography variant="h1" sx={{ color: 'black' }}>
+            Sign up
+          </Typography>
+          <Box sx={{ width: 400, mt: 3 }}>
+            <InputTextField
+              type="text"
+              variant="standard"
+              fullWidth
+              label="nickname"
+              value={user.nickname}
+              name="nickname"
+              onChange={setUser}
+            />
+          </Box>
+          <Box sx={{ width: 400, mt: 3 }}>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                backgroundColor: Color.green,
+                '&:hover': {
+                  backgroundColor: Color.green,
+                },
+              }}
+              onClick={handleJoin}
+            >
+              JOIN
+            </Button>
+          </Box>
+        </Box>
       </Box>
       <Box
         sx={{
-          position: 'absolute',
-          right: 0,
-          bottom: 0,
+          width: '70%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <img src="/img/dice1.png" />
-      </Box>
-      <Box sx={{ mt: -10 }}>
-        <Typography variant="h1" sx={{ color: 'black' }}>
-          Sign up
-        </Typography>
-        <Box sx={{ width: 400, mt: 3 }}>
-          <InputTextField
-            type="text"
-            variant="standard"
-            fullWidth
-            label="nickname"
-            value={user.nickname}
-            name="nickname"
-            onChange={setUser}
-          />
-        </Box>
-        <Box sx={{ width: 400, mt: 3 }}>
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{
-              backgroundColor: Color.green,
-              '&:hover': {
-                backgroundColor: Color.green,
-              },
-            }}
-            onClick={handleJoin}
-          >
-            JOIN
-          </Button>
+        <Box sx={{ width: '50%' }}>
+          <Lottie animationData={registerLottie} />
         </Box>
       </Box>
     </Box>
