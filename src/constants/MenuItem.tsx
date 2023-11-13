@@ -21,7 +21,6 @@ interface MenuType {
   name: string
   element?: ReactNode
   icon: ReactNode
-
   onlyPath?: boolean
   isMenu: boolean
 }
@@ -47,7 +46,7 @@ export const MenuList: MenuType[] = [
     route: '/api',
     name: 'Collection',
     element: <ApiPage />,
-    icon: <CollectionIcon />,
+    icon: <CollectionIcon style={{ width: 30, height: 30 }} />,
     onlyPath: false,
     isMenu: true,
   },
