@@ -9,7 +9,8 @@ export const ContextBox = ({ children }) => {
         height: '96%',
         backgroundColor: Color.smallPurple,
         borderRadius: 10,
-        p: 3,
+        px: 5,
+        py: 3,
       }}
     >
       {children}
