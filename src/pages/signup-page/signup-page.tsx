@@ -50,7 +50,7 @@ const SignupPageView = ({
         }}
       >
         <Box>
-          <Typography variant="h1" sx={{ color: 'black' }}>
+          <Typography variant="h1" sx={{ color: 'white' }}>
             Sign up
           </Typography>
           <Box sx={{ width: 400, mt: 3 }}>
