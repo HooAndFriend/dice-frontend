@@ -1,3 +1,6 @@
+// ** React Imports
+import { ChangeEvent } from 'react'
+
 // ** Mui Imports
 import { Box, Button, Typography } from '@mui/material'
 
@@ -8,11 +11,24 @@ import { InputTextField } from '@/components/TextInput'
 // ** Constant Imports
 import Color from '@/constants/color'
 
+// ** Type Imports
+import type { WorkspaceSaveParams } from '@/types/workspace'
+
 // ** Type Imporst
 
-interface PropsType {}
+interface PropsType {
+  data: WorkspaceSaveParams
+  handleInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleImage: (profile: string) => void
+  handleSaveWorksapce: () => void
+}
 
-const WorksapceAddPageView = ({}: PropsType) => {
+const WorksapceAddPageView = ({
+  data,
+  handleInput,
+  handleImage,
+  handleSaveWorksapce,
+}: PropsType) => {
   return (
     <Box
       sx={{
@@ -47,10 +63,8 @@ const WorksapceAddPageView = ({}: PropsType) => {
         >
           <Box sx={{ width: 100, height: 100 }}>
             <ImagePreview
-              image=""
-              setPath={(e: string) => {
-                console.log(e)
-              }}
+              image={data.profile}
+              setPath={handleImage}
               boxColor={Color.lightGrey}
               borderRadius={5}
             />
@@ -62,6 +76,9 @@ const WorksapceAddPageView = ({}: PropsType) => {
             variant="standard"
             fullWidth
             label="name"
+            name="name"
+            value={data.name}
+            onChange={handleInput}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -70,6 +87,9 @@ const WorksapceAddPageView = ({}: PropsType) => {
             variant="standard"
             fullWidth
             label="comment"
+            name="comment"
+            value={data.comment}
+            onChange={handleInput}
           />
         </Box>
         <Box sx={{ width: 400, mt: 3 }}>
@@ -82,6 +102,7 @@ const WorksapceAddPageView = ({}: PropsType) => {
                 backgroundColor: Color.green,
               },
             }}
+            onClick={handleSaveWorksapce}
           >
             Add
           </Button>

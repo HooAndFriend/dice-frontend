@@ -4,7 +4,10 @@ import type {
   WorkspaceV0Response,
   WorkspaceV1Respons,
 } from '@/types/api/workspace'
-import type { WorkspaceUpdateParams } from '@/types/workspace'
+import type {
+  WorkspaceSaveParams,
+  WorkspaceUpdateParams,
+} from '@/types/workspace'
 import { api } from '..'
 
 // Workspace Api CreateApi
@@ -39,6 +42,13 @@ export const workspaceApi = api
           body: args,
         }),
       }),
+      saveWorksapce: builder.mutation<Response, WorkspaceSaveParams>({
+        query: (args) => ({
+          url: '/v1/workspace',
+          method: 'POST',
+          body: args,
+        }),
+      }),
     }),
   })
 
@@ -47,4 +57,5 @@ export const {
   useLazyGetWorkspaceV1Query,
   useLazyGetWorksapceV2Query,
   useUpdateWorkspaceMutation,
+  useSaveWorksapceMutation,
 } = workspaceApi

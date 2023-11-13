@@ -43,3 +43,9 @@ export interface WorksapceUser {
 }
 
 export type WorkspaceRole = 'WRITER' | 'VIEWER' | 'ADMIN' | 'OWNER'
+
+export interface WorkspaceSaveParams {
+  name: string
+  comment: string
+  profile: string
+}
