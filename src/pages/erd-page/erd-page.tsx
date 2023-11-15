@@ -22,7 +22,7 @@ const ErdPageView = () => {
       <Box sx={{ width: '20%' }}>
         <SideMenu />
       </Box>
-      <ContextBox>
+      <ContextBox type="SIDE">
         <Box></Box>
       </ContextBox>
     </Box>

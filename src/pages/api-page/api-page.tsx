@@ -60,7 +60,7 @@ const ApiPageView = ({
           handleSelect={handleSelect}
         />
       </Box>
-      <ContextBox>
+      <ContextBox type="SIDE">
         <Box>
           <Typography variant="h4" sx={{ color: 'white' }}>
             user
