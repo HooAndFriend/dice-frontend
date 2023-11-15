@@ -68,6 +68,7 @@ const VerticalNavigation = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}
+            key={item.route}
           >
             <Link
               to={`/dashboard${item.route}`}
