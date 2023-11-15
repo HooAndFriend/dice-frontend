@@ -1,9 +1,30 @@
-// ** Component Imports
-import { Collection } from '@/types/collection'
+// ** React Imports
 import { useState } from 'react'
+
+// ** Component Imports
 import ApiPageView from './api-page'
 
+// ** Type Imports
+import type { Collection, HttpMethod } from '@/types/collection'
+
+// ** Utils Imports
+import useInput from '@/hooks/useInput'
+
+export interface ApiProps {
+  word: string
+  method: HttpMethod | ''
+}
+
 const ApiPage = () => {
+  const {
+    data: searchData,
+    handleInit,
+    handleInput,
+    handleSelect,
+  } = useInput<ApiProps>({
+    word: '',
+    method: '',
+  })
   const [selectedCollectionId, setSelectedCollectionId] = useState<number>(0)
 
   const handleSelectedCollection = (collectionId: number) => {
@@ -15,6 +36,9 @@ const ApiPage = () => {
       data={CollectionTrash}
       handleSelectedCollection={handleSelectedCollection}
       selectedCollectionId={selectedCollectionId}
+      searchData={searchData}
+      handleInput={handleInput}
+      handleSelect={handleSelect}
     />
   )
 }

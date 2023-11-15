@@ -1,5 +1,8 @@
+// ** React Imports
+import { ChangeEvent, useMemo } from 'react'
+
 // ** Mui Imports
-import { Box, TextField, Typography } from '@mui/material'
+import { Box, SelectChangeEvent, TextField, Typography } from '@mui/material'
 
 // ** Component Imports
 import {
@@ -11,6 +14,7 @@ import {
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
+import type { ApiProps } from '.'
 
 // ** Constant Imports
 import Color from '@/constants/color'
@@ -21,6 +25,9 @@ import { getColorFromHttpMethod } from '@/utils/color'
 interface PropsType {
   data: Collection[]
   selectedCollectionId: number
+  searchData: ApiProps
+  handleInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
 }
 
@@ -28,7 +35,40 @@ const SideMenu = ({
   data,
   selectedCollectionId,
   handleSelectedCollection,
+  searchData,
+  handleInput,
+  handleSelect,
 }: PropsType) => {
+  const filterData = useMemo(() => {
+    if (searchData.word === '') return data
+    const arr = data
+      .filter((item) => {
+        let count = 0
+
+        for (const _ of item.item) {
+          if (
+            _.name.includes(searchData.word) ||
+            _.method.includes(searchData.word)
+          ) {
+            count++
+          }
+        }
+
+        return count > 0
+      })
+      .map((item) => {
+        const arr = item.item.filter(
+          (_) =>
+            _.name.includes(searchData.word) ||
+            _.method.includes(searchData.word),
+        )
+
+        return { ...item, item: arr }
+      })
+
+    return arr
+  }, [searchData])
+
   return (
     <Box
       sx={{
@@ -99,11 +139,14 @@ const SideMenu = ({
             variant="standard"
             label="Search"
             sx={{ height: '100%' }}
+            value={searchData.word}
+            name="word"
+            onChange={handleInput}
           />
         </Box>
       </Box>
       <Box sx={{ width: '100%' }}>
-        {data.map((item) => {
+        {filterData.map((item) => {
           if (item.id === selectedCollectionId) {
             return (
               <Box
@@ -115,6 +158,7 @@ const SideMenu = ({
                   justifyContent: 'center',
                   flexDirection: 'column',
                 }}
+                key={item.id}
                 onClick={() => handleSelectedCollection(item.id)}
               >
                 <Box
@@ -162,6 +206,7 @@ const SideMenu = ({
                       my: 1,
                       pl: 7,
                     }}
+                    key={_.id}
                   >
                     <Box
                       sx={{
@@ -201,6 +246,7 @@ const SideMenu = ({
                 justifyContent: 'center',
               }}
               onClick={() => handleSelectedCollection(item.id)}
+              key={item.id}
             >
               <Box
                 sx={{

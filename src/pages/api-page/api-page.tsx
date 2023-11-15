@@ -1,29 +1,42 @@
+// ** React Imports
+import { ChangeEvent } from 'react'
+
 // ** Mui Imports
 import {
   Box,
   FormControl,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   Typography,
 } from '@mui/material'
 
 // ** Component Imports
+import SideMenu from './sideMenu'
+import { ContextBox } from '@/components/ContentBox'
 
 // ** Type Imports
-import { ContextBox } from '@/components/ContentBox'
-import Color from '@/constants/color'
 import type { Collection } from '@/types/collection'
-import SideMenu from './sideMenu'
+import type { ApiProps } from '.'
+
+// ** Constant Imports
+import Color from '@/constants/color'
 
 interface PropsType {
   data: Collection[]
+  searchData: ApiProps
   selectedCollectionId: number
+  handleInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
 }
 
 const ApiPageView = ({
   data,
+  searchData,
+  handleSelect,
+  handleInput,
   selectedCollectionId,
   handleSelectedCollection,
 }: PropsType) => {
@@ -42,6 +55,9 @@ const ApiPageView = ({
           data={data}
           handleSelectedCollection={handleSelectedCollection}
           selectedCollectionId={selectedCollectionId}
+          searchData={searchData}
+          handleInput={handleInput}
+          handleSelect={handleSelect}
         />
       </Box>
       <ContextBox>
