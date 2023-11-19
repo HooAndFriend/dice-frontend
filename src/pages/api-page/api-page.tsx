@@ -59,7 +59,6 @@ const ApiPageView = ({
           selectedCollectionId={selectedCollectionId}
           searchData={searchData}
           handleInput={handleInput}
-          handleSelect={handleSelect}
           handleAddCollection={handleAddCollection}
         />
       </Box>
