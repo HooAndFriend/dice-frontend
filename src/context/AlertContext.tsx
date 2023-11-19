@@ -25,7 +25,6 @@ export function AlertProvider({ children }: { children: React.ReactNode }) {
       {children}
       {alertContents.map((item, index) => (
         <Alert
-          onClose={() => {}}
           severity={item.type}
           sx={{
             minWidth: 500,

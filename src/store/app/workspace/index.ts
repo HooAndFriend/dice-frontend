@@ -21,7 +21,6 @@ export const workspaceSlice = createSlice({
   name: 'workspace',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
 })
 
 export default workspaceSlice.reducer
