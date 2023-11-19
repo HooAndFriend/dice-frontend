@@ -8,6 +8,8 @@ import Color from '@/constants/color'
 import { ContextBox } from '@/components/ContentBox'
 import SideMenu from './sideMenu'
 
+interface PropsType {}
+
 const TicketPageView = ({}: PropsType) => {
   return (
     <Box
