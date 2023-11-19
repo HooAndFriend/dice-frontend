@@ -1,4 +1,4 @@
-export * from './ApiAdd'
+export * from './ApiAddIcon'
 export * from './ApiImport'
 export * from './Collection'
 export * from './CollectionAdd'
