@@ -1,8 +1,8 @@
 // ** React Imports
-import { ChangeEvent, useMemo } from 'react'
+import { MouseEvent, ChangeEvent, useMemo, useState } from 'react'
 
 // ** Mui Imports
-import { Box, SelectChangeEvent, TextField, Typography } from '@mui/material'
+import { Box, TextField, Typography } from '@mui/material'
 
 // ** Component Imports
 import {
@@ -11,6 +11,7 @@ import {
   CollectionAddIcon,
   SearchIcon,
 } from '@/components/Icons'
+import { CollectionDropDown } from './component'
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
@@ -26,8 +27,8 @@ interface PropsType {
   data: Collection[]
   selectedCollectionId: number
   searchData: ApiProps
+  handleAddCollection: () => void
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
-  handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
 }
 
@@ -37,8 +38,21 @@ const SideMenu = ({
   handleSelectedCollection,
   searchData,
   handleInput,
-  handleSelect,
+  handleAddCollection,
 }: PropsType) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
+  const open = Boolean(anchorEl)
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const handleRightClick = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    setAnchorEl(e.currentTarget)
+  }
+
   const filterData = useMemo(() => {
     if (searchData.word === '') return data
     const arr = data
@@ -106,7 +120,7 @@ const SideMenu = ({
             alignItems: 'center',
           }}
         >
-          <CollectionAddIcon />
+          <CollectionAddIcon onClick={handleAddCollection} />
         </Box>
       </Box>
       <Box
@@ -160,6 +174,7 @@ const SideMenu = ({
                 }}
                 key={item.id}
                 onClick={() => handleSelectedCollection(item.id)}
+                onContextMenu={handleRightClick}
               >
                 <Box
                   sx={{
@@ -170,6 +185,12 @@ const SideMenu = ({
                     justifyContent: 'center',
                   }}
                 >
+                  <CollectionDropDown
+                    anchorEl={anchorEl}
+                    open={open}
+                    handleClose={handleClose}
+                    count={item.item.length}
+                  />
                   <Box
                     sx={{
                       backgroundColor: Color.middleGrey,

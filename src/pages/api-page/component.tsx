@@ -1,13 +1,11 @@
-import { TextField, styled } from '@mui/material'
+import { Menu, MenuItem, TextField, styled } from '@mui/material'
+import { useState } from 'react'
 
 export const InputTextField = styled(TextField)({
   '& label': {
-    // placeholder text color
     color: 'var(--sub-text)',
   },
   '& label.Mui-focused': {
-    // 해당 input focus 되었을 때 placeholder text color
-    // floatng label을 사용할 때 처리 필요하다
     color: 'var(--primary)',
   },
   '& label.Mui-error': {
@@ -20,3 +18,31 @@ export const InputTextField = styled(TextField)({
     },
   },
 })
+
+interface PropsType {
+  anchorEl: HTMLElement | null
+  open: boolean
+  count: number
+  handleClose: () => void
+}
+
+export const CollectionDropDown = ({
+  anchorEl,
+  handleClose,
+  open,
+  count,
+}: PropsType) => {
+  return (
+    <Menu
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      open={open}
+      sx={{
+        top: `${-45 * count}px`,
+        left: '50px',
+      }}
+    >
+      <MenuItem>Add Request</MenuItem>
+    </Menu>
+  )
+}

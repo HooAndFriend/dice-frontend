@@ -16,6 +16,21 @@ export interface ApiProps {
 }
 
 const ApiPage = () => {
+  const [collectionList, setCollectionList] =
+    useState<Collection[]>(CollectionTrash)
+
+  const handleAddCollection = () => {
+    setCollectionList((cur) => [
+      ...cur,
+      {
+        id: cur.length + 1,
+        name: 'New Collection',
+        url: '/',
+        item: [],
+      },
+    ])
+  }
+
   const {
     data: searchData,
     handleInit,
@@ -33,12 +48,13 @@ const ApiPage = () => {
 
   return (
     <ApiPageView
-      data={CollectionTrash}
+      data={collectionList}
       handleSelectedCollection={handleSelectedCollection}
       selectedCollectionId={selectedCollectionId}
       searchData={searchData}
       handleInput={handleInput}
       handleSelect={handleSelect}
+      handleAddCollection={handleAddCollection}
     />
   )
 }

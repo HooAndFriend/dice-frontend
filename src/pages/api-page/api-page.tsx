@@ -27,6 +27,7 @@ interface PropsType {
   data: Collection[]
   searchData: ApiProps
   selectedCollectionId: number
+  handleAddCollection: () => void
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
@@ -39,6 +40,7 @@ const ApiPageView = ({
   handleInput,
   selectedCollectionId,
   handleSelectedCollection,
+  handleAddCollection,
 }: PropsType) => {
   return (
     <Box
@@ -58,6 +60,7 @@ const ApiPageView = ({
           searchData={searchData}
           handleInput={handleInput}
           handleSelect={handleSelect}
+          handleAddCollection={handleAddCollection}
         />
       </Box>
       <ContextBox type="SIDE">
