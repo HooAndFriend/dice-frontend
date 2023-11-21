@@ -2,7 +2,7 @@
 import { MouseEvent, ChangeEvent, useMemo, useState } from 'react'
 
 // ** Mui Imports
-import { Box, TextField, Typography } from '@mui/material'
+import { Box, InputBase, Typography } from '@mui/material'
 
 // ** Component Imports
 import {
@@ -127,7 +127,6 @@ const SideMenu = ({
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           height: 60,
         }}
       >
@@ -137,6 +136,7 @@ const SideMenu = ({
             justifyContent: 'center',
             alignItems: 'center',
             width: '20%',
+            ml: 1,
           }}
         >
           <SearchIcon />
@@ -149,13 +149,12 @@ const SideMenu = ({
             height: '100%',
           }}
         >
-          <TextField
-            variant="standard"
-            label="Search"
-            sx={{ height: '100%' }}
+          <InputBase
+            sx={{ height: '100%', color: Color.grey }}
             value={searchData.word}
             name="word"
             onChange={handleInput}
+            placeholder="Search"
           />
         </Box>
       </Box>
