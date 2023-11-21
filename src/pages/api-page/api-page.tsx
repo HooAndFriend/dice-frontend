@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent } from 'react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 
 // ** Mui Imports
 import {
@@ -15,33 +15,41 @@ import {
 // ** Component Imports
 import SideMenu from './sideMenu'
 import { ContextBox } from '@/components/ContentBox'
+import { BasicTable } from './component'
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
-import type { ApiProps } from '.'
+import type { requestProps } from '.'
 
 // ** Constant Imports
 import Color from '@/constants/color'
-import { BasicTable } from './component'
 
 interface PropsType {
   data: Collection[]
-  searchData: ApiProps
+  request: requestProps
   selectedCollectionId: number
+  search: string
+  response: any
   handleAddCollection: () => void
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
   handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
+  handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 const ApiPageView = ({
   data,
-  searchData,
+  request,
   handleSelect,
   handleInput,
   selectedCollectionId,
   handleSelectedCollection,
   handleAddCollection,
+  handleEnter,
+  handleSearch,
+  search,
+  response,
 }: PropsType) => {
   return (
     <Box
@@ -58,8 +66,8 @@ const ApiPageView = ({
           data={data}
           handleSelectedCollection={handleSelectedCollection}
           selectedCollectionId={selectedCollectionId}
-          searchData={searchData}
-          handleInput={handleInput}
+          search={search}
+          handleSearch={handleSearch}
           handleAddCollection={handleAddCollection}
         />
       </Box>
@@ -96,8 +104,10 @@ const ApiPageView = ({
             >
               <FormControl fullWidth>
                 <Select
-                  labelId="lang"
-                  defaultValue="GET"
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  value={request.method as any}
+                  name="method"
+                  onChange={handleSelect}
                   sx={{ border: 'none' }}
                 >
                   <MenuItem value="GET">
@@ -141,8 +151,11 @@ const ApiPageView = ({
               }}
             >
               <InputBase
-                defaultValue="http://localhost:8080/api/v1/user"
+                value={request.url}
+                name="url"
+                onChange={handleInput}
                 sx={{ color: Color.glassGrey }}
+                onKeyDown={handleEnter}
                 fullWidth
               />
             </Box>
@@ -259,9 +272,21 @@ const ApiPageView = ({
         <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
           <BasicTable />
         </Box>
-        <Box sx={{ mt: 3, height: 300 }}>
+        <Box sx={{ mt: 3 }}>
           <Typography variant="h6" sx={{ color: Color.glassGrey }}>
             response
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            mt: 3,
+            height: 300,
+            backgroundColor: Color.purple,
+            overflowY: 'scroll',
+          }}
+        >
+          <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+            {response}
           </Typography>
         </Box>
       </ContextBox>

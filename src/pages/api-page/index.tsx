@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState, KeyboardEvent, ChangeEvent } from 'react'
 
 // ** Component Imports
 import ApiPageView from './api-page'
@@ -9,10 +9,11 @@ import type { Collection, HttpMethod } from '@/types/collection'
 
 // ** Utils Imports
 import useInput from '@/hooks/useInput'
+import { requestService } from '@/api'
 
-export interface ApiProps {
-  word: string
-  method: HttpMethod | ''
+export interface requestProps {
+  url: string
+  method: HttpMethod
 }
 
 const ApiPage = () => {
@@ -32,18 +33,33 @@ const ApiPage = () => {
   }
 
   const {
-    data: searchData,
+    data: request,
     handleInit,
     handleInput,
     handleSelect,
-  } = useInput<ApiProps>({
-    word: '',
-    method: '',
+  } = useInput<requestProps>({
+    url: '',
+    method: 'GET',
   })
+
+  const [search, setSearch] = useState<string>('')
   const [selectedCollectionId, setSelectedCollectionId] = useState<number>(0)
+
+  const [response, setResponse] = useState<any>()
 
   const handleSelectedCollection = (collectionId: number) => {
     setSelectedCollectionId(collectionId)
+  }
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+  }
+
+  const handleEnter = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      const { data } = await requestService(request.url, request.method)
+      setResponse(data)
+    }
   }
 
   return (
@@ -51,10 +67,14 @@ const ApiPage = () => {
       data={collectionList}
       handleSelectedCollection={handleSelectedCollection}
       selectedCollectionId={selectedCollectionId}
-      searchData={searchData}
+      request={request}
       handleInput={handleInput}
       handleSelect={handleSelect}
       handleAddCollection={handleAddCollection}
+      handleEnter={handleEnter}
+      handleSearch={handleSearch}
+      search={search}
+      response={response}
     />
   )
 }

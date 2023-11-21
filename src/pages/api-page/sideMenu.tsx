@@ -15,7 +15,6 @@ import { CollectionDropDown } from './component'
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
-import type { ApiProps } from '.'
 
 // ** Constant Imports
 import Color from '@/constants/color'
@@ -26,9 +25,9 @@ import { getColorFromHttpMethod } from '@/utils/color'
 interface PropsType {
   data: Collection[]
   selectedCollectionId: number
-  searchData: ApiProps
+  search: string
+  handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddCollection: () => void
-  handleInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
 }
 
@@ -36,8 +35,8 @@ const SideMenu = ({
   data,
   selectedCollectionId,
   handleSelectedCollection,
-  searchData,
-  handleInput,
+  search,
+  handleSearch,
   handleAddCollection,
 }: PropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -54,16 +53,13 @@ const SideMenu = ({
   }
 
   const filterData = useMemo(() => {
-    if (searchData.word === '') return data
+    if (search === '') return data
     const arr = data
       .filter((item) => {
         let count = 0
 
         for (const _ of item.item) {
-          if (
-            _.name.includes(searchData.word) ||
-            _.method.includes(searchData.word)
-          ) {
+          if (_.name.includes(search) || _.method.includes(search)) {
             count++
           }
         }
@@ -72,16 +68,14 @@ const SideMenu = ({
       })
       .map((item) => {
         const arr = item.item.filter(
-          (_) =>
-            _.name.includes(searchData.word) ||
-            _.method.includes(searchData.word),
+          (_) => _.name.includes(search) || _.method.includes(search),
         )
 
         return { ...item, item: arr }
       })
 
     return arr
-  }, [searchData])
+  }, [search])
 
   return (
     <Box
@@ -151,9 +145,8 @@ const SideMenu = ({
         >
           <InputBase
             sx={{ height: '100%', color: Color.grey }}
-            value={searchData.word}
-            name="word"
-            onChange={handleInput}
+            value={search}
+            onChange={handleSearch}
             placeholder="Search"
           />
         </Box>
