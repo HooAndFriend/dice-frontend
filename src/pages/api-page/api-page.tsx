@@ -5,10 +5,10 @@ import { ChangeEvent } from 'react'
 import {
   Box,
   FormControl,
+  InputBase,
   MenuItem,
   Select,
   SelectChangeEvent,
-  TextField,
   Typography,
 } from '@mui/material'
 
@@ -22,6 +22,7 @@ import type { ApiProps } from '.'
 
 // ** Constant Imports
 import Color from '@/constants/color'
+import { BasicTable } from './component'
 
 interface PropsType {
   data: Collection[]
@@ -94,7 +95,11 @@ const ApiPageView = ({
               }}
             >
               <FormControl fullWidth>
-                <Select labelId="lang" defaultValue="GET">
+                <Select
+                  labelId="lang"
+                  defaultValue="GET"
+                  sx={{ border: 'none' }}
+                >
                   <MenuItem value="GET">
                     <Typography variant="h6" sx={{ color: Color.getColor }}>
                       GET
@@ -135,10 +140,9 @@ const ApiPageView = ({
                 alignItems: 'center',
               }}
             >
-              <TextField
+              <InputBase
                 defaultValue="http://localhost:8080/api/v1/user"
                 sx={{ color: Color.glassGrey }}
-                variant="standard"
                 fullWidth
               />
             </Box>
@@ -251,6 +255,14 @@ const ApiPageView = ({
               ></Box>
             </Box>
           </Box>
+        </Box>
+        <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
+          <BasicTable />
+        </Box>
+        <Box sx={{ mt: 3, height: 300 }}>
+          <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+            response
+          </Typography>
         </Box>
       </ContextBox>
     </Box>
