@@ -5,7 +5,7 @@ import { ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 
 // ** Mui Imports
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, InputBase, InputLabel, Typography } from '@mui/material'
 
 // ** Component Imports
 import { IconBox } from '@/components/IconBox'
@@ -15,7 +15,6 @@ import {
   GoogleIcon,
   MicrosoftIcon,
 } from '@/components/Icons'
-import { InputTextField } from '@/components/TextInput'
 
 // ** Utils Imports
 import Color from '@/constants/color'
@@ -62,25 +61,27 @@ const LoginPageView = ({
             Login
           </Typography>
           <Box sx={{ width: 400, mt: 5 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>username</InputLabel>
+            <InputBase
+              placeholder="username"
               type="text"
-              variant="standard"
               fullWidth
-              label="username"
               value={user.username}
               name="username"
               onChange={setUser}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>password</InputLabel>
+            <InputBase
+              placeholder="password"
               type="password"
-              variant="standard"
               fullWidth
-              label="password"
               value={user.password}
               name="password"
               onChange={setUser}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box
