@@ -5,7 +5,13 @@ import { createContext, useContext, useState } from 'react'
 import type { AlertType, Alerts } from '@/types/common'
 
 // ** Mui Imports
-import { Alert } from '@mui/material'
+import { Alert, Box, Typography } from '@mui/material'
+
+// ** Icon Imports
+import CloseIcon from '@mui/icons-material/Close'
+
+// ** Hooks Imports
+import useInterval from '@/hooks/useInterval'
 
 interface ContextProps {
   handleOpen: (title: string, type?: AlertType) => void
@@ -20,6 +26,16 @@ export function AlertProvider({ children }: { children: React.ReactNode }) {
     setAlertContents((cur) => [...cur, { content, type: type ? type : 'info' }])
   }
 
+  const handleRemove = (id: number) => {
+    setAlertContents((cur) => cur.filter((item, index) => index !== id))
+  }
+
+  useInterval(() => {
+    if (alertContents.length > 0) {
+      setAlertContents((cur) => cur.slice(1))
+    }
+  }, 3000)
+
   return (
     <Context.Provider value={{ handleOpen }}>
       {children}
@@ -27,19 +43,28 @@ export function AlertProvider({ children }: { children: React.ReactNode }) {
         <Alert
           severity={item.type}
           sx={{
-            minWidth: 500,
             position: 'absolute',
             left: '10px',
-            bottom: `${index * 55 + 5}px`,
+            bottom: `${(alertContents.length - index - 1) * 55 + 5}px`,
             height: '50px',
+            width: '500px',
             flex: 'display',
-            justifyContent: 'center',
             alignItems: 'center',
           }}
           variant="filled"
           key={index}
         >
-          {item.content}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '400px',
+            }}
+          >
+            <Typography variant="body2">{item.content}</Typography>
+            <CloseIcon onClick={() => handleRemove(index)} />
+          </Box>
         </Alert>
       ))}
     </Context.Provider>
