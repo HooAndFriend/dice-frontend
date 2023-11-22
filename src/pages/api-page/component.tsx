@@ -146,9 +146,7 @@ export function BasicTable() {
                   borderRight: `2px ${Color.purple} solid`,
                 }}
               >
-                <InputBase
-                  sx={{ color: Color.glassGrey, backgroundColor: 'blue' }}
-                />
+                <InputBase sx={{ color: Color.glassGrey }} />
               </TableCell>
               <TableCell
                 align="left"
