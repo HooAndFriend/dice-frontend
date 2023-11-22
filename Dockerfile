@@ -19,7 +19,7 @@ RUN \
 
 COPY . .
 
-RUN yarn build:dev
+RUN yarn build
 
 FROM nginx:latest
 
