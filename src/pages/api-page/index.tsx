@@ -57,8 +57,12 @@ const ApiPage = () => {
 
   const handleEnter = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      const { data } = await requestService(request.url, request.method)
-      setResponse(data)
+      try {
+        const { data } = await requestService(request.url, request.method)
+        setResponse(data)
+      } catch (error: any) {
+        setResponse(error.message)
+      }
     }
   }
 
