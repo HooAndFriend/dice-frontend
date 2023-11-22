@@ -44,8 +44,10 @@ const LoginPage = () => {
     }
     loginApi(user)
       .unwrap()
-      .then((res) => {
-        navigate('/dashboard')
+      .then(({ statusCode }) => {
+        if (statusCode === 200) {
+          navigate('/dashboard')
+        }
       })
       .catch((err) => {
         onError('알림', err.data.message)
@@ -60,7 +62,7 @@ const LoginPage = () => {
           .unwrap()
           .then(({ statusCode }) => {
             if (statusCode === 200) {
-              navigate('/')
+              navigate('/dashboard')
             }
           })
           .catch((err) => {
