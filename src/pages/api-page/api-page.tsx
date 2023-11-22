@@ -30,12 +30,14 @@ interface PropsType {
   selectedCollectionId: number
   search: string
   response: any
+  tab: number
   handleAddCollection: () => void
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
   handleSelect: (e: SelectChangeEvent<HTMLInputElement>) => void
   handleSelectedCollection: (collectionId: number) => void
   handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
+  handleTab: (tap: number) => void
 }
 
 const ApiPageView = ({
@@ -50,6 +52,8 @@ const ApiPageView = ({
   handleSearch,
   search,
   response,
+  handleTab,
+  tab,
 }: PropsType) => {
   return (
     <Box
@@ -177,21 +181,27 @@ const ApiPageView = ({
             }}
           >
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+              <Typography
+                variant="h6"
+                sx={{ color: tab === 0 ? 'white' : Color.glassGrey }}
+                onClick={() => handleTab(0)}
+              >
                 params
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box
-                sx={{
-                  width: 30,
-                  height: 1.2,
-                  borderRadius: 1,
-                  mt: 1,
-                  backgroundColor: 'white',
-                }}
-              ></Box>
-            </Box>
+            {tab === 0 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box
+                  sx={{
+                    width: 30,
+                    height: 1.2,
+                    borderRadius: 1,
+                    mt: 1,
+                    backgroundColor: 'white',
+                  }}
+                ></Box>
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
@@ -202,21 +212,27 @@ const ApiPageView = ({
             }}
           >
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+              <Typography
+                variant="h6"
+                sx={{ color: tab === 1 ? 'white' : Color.glassGrey }}
+                onClick={() => handleTab(1)}
+              >
                 auth
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box
-                sx={{
-                  width: 30,
-                  height: 1.2,
-                  borderRadius: 1,
-                  mt: 1,
-                  backgroundColor: 'white',
-                }}
-              ></Box>
-            </Box>
+            {tab === 1 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box
+                  sx={{
+                    width: 30,
+                    height: 1.2,
+                    borderRadius: 1,
+                    mt: 1,
+                    backgroundColor: 'white',
+                  }}
+                ></Box>
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
@@ -227,21 +243,27 @@ const ApiPageView = ({
             }}
           >
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+              <Typography
+                variant="h6"
+                sx={{ color: tab === 2 ? 'white' : Color.glassGrey }}
+                onClick={() => handleTab(2)}
+              >
                 header
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box
-                sx={{
-                  width: 30,
-                  height: 1.2,
-                  borderRadius: 1,
-                  mt: 1,
-                  backgroundColor: 'white',
-                }}
-              ></Box>
-            </Box>
+            {tab === 2 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box
+                  sx={{
+                    width: 30,
+                    height: 1.2,
+                    borderRadius: 1,
+                    mt: 1,
+                    backgroundColor: 'white',
+                  }}
+                ></Box>
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
@@ -252,25 +274,31 @@ const ApiPageView = ({
             }}
           >
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+              <Typography
+                variant="h6"
+                sx={{ color: tab === 3 ? 'white' : Color.glassGrey }}
+                onClick={() => handleTab(3)}
+              >
                 body
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box
-                sx={{
-                  width: 30,
-                  height: 1.2,
-                  borderRadius: 1,
-                  mt: 1,
-                  backgroundColor: 'white',
-                }}
-              ></Box>
-            </Box>
+            {tab === 3 && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box
+                  sx={{
+                    width: 30,
+                    height: 1.2,
+                    borderRadius: 1,
+                    mt: 1,
+                    backgroundColor: 'white',
+                  }}
+                ></Box>
+              </Box>
+            )}
           </Box>
         </Box>
         <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
-          <BasicTable />
+          {tab === 0 && <BasicTable />}
         </Box>
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6" sx={{ color: Color.glassGrey }}>

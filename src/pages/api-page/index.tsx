@@ -44,6 +44,7 @@ const ApiPage = () => {
 
   const [search, setSearch] = useState<string>('')
   const [selectedCollectionId, setSelectedCollectionId] = useState<number>(0)
+  const [tab, setTab] = useState<number>(0)
 
   const [response, setResponse] = useState<any>()
 
@@ -66,19 +67,23 @@ const ApiPage = () => {
     }
   }
 
+  const handleTab = (tab: number) => setTab(tab)
+
   return (
     <ApiPageView
       data={collectionList}
-      handleSelectedCollection={handleSelectedCollection}
       selectedCollectionId={selectedCollectionId}
       request={request}
+      search={search}
+      response={response}
+      tab={tab}
       handleInput={handleInput}
       handleSelect={handleSelect}
       handleAddCollection={handleAddCollection}
       handleEnter={handleEnter}
       handleSearch={handleSearch}
-      search={search}
-      response={response}
+      handleSelectedCollection={handleSelectedCollection}
+      handleTab={handleTab}
     />
   )
 }
