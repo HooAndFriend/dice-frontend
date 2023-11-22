@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react'
 
 // ** Router Imports
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // ** MUI Imports
 import { Avatar, Box, Button, Menu, MenuItem } from '@mui/material'
@@ -15,13 +15,22 @@ import Color from '@/constants/color'
 
 // ** Component Imports
 import ImageBox from '../Image'
+import SettingPage from '@/pages/setting-page'
+
+// ** Redux Imports
+import { useDispatch } from 'react-redux'
+import { logout } from '@/store/app/auth'
 
 interface PropsType {
   profile: string
 }
 
 const WorkspaceDowndown = ({ profile }: PropsType) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   const { handleWorkspaceId, workspaceList, workspaceId } = useWorkspace()
 
@@ -37,6 +46,17 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
     handleWorkspaceId(id)
     setAnchorEl(null)
   }
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate('/')
+  }
+
+  const handleModalOpen = () => {
+    handleClose()
+    setModalOpen(true)
+  }
+  const handleModalClose = () => setModalOpen(false)
 
   return (
     <Fragment>
@@ -87,7 +107,12 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
         >
           <MenuItem>Add Worksapce</MenuItem>
         </Link>
+        <MenuItem onClick={handleModalOpen}>Setting</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
+      {modalOpen && (
+        <SettingPage open={modalOpen} handleClose={handleModalClose} />
+      )}
     </Fragment>
   )
 }

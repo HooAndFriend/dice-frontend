@@ -1,12 +1,27 @@
-// ** Component Imports
+// ** React Imports
+import { useEffect } from 'react'
+
+// ** Hooks Imports
 import useInput from '@/hooks/useInput'
+
+// ** Component Imports
 import SettingPageView from './setting-page'
-import { UserV0 } from '@/types/user'
-import { useEffect, useState } from 'react'
+
+// ** Type Imports
+import type { UserV0 } from '@/types/user'
+
+// ** Service Imports
 import { useLazyGetUserV0Query, useUpdateUserMutation } from '@/services'
+
+// ** Context Imports
 import { useError } from '@/context/ErrorContext'
 
-const SettingPage = () => {
+interface PropsType {
+  open: boolean
+  handleClose: () => void
+}
+
+const SettingPage = ({ open, handleClose }: PropsType) => {
   const {
     data: user,
     setData: setUser,
@@ -18,8 +33,6 @@ const SettingPage = () => {
     link: '',
     comment: '',
   })
-
-  const [reRenderSwitch, setReRenderSwitch] = useState<boolean>(false)
 
   const [getUserApi] = useLazyGetUserV0Query()
   const [updateUserApi] = useUpdateUserMutation()
@@ -36,30 +49,25 @@ const SettingPage = () => {
       .unwrap()
       .then((res) => {
         if (res.statusCode === 200) {
-          handleRefetch()
+          handleClose()
         }
       })
       .catch((err) => {
         onError('알림', err.data.message)
       })
   }
-  const handleRefetch = () => setReRenderSwitch(true)
 
   const handleSetPath = (path: string) => {
     setUser((cur) => ({ ...cur, profile: path }))
   }
 
   useEffect(() => {
-    if (reRenderSwitch) {
-      setReRenderSwitch(false)
-    }
-
     getUserApi()
       .unwrap()
       .then((res) => {
         setUser(res.data)
       })
-  }, [reRenderSwitch])
+  }, [])
 
   return (
     <SettingPageView
@@ -67,6 +75,8 @@ const SettingPage = () => {
       user={user}
       handleInput={handleInput}
       handleUpdateUser={handleUpdateUser}
+      open={open}
+      handleClose={handleClose}
     />
   )
 }

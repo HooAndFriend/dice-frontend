@@ -36,14 +36,6 @@ export const MenuList: MenuType[] = [
     isMenu: true,
   },
   {
-    route: '/setting',
-    name: 'Setting',
-    element: <SettingPage />,
-    icon: <SettingIcon />,
-    onlyPath: false,
-    isMenu: false,
-  },
-  {
     route: '/api',
     name: 'Collection',
     element: <ApiPage />,
