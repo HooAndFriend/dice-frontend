@@ -19,7 +19,7 @@ export const ContextBox = ({ children, type }: PropsType) => {
         width: type === 'SIDE' ? '84%' : '98%',
         height: '96%',
         backgroundColor: Color.smallPurple,
-        borderRadius: 10,
+        borderRadius: 5,
         ml: type === 'SIDE' ? 0 : 2,
         px: 5,
         py: 3,
