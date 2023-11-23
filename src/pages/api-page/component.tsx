@@ -57,6 +57,8 @@ export const CollectionDropDown = ({
       }}
     >
       <MenuItem>Add Request</MenuItem>
+      <MenuItem>Delete</MenuItem>
+      <MenuItem>Duplicate</MenuItem>
     </Menu>
   )
 }

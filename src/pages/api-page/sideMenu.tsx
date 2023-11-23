@@ -86,7 +86,7 @@ const SideMenu = ({
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'right', pt: 4, pr: 2 }}>
-        <Box
+        {/* <Box
           sx={{
             px: 1,
             display: 'flex',
@@ -105,7 +105,7 @@ const SideMenu = ({
           }}
         >
           <ApiAddIcon />
-        </Box>
+        </Box> */}
         <Box
           sx={{
             px: 1,
