@@ -1,3 +1,6 @@
+// ** React Imports
+import { KeyboardEvent } from 'react'
+
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
 
@@ -29,6 +32,12 @@ const LoginPage = () => {
 
   const [loginApi] = useLoginMutation()
   const [socialLoginApi] = useSocialLoginMutation()
+
+  const handleEnter = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleLogin()
+    }
+  }
 
   const handleLogin = () => {
     if (user.username === '') {
@@ -86,6 +95,7 @@ const LoginPage = () => {
       user={user}
       setUser={setUser}
       handleSocial={handleSocial}
+      handleEnter={handleEnter}
     />
   )
 }
