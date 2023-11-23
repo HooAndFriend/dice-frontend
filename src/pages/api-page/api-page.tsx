@@ -15,7 +15,7 @@ import {
 // ** Component Imports
 import SideMenu from './sideMenu'
 import { ContextBox } from '@/components/ContentBox'
-import { BasicTable } from './component'
+import { AuthTable, BasicTable } from './component'
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
@@ -82,7 +82,7 @@ const ApiPageView = ({
           </Typography>
         </Box>
         <Box>
-          <Typography variant="h5" sx={{ color: 'white' }}>
+          <Typography variant="h6" sx={{ color: 'white' }}>
             save message
           </Typography>
         </Box>
@@ -91,7 +91,7 @@ const ApiPageView = ({
             sx={{
               backgroundColor: Color.purple,
               width: '100%',
-              height: 60,
+              height: 50,
               borderRadius: 3,
               display: 'flex',
               alignItems: 'center',
@@ -112,7 +112,7 @@ const ApiPageView = ({
                   value={request.method as any}
                   name="method"
                   onChange={handleSelect}
-                  sx={{ border: 'none' }}
+                  sx={{ border: 'none', height: 50 }}
                 >
                   <MenuItem value="GET">
                     <Typography variant="h6" sx={{ color: Color.getColor }}>
@@ -170,6 +170,7 @@ const ApiPageView = ({
             display: 'flex',
             alignItems: 'center',
             mt: 3,
+            pl: 3,
           }}
         >
           <Box
@@ -183,7 +184,9 @@ const ApiPageView = ({
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Typography
                 variant="h6"
-                sx={{ color: tab === 0 ? 'white' : Color.glassGrey }}
+                sx={{
+                  color: tab === 0 ? 'white' : Color.glassGrey,
+                }}
                 onClick={() => handleTab(0)}
               >
                 params
@@ -191,7 +194,7 @@ const ApiPageView = ({
             </Box>
             {tab === 0 && (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box
+                {/* <Box
                   sx={{
                     width: 30,
                     height: 1.2,
@@ -199,7 +202,7 @@ const ApiPageView = ({
                     mt: 1,
                     backgroundColor: 'white',
                   }}
-                ></Box>
+                ></Box> */}
               </Box>
             )}
           </Box>
@@ -222,7 +225,7 @@ const ApiPageView = ({
             </Box>
             {tab === 1 && (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box
+                {/* <Box
                   sx={{
                     width: 30,
                     height: 1.2,
@@ -230,7 +233,7 @@ const ApiPageView = ({
                     mt: 1,
                     backgroundColor: 'white',
                   }}
-                ></Box>
+                ></Box> */}
               </Box>
             )}
           </Box>
@@ -253,7 +256,7 @@ const ApiPageView = ({
             </Box>
             {tab === 2 && (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box
+                {/* <Box
                   sx={{
                     width: 30,
                     height: 1.2,
@@ -261,7 +264,7 @@ const ApiPageView = ({
                     mt: 1,
                     backgroundColor: 'white',
                   }}
-                ></Box>
+                ></Box> */}
               </Box>
             )}
           </Box>
@@ -284,7 +287,7 @@ const ApiPageView = ({
             </Box>
             {tab === 3 && (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box
+                {/* <Box
                   sx={{
                     width: 30,
                     height: 1.2,
@@ -292,13 +295,29 @@ const ApiPageView = ({
                     mt: 1,
                     backgroundColor: 'white',
                   }}
-                ></Box>
+                ></Box> */}
               </Box>
             )}
           </Box>
         </Box>
         <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
           {tab === 0 && <BasicTable />}
+          {tab === 1 && <AuthTable />}
+          {tab === 2 && <BasicTable />}
+          {tab === 3 && (
+            <Box
+              sx={{
+                mt: 3,
+                height: 300,
+                backgroundColor: Color.purple,
+                overflowY: 'scroll',
+              }}
+            >
+              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
+                {response}
+              </Typography>
+            </Box>
+          )}
         </Box>
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6" sx={{ color: Color.glassGrey }}>

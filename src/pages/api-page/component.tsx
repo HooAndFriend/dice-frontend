@@ -11,8 +11,11 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Paper,
   InputBase,
+  Box,
+  FormControl,
+  Select,
+  Typography,
 } from '@mui/material'
 
 export const InputTextField = styled(TextField)({
@@ -76,6 +79,8 @@ function createData(
 const rows = [
   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
 ]
 
 export function BasicTable() {
@@ -91,6 +96,7 @@ export function BasicTable() {
           <TableRow>
             <TableCell
               sx={{ borderRight: `2px ${Color.purple} solid` }}
+              size="small"
             ></TableCell>
             <TableCell
               align="left"
@@ -98,6 +104,7 @@ export function BasicTable() {
                 color: Color.glassGrey,
                 borderRight: `2px ${Color.purple} solid`,
               }}
+              size="small"
             >
               key
             </TableCell>
@@ -107,6 +114,7 @@ export function BasicTable() {
                 color: Color.glassGrey,
                 borderRight: `2px ${Color.purple} solid`,
               }}
+              size="small"
             >
               value
             </TableCell>
@@ -116,6 +124,7 @@ export function BasicTable() {
                 color: Color.glassGrey,
                 borderRight: `2px ${Color.purple} solid`,
               }}
+              size="small"
             >
               description
             </TableCell>
@@ -137,7 +146,8 @@ export function BasicTable() {
             >
               <TableCell
                 align="center"
-                sx={{ width: 100, borderRight: `2px ${Color.purple} solid` }}
+                sx={{ width: 50, borderRight: `2px ${Color.purple} solid` }}
+                size="small"
               >
                 <CheckBox />
               </TableCell>
@@ -147,16 +157,18 @@ export function BasicTable() {
                   width: 300,
                   borderRight: `2px ${Color.purple} solid`,
                 }}
+                size="small"
               >
                 <InputBase sx={{ color: Color.glassGrey }} />
               </TableCell>
               <TableCell
                 align="left"
                 sx={{ width: 300, borderRight: `2px ${Color.purple} solid` }}
+                size="small"
               >
                 <InputBase sx={{ color: Color.glassGrey }} />
               </TableCell>
-              <TableCell align="left">
+              <TableCell align="left" size="small">
                 <InputBase sx={{ color: Color.glassGrey }} />
               </TableCell>
             </TableRow>
@@ -164,5 +176,33 @@ export function BasicTable() {
         </TableBody>
       </Table>
     </TableContainer>
+  )
+}
+
+export const AuthTable = () => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box sx={{ width: '15%' }}>
+        <FormControl fullWidth>
+          <Select
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            name="method"
+            sx={{ border: 'none', height: 50 }}
+          >
+            <MenuItem value="Bearer">Bearer</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box sx={{ width: '80%', ml: '5%' }}>
+        <TextField variant="outlined" label="value" fullWidth />
+      </Box>
+    </Box>
   )
 }
