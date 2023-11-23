@@ -63,8 +63,8 @@ const WorkspaceDowndown = ({ profile }: PropsType) => {
       <Button onClick={handleClick}>
         <Box sx={{ display: 'flex', pt: 5 }}>
           <ImageBox
-            width={60}
-            height={60}
+            width={40}
+            height={40}
             image={profile}
             alt="workspace image"
             borderRadius={3}

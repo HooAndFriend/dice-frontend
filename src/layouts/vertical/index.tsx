@@ -19,7 +19,7 @@ const VerticalNavigation = () => {
   return (
     <Box
       sx={{
-        width: '100px',
+        width: '80px',
         height: '100vh',
       }}
     >

@@ -217,7 +217,7 @@ const SideMenu = ({
                       display: 'flex',
                       alignItems: 'center',
                       my: 1,
-                      pl: 7,
+                      pl: 4,
                     }}
                     key={_.id}
                   >

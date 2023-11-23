@@ -21,7 +21,7 @@ const TicketPageView = ({}: PropsType) => {
         alignItems: 'center',
       }}
     >
-      <Box sx={{ width: '20%' }}>
+      <Box sx={{ width: '15%' }}>
         <SideMenu />
       </Box>
       <ContextBox type="SIDE">
