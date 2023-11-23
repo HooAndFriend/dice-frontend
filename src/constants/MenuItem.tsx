@@ -6,14 +6,12 @@ import {
   CollectionIcon,
   DashboardIcon,
   ErdIcon,
-  SettingIcon,
   TicketIcon,
   WorkspaceSettingIcon,
 } from '@/components/Icons'
 import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
 import HomePage from '@/pages/home-page'
-import SettingPage from '@/pages/setting-page'
 import TicketPage from '@/pages/ticket-page'
 import WorkspacePage from '@/pages/workspace-page'
 
@@ -27,16 +25,16 @@ interface MenuType {
 }
 
 export const MenuList: MenuType[] = [
+  // {
+  //   route: '',
+  //   name: 'Dashboard',
+  //   element: <HomePage />,
+  //   icon: <DashboardIcon />,
+  //   onlyPath: false,
+  //   isMenu: true,
+  // },
   {
-    route: '',
-    name: 'Dashboard',
-    element: <HomePage />,
-    icon: <DashboardIcon />,
-    onlyPath: false,
-    isMenu: true,
-  },
-  {
-    route: '/api',
+    route: '/',
     name: 'Collection',
     element: <ApiPage />,
     icon: <CollectionIcon style={{ width: 30, height: 30 }} />,
