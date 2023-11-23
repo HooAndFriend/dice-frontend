@@ -1,5 +1,5 @@
 // ** React Imports
-import { useEffect } from 'react'
+import { useEffect, KeyboardEvent } from 'react'
 
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
@@ -35,6 +35,12 @@ const SocialSignupPage = () => {
   const { onError } = useError()
 
   const [socialRegisterApi] = useSocialRegisterMutation()
+
+  const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleJoin()
+    }
+  }
 
   const handleJoin = () => {
     if (user.nickname === '') {
@@ -76,6 +82,7 @@ const SocialSignupPage = () => {
       handleJoin={handleJoin}
       user={user}
       setUser={setUser}
+      handleEnter={handleEnter}
     />
   )
 }

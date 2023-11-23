@@ -1,8 +1,8 @@
 // ** React Imports
-import { ChangeEvent } from 'react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 
 // ** Mui Imports
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, InputBase, InputLabel, Typography } from '@mui/material'
 
 // ** Component Imports
 import { InputTextField } from '@/components/TextInput'
@@ -21,9 +21,15 @@ interface PropsType {
   user: UserSocialRegisterParams
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
   handleJoin: () => void
+  handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
-const SocialSignupPageView = ({ handleJoin, user, setUser }: PropsType) => {
+const SocialSignupPageView = ({
+  handleJoin,
+  user,
+  setUser,
+  handleEnter,
+}: PropsType) => {
   return (
     <Box
       sx={{
@@ -45,15 +51,16 @@ const SocialSignupPageView = ({ handleJoin, user, setUser }: PropsType) => {
           <Typography variant="h1" sx={{ color: 'white' }}>
             Sign up
           </Typography>
+          <InputLabel sx={{ color: 'white', pb: 1 }}>password</InputLabel>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputBase
               type="text"
-              variant="standard"
               fullWidth
-              label="nickname"
               value={user.nickname}
               name="nickname"
               onChange={setUser}
+              onKeyDown={handleEnter}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
