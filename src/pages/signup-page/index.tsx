@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, useState } from 'react'
 
 // ** Router Imports
 import { useNavigate } from 'react-router-dom'
@@ -35,6 +35,12 @@ const SignupPage = () => {
 
   const handleChangePasswordC = (e: ChangeEvent<HTMLInputElement>) => {
     setPasswordC(e.target.value)
+  }
+
+  const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleJoin()
+    }
   }
 
   const handleJoin = () => {
@@ -89,6 +95,7 @@ const SignupPage = () => {
       handleChangePasswordC={handleChangePasswordC}
       user={user}
       setUser={setUser}
+      handleEnter={handleEnter}
     />
   )
 }

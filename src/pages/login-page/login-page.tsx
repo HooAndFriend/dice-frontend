@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent } from 'react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 
 // ** Router Imports
 import { Link } from 'react-router-dom'
@@ -31,6 +31,7 @@ interface PropsType {
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
   handleLogin: () => void
   handleSocial: (type: SocialType) => void
+  handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 const LoginPageView = ({
@@ -38,6 +39,7 @@ const LoginPageView = ({
   user,
   setUser,
   handleSocial,
+  handleEnter,
 }: PropsType) => {
   return (
     <Box
@@ -82,6 +84,7 @@ const LoginPageView = ({
               name="password"
               onChange={setUser}
               sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
+              onKeyDown={handleEnter}
             />
           </Box>
           <Box

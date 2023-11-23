@@ -1,11 +1,8 @@
 // ** React Imports
-import { ChangeEvent } from 'react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 
 // ** Mui Imports
-import { Box, Button, Typography } from '@mui/material'
-
-// ** Component Imports
-import { InputTextField } from '@/components/TextInput'
+import { Box, Button, InputBase, InputLabel, Typography } from '@mui/material'
 
 // ** Utils Imports
 import Color from '@/constants/color'
@@ -23,6 +20,7 @@ interface PropsType {
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
   handleChangePasswordC: (e: ChangeEvent<HTMLInputElement>) => void
   handleJoin: () => void
+  handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 const SignupPageView = ({
@@ -31,6 +29,7 @@ const SignupPageView = ({
   setUser,
   passwordC,
   handleChangePasswordC,
+  handleEnter,
 }: PropsType) => {
   return (
     <Box
@@ -54,46 +53,53 @@ const SignupPageView = ({
             Sign up
           </Typography>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>username</InputLabel>
+            <InputBase
               type="text"
-              variant="standard"
+              placeholder="username"
               fullWidth
-              label="username"
               value={user.username}
               name="username"
               onChange={setUser}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>password</InputLabel>
+            <InputBase
               type="password"
-              variant="standard"
+              placeholder="password"
               fullWidth
-              label="password"
               value={user.password}
               name="password"
               onChange={setUser}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>
+              password check
+            </InputLabel>
+            <InputBase
               type="password"
-              variant="standard"
+              placeholder="password check"
               fullWidth
-              label="password check"
               value={passwordC}
               onChange={handleChangePasswordC}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
-            <InputTextField
+            <InputLabel sx={{ color: 'white', pb: 1 }}>nickname</InputLabel>
+            <InputBase
+              placeholder="nickname"
               type="text"
-              variant="standard"
               fullWidth
-              label="nickname"
               value={user.nickname}
               name="nickname"
               onChange={setUser}
+              onKeyDown={handleEnter}
+              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
             />
           </Box>
           <Box sx={{ width: 400, mt: 3 }}>
