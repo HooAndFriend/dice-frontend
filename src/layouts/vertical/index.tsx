@@ -1,3 +1,6 @@
+// ** React Imports
+import { useMemo } from 'react'
+
 // ** Mui Imports
 import { Box } from '@mui/material'
 
@@ -21,7 +24,13 @@ const VerticalNavigation = () => {
 
   const { profile } = useSelector(getUserInfo)
 
-  const { workspaceProfile } = useWorkspace()
+  const { workspaceProfile, isPersonal } = useWorkspace()
+
+  const menuList = useMemo(
+    () => (isPersonal ? MenuList.filter((item) => !item.isPersonal) : MenuList),
+
+    [isPersonal],
+  )
 
   return (
     <Box
@@ -49,47 +58,49 @@ const VerticalNavigation = () => {
         ></Box>
       </Box>
       <Box>
-        {MenuList.filter((item) => item.isMenu).map((item) =>
-          `/dashboard${item.route}` === pathname ? (
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              key={item.route}
-            >
-              <Link
-                to={`/dashboard${item.route}`}
-                style={{
-                  textDecoration: 'none',
-                  color: 'black',
+        {menuList
+          .filter((item) => item.isMenu)
+          .map((item) =>
+            `/dashboard${item.route}` === pathname ? (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              >
-                <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
-              </Link>
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              key={item.route}
-            >
-              <Link
-                to={`/dashboard${item.route}`}
-                style={{ textDecoration: 'none', color: 'black' }}
                 key={item.route}
               >
-                <Box sx={{ display: 'flex', mt: 5, opacity: 0.5 }}>
-                  {item.icon}
-                </Box>
-              </Link>
-            </Box>
-          ),
-        )}
+                <Link
+                  to={`/dashboard${item.route}`}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'black',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', mt: 5 }}>{item.icon}</Box>
+                </Link>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+                key={item.route}
+              >
+                <Link
+                  to={`/dashboard${item.route}`}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                  key={item.route}
+                >
+                  <Box sx={{ display: 'flex', mt: 5, opacity: 0.5 }}>
+                    {item.icon}
+                  </Box>
+                </Link>
+              </Box>
+            ),
+          )}
       </Box>
       <Box
         sx={{

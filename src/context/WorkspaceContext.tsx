@@ -15,6 +15,7 @@ interface ContextProps {
   workspaceList: { data: WorkspaceV0[]; count: number }
   workspaceProfile: string
   workspaceName: string
+  isPersonal: boolean
   handleWorkspaceRefetch: () => void
   handleWorkspaceId: (workspaceId: number) => void
 }
@@ -29,6 +30,7 @@ export const WorkspaceProvider = ({
   const [workspaceId, setWorkspaceId] = useState<number>(0)
   const [workspaceProfile, setWorkspaceProfile] = useState<string>('')
   const [workspaceName, setWorkspaceName] = useState<string>('')
+  const [isPersonal, setIsPersonal] = useState<boolean>(false)
 
   const { data, refetch: handleWorkspaceRefetch } = useGetWorkspaceV0ListQuery()
 
@@ -61,6 +63,7 @@ export const WorkspaceProvider = ({
       if (arr.length > 0) {
         setWorkspaceProfile(arr[0].workspace.profile)
         setWorkspaceName(arr[0].workspace.name)
+        setIsPersonal(arr[0].workspace.isPersonal)
       }
     }
   }, [workspaceId])
@@ -74,6 +77,7 @@ export const WorkspaceProvider = ({
         handleWorkspaceRefetch,
         workspaceName,
         workspaceProfile,
+        isPersonal,
       }}
     >
       {children}

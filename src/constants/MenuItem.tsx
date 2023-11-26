@@ -4,14 +4,12 @@ import { ReactNode } from 'react'
 // ** Component Imports
 import {
   CollectionIcon,
-  DashboardIcon,
   ErdIcon,
   TicketIcon,
   WorkspaceSettingIcon,
 } from '@/components/Icons'
 import ApiPage from '@/pages/api-page'
 import ErdPage from '@/pages/erd-page'
-import HomePage from '@/pages/home-page'
 import TicketPage from '@/pages/ticket-page'
 import WorkspacePage from '@/pages/workspace-page'
 
@@ -22,6 +20,7 @@ interface MenuType {
   icon: ReactNode
   onlyPath?: boolean
   isMenu: boolean
+  isPersonal: boolean
 }
 
 export const MenuList: MenuType[] = [
@@ -40,6 +39,7 @@ export const MenuList: MenuType[] = [
     icon: <CollectionIcon style={{ width: 30, height: 30 }} />,
     onlyPath: false,
     isMenu: true,
+    isPersonal: false,
   },
   {
     route: '/erd',
@@ -48,6 +48,7 @@ export const MenuList: MenuType[] = [
     icon: <ErdIcon />,
     onlyPath: false,
     isMenu: true,
+    isPersonal: false,
   },
   {
     route: '/workspace',
@@ -56,6 +57,7 @@ export const MenuList: MenuType[] = [
     icon: <WorkspaceSettingIcon />,
     onlyPath: false,
     isMenu: true,
+    isPersonal: true,
   },
   {
     route: '/ticket',
@@ -64,5 +66,6 @@ export const MenuList: MenuType[] = [
     icon: <TicketIcon />,
     onlyPath: false,
     isMenu: true,
+    isPersonal: false,
   },
 ]
