@@ -1,4 +1,7 @@
+// ** Constant Imports
 import Color from '@/constants/color'
+
+// ** Mui Imports
 import { CheckBox } from '@mui/icons-material'
 import {
   TableContainer,
@@ -15,8 +18,12 @@ import {
   Box,
   FormControl,
   Select,
-  Typography,
+  InputLabel,
 } from '@mui/material'
+
+// ** Json Imports
+import JSONInput from 'react-json-editor-ajrm'
+import locale from 'react-json-editor-ajrm/locale/en'
 
 export const InputTextField = styled(TextField)({
   '& label': {
@@ -191,18 +198,40 @@ export const AuthTable = () => {
     >
       <Box sx={{ width: '15%' }}>
         <FormControl fullWidth>
+          <InputLabel id="auth">Auth</InputLabel>
           <Select
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            name="method"
+            labelId="auth"
+            name="auth"
             sx={{ border: 'none', height: 50 }}
+            label="auth"
           >
+            <MenuItem value="">No Auth</MenuItem>
             <MenuItem value="Bearer">Bearer</MenuItem>
           </Select>
         </FormControl>
       </Box>
       <Box sx={{ width: '80%', ml: '5%' }}>
-        <TextField variant="outlined" label="value" fullWidth />
+        <InputBase sx={{ backgroundColor: Color.glassGrey, width: '80%' }} />
       </Box>
+    </Box>
+  )
+}
+
+export const JsonEditor = () => {
+  return <JSONInput id="a_unique_id" locale={locale} height="550px" />
+}
+
+export const BodyEditor = () => {
+  return (
+    <Box
+      sx={{
+        mt: 3,
+        height: 300,
+        backgroundColor: Color.purple,
+        overflowY: 'scroll',
+      }}
+    >
+      <JsonEditor />
     </Box>
   )
 }

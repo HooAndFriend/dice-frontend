@@ -15,7 +15,7 @@ import {
 // ** Component Imports
 import SideMenu from './sideMenu'
 import { ContextBox } from '@/components/ContentBox'
-import { AuthTable, BasicTable } from './component'
+import { AuthTable, BasicTable, BodyEditor } from './component'
 
 // ** Type Imports
 import type { Collection } from '@/types/collection'
@@ -304,20 +304,7 @@ const ApiPageView = ({
           {tab === 0 && <BasicTable />}
           {tab === 1 && <AuthTable />}
           {tab === 2 && <BasicTable />}
-          {tab === 3 && (
-            <Box
-              sx={{
-                mt: 3,
-                height: 300,
-                backgroundColor: Color.purple,
-                overflowY: 'scroll',
-              }}
-            >
-              <Typography variant="h6" sx={{ color: Color.glassGrey }}>
-                {response}
-              </Typography>
-            </Box>
-          )}
+          {tab === 3 && <BodyEditor />}
         </Box>
         <Box sx={{ mt: 3 }}>
           <Typography variant="h6" sx={{ color: Color.glassGrey }}>
