@@ -2,20 +2,10 @@
 import { ChangeEvent, KeyboardEvent } from 'react'
 
 // ** Mui Imports
-import { Box, Button, InputBase, InputLabel, Typography } from '@mui/material'
-
-// ** Component Imports
-import { InputTextField } from '@/components/TextInput'
-
-// ** Utils Imports
-import Color from '@/constants/color'
+import { Box, ButtonBase, InputBase, Typography } from '@mui/material'
 
 // ** Type Imports
 import type { UserSocialRegisterParams } from '@/types/user'
-
-// ** Lottie Imports
-import registerLottie from '@/lottie/lottie-register.json'
-import Lottie from 'lottie-react'
 
 interface PropsType {
   user: UserSocialRegisterParams
@@ -36,60 +26,79 @@ const SocialSignupPageView = ({
         width: '100%',
         height: '100vh',
         display: 'flex',
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Box
         sx={{
-          width: '30%',
-          backgroundColor: Color.smallPurple,
+          width: ' 60%',
+          height: '70%',
+          backgroundColor: 'white',
+          borderRadius: 5,
           display: 'flex',
-          justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <Box>
-          <Typography variant="h1" sx={{ color: 'white' }}>
-            Sign up
-          </Typography>
-          <InputLabel sx={{ color: 'white', pb: 1 }}>password</InputLabel>
-          <Box sx={{ width: 400, mt: 3 }}>
-            <InputBase
-              type="text"
-              fullWidth
-              value={user.nickname}
-              name="nickname"
-              onChange={setUser}
-              onKeyDown={handleEnter}
-              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
-            />
+        <Box
+          sx={{
+            width: '50%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img src="/img/dice.jpeg" width={300} height={300} />
+        </Box>
+        <Box sx={{ width: '1px', height: '90%', backgroundColor: '#909090' }} />
+        <Box sx={{ width: '50%', height: '100%' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'center',
+              mt: 7,
+            }}
+          >
+            <Typography variant="h3">Welcome Back!</Typography>
           </Box>
-          <Box sx={{ width: 400, mt: 3 }}>
-            <Button
-              fullWidth
-              variant="contained"
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
+            <Box>
+              <Typography variant="h6">Email</Typography>
+              <InputBase
+                type="text"
+                value={user.nickname}
+                name="username"
+                onChange={setUser}
+                placeholder="email"
+                onKeyDown={handleEnter}
+                sx={{
+                  mt: 1,
+                  border: '1px solid #CDCDCD',
+                  width: '400px',
+                  height: '50px',
+                  borderRadius: 2,
+                  pl: 2,
+                }}
+              />
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 30 }}>
+            <ButtonBase
               sx={{
-                backgroundColor: Color.green,
-                '&:hover': {
-                  backgroundColor: Color.green,
-                },
+                backgroundColor: 'black',
+                width: '400px',
+                height: '50px',
+                borderRadius: 2,
+                color: 'white',
               }}
               onClick={handleJoin}
             >
-              JOIN
-            </Button>
+              <Typography variant="h6">Join</Typography>
+            </ButtonBase>
           </Box>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          width: '70%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box sx={{ width: '50%' }}>
-          <Lottie animationData={registerLottie} />
         </Box>
       </Box>
     </Box>

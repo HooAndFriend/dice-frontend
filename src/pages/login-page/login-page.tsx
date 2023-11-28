@@ -19,10 +19,6 @@ import {
 // ** Type Imporst
 import type { SocialType, UserLoginParams } from '@/types/user'
 
-// ** Lottie Imports
-import loginLottie from '@/lottie/lottie-login.json'
-import Lottie from 'lottie-react'
-
 interface PropsType {
   user: UserLoginParams
   setUser: (e: ChangeEvent<HTMLInputElement>) => void
@@ -68,9 +64,7 @@ const LoginPageView = ({
             justifyContent: 'center',
           }}
         >
-          <Box sx={{ width: '80%' }}>
-            <Lottie animationData={loginLottie} width="50%" />
-          </Box>
+          <img src="/img/dice.jpeg" width={300} height={300} />
         </Box>
         <Box sx={{ width: '1px', height: '90%', backgroundColor: '#909090' }} />
         <Box sx={{ width: '50%', height: '100%' }}>
