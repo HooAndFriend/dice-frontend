@@ -5,7 +5,7 @@ import { ChangeEvent, KeyboardEvent } from 'react'
 import { Link } from 'react-router-dom'
 
 // ** Mui Imports
-import { Box, Button, InputBase, InputLabel, Typography } from '@mui/material'
+import { Box, ButtonBase, InputBase, Typography } from '@mui/material'
 
 // ** Component Imports
 import { IconBox } from '@/components/IconBox'
@@ -16,14 +16,11 @@ import {
   MicrosoftIcon,
 } from '@/components/Icons'
 
-// ** Utils Imports
-import Color from '@/constants/color'
-
 // ** Type Imporst
 import type { SocialType, UserLoginParams } from '@/types/user'
 
 // ** Lottie Imports
-import loginLottie from '@/lottie/lottie-login.json'
+import loginLottie from '@/lottie/1.json'
 import Lottie from 'lottie-react'
 
 interface PropsType {
@@ -47,52 +44,139 @@ const LoginPageView = ({
         width: '100%',
         height: '100vh',
         display: 'flex',
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Box
         sx={{
-          width: '30%',
-          backgroundColor: Color.smallPurple,
+          width: ' 60%',
+          height: '70%',
+          backgroundColor: 'white',
+          borderRadius: 5,
           display: 'flex',
-          justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <Box>
-          <Typography variant="h1" sx={{ color: 'white' }}>
-            Login
-          </Typography>
-          <Box sx={{ width: 400, mt: 5 }}>
-            <InputLabel sx={{ color: 'white', pb: 1 }}>username</InputLabel>
-            <InputBase
-              placeholder="username"
-              type="text"
-              fullWidth
-              value={user.username}
-              name="username"
-              onChange={setUser}
-              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
-            />
+        <Box
+          sx={{
+            width: '50%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box sx={{ width: '80%' }}>
+            <Lottie animationData={loginLottie} width="50%" />
           </Box>
-          <Box sx={{ width: 400, mt: 3 }}>
-            <InputLabel sx={{ color: 'white', pb: 1 }}>password</InputLabel>
-            <InputBase
-              placeholder="password"
-              type="password"
-              fullWidth
-              value={user.password}
-              name="password"
-              onChange={setUser}
-              sx={{ backgroundColor: Color.glassGrey, p: 1, borderRadius: 2 }}
-              onKeyDown={handleEnter}
-            />
+        </Box>
+        <Box sx={{ width: '1px', height: '90%', backgroundColor: '#909090' }} />
+        <Box sx={{ width: '50%', height: '100%' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'center',
+              mt: 7,
+            }}
+          >
+            <Typography variant="h3">Welcome Back!</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+            <Box>
+              <Typography variant="h6">Email</Typography>
+              <InputBase
+                type="text"
+                value={user.username}
+                name="username"
+                onChange={setUser}
+                placeholder="email"
+                sx={{
+                  mt: 1,
+                  border: '1px solid #CDCDCD',
+                  width: '400px',
+                  height: '50px',
+                  borderRadius: 2,
+                  pl: 2,
+                }}
+              />
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+            <Box>
+              <Typography variant="h6">Password</Typography>
+              <InputBase
+                type="password"
+                value={user.password}
+                name="password"
+                onChange={setUser}
+                placeholder="password"
+                onKeyDown={handleEnter}
+                sx={{
+                  mt: 1,
+                  border: '1px solid #CDCDCD',
+                  width: '400px',
+                  height: '50px',
+                  borderRadius: 2,
+                  pl: 2,
+                }}
+              />
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+            <ButtonBase
+              sx={{
+                backgroundColor: 'black',
+                width: '400px',
+                height: '50px',
+                borderRadius: 2,
+                color: 'white',
+              }}
+              onClick={handleLogin}
+            >
+              <Typography variant="h6">Log In</Typography>
+            </ButtonBase>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0.5 }}>
+            <Box
+              sx={{ width: '400px', display: 'flex', justifyContent: 'right' }}
+            >
+              <Link
+                to="/signup"
+                style={{ textDecoration: 'none', color: 'grey' }}
+              >
+                <Typography variant="body2">
+                  Don’t have an account? Sign up
+                </Typography>
+              </Link>
+            </Box>
           </Box>
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              gap: '16px',
-              width: 400,
+              alignItems: 'center',
+              mt: 5,
+            }}
+          >
+            <Box
+              sx={{ backgroundColor: '#909090', width: '120px', height: '1px' }}
+            />
+            <Typography variant="body2" sx={{ px: 1.5, color: '#909090' }}>
+              OR LOGIN WITH SOCIAL
+            </Typography>
+            <Box
+              sx={{ backgroundColor: '#909090', width: '120px', height: '1px' }}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
               mt: 5,
             }}
           >
@@ -121,43 +205,6 @@ const LoginPageView = ({
               />
             </IconBox>
           </Box>
-          <Box sx={{ width: 400, mt: 5 }}>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{
-                backgroundColor: Color.green,
-                '&:hover': {
-                  backgroundColor: Color.green,
-                },
-              }}
-              onClick={handleLogin}
-            >
-              LOGIN
-            </Button>
-          </Box>
-          <Box sx={{ float: 'right' }}>
-            <Link
-              to="/signup"
-              style={{ textDecoration: 'none', color: 'grey' }}
-            >
-              <Typography variant="body2" sx={{ mr: 1, mt: 1 }}>
-                Dont have and account? Register
-              </Typography>
-            </Link>
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          width: '70%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box sx={{ width: '50%' }}>
-          <Lottie animationData={loginLottie} />
         </Box>
       </Box>
     </Box>

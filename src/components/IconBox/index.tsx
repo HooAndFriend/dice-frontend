@@ -8,7 +8,7 @@ export const IconBox = ({ children }) => (
       height: 40,
       backgroundColor: 'white',
       boxShadow: 2,
-      borderRadius: 2,
+      borderRadius: 20,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
