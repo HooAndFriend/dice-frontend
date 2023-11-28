@@ -4,8 +4,8 @@ import { ChangeEvent, useEffect, useRef } from 'react'
 // ** Mui Imports
 import { Box } from '@mui/material'
 
-// ** Utils Imports
-import { uploadImage } from '@/utils/firebase-upload'
+// ** Aws Imports
+import AWS from 'aws-sdk'
 
 interface PropsType {
   image: string
@@ -38,10 +38,28 @@ const ImagePreview = ({
     const file = event.target.files?.[0]
 
     if (file) {
-      const response = await uploadImage(file)
-      if (response) {
-        setPath(response)
+      const s3 = new AWS.S3({
+        accessKeyId: import.meta.env.VITE_MINIO_ACCESS_KEY,
+        secretAccessKey: import.meta.env.VITE_MINIO_SECRET_KEY,
+        endpoint: import.meta.env.VITE_MINIO_ENDPOINT,
+        s3ForcePathStyle: true,
+        signatureVersion: 'v4',
+      })
+
+      const params = {
+        Bucket: import.meta.env.VITE_MINIO_BUCKET_NAME,
+        Key: file.name,
+        Body: file,
       }
+
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.error(err)
+
+          return
+        }
+        setPath(data.Location)
+      })
     }
   }
 
