@@ -20,7 +20,7 @@ import {
 import type { SocialType, UserLoginParams } from '@/types/user'
 
 // ** Lottie Imports
-import loginLottie from '@/lottie/1.json'
+import loginLottie from '@/lottie/lottie-login.json'
 import Lottie from 'lottie-react'
 
 interface PropsType {
