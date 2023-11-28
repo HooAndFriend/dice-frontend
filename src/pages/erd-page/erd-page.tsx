@@ -7,6 +7,7 @@ import Color from '@/constants/color'
 // ** Component Imports
 import { ContextBox } from '@/components/ContentBox'
 import SideMenu from './sideMenu'
+import ReactFlow from 'reactflow'
 
 const ErdPageView = () => {
   return (
@@ -23,7 +24,9 @@ const ErdPageView = () => {
         <SideMenu />
       </Box>
       <ContextBox type="SIDE">
-        <Box></Box>
+        <Box>
+          <ReactFlow />
+        </Box>
       </ContextBox>
     </Box>
   )
