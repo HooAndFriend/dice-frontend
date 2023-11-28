@@ -5,7 +5,7 @@ import { useState, KeyboardEvent, ChangeEvent } from 'react'
 import ApiPageView from './api-page'
 
 // ** Type Imports
-import type { Collection, HttpMethod } from '@/types/collection'
+import { ApiParams, type Collection, type HttpMethod } from '@/types/collection'
 
 // ** Utils Imports
 import useInput from '@/hooks/useInput'
@@ -19,6 +19,16 @@ export interface requestProps {
 const ApiPage = () => {
   const [collectionList, setCollectionList] =
     useState<Collection[]>(CollectionTrash)
+
+  const [paramsList, setParamsList] = useState<ApiParams[]>([
+    {
+      id: 1,
+      key: '',
+      value: '',
+      description: '',
+      isCheck: false,
+    },
+  ])
 
   const handleAddCollection = () => {
     setCollectionList((cur) => [
@@ -67,6 +77,10 @@ const ApiPage = () => {
     }
   }
 
+  const handleParams = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log('Hello')
+  }
+
   const handleTab = (tab: number) => setTab(tab)
 
   return (
@@ -84,6 +98,8 @@ const ApiPage = () => {
       handleSearch={handleSearch}
       handleSelectedCollection={handleSelectedCollection}
       handleTab={handleTab}
+      handleParams={handleParams}
+      paramsList={paramsList}
     />
   )
 }

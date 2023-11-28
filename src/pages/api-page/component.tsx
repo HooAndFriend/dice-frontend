@@ -1,10 +1,12 @@
 // ** Constant Imports
 import Color from '@/constants/color'
+import { ApiParams } from '@/types/collection'
 
 // ** Mui Imports
-import { CheckBox } from '@mui/icons-material'
+
 import {
   TableContainer,
+  Checkbox,
   TableBody,
   Table,
   Menu,
@@ -20,6 +22,7 @@ import {
   Select,
   InputLabel,
 } from '@mui/material'
+import { ChangeEvent } from 'react'
 
 // ** Json Imports
 import JSONInput from 'react-json-editor-ajrm'
@@ -90,7 +93,15 @@ const rows = [
   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
 ]
 
-export function BasicTable() {
+interface ParamsTablePropsType {
+  paramsList: ApiParams[]
+  handleParams: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+export function ParamsTable({
+  paramsList,
+  handleParams,
+}: ParamsTablePropsType) {
   return (
     <TableContainer>
       <Table>
@@ -143,9 +154,9 @@ export function BasicTable() {
             border: `2px ${Color.purple} solid`,
           }}
         >
-          {rows.map((row) => (
+          {paramsList.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{
                 color: 'black',
                 border: `2px ${Color.purple} solid`,
@@ -156,7 +167,7 @@ export function BasicTable() {
                 sx={{ width: 50, borderRight: `2px ${Color.purple} solid` }}
                 size="small"
               >
-                <CheckBox />
+                <Checkbox checked={row.isCheck} />
               </TableCell>
               <TableCell
                 align="left"

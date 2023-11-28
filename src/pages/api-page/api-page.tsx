@@ -15,10 +15,10 @@ import {
 // ** Component Imports
 import SideMenu from './sideMenu'
 import { ContextBox } from '@/components/ContentBox'
-import { AuthTable, BasicTable, BodyEditor } from './component'
+import { AuthTable, ParamsTable, BodyEditor } from './component'
 
 // ** Type Imports
-import type { Collection } from '@/types/collection'
+import type { ApiParams, Collection } from '@/types/collection'
 import type { requestProps } from '.'
 
 // ** Constant Imports
@@ -31,6 +31,7 @@ interface PropsType {
   search: string
   response: any
   tab: number
+  paramsList: ApiParams[]
   handleAddCollection: () => void
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
@@ -38,6 +39,7 @@ interface PropsType {
   handleSelectedCollection: (collectionId: number) => void
   handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
   handleTab: (tap: number) => void
+  handleParams: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const ApiPageView = ({
@@ -54,6 +56,8 @@ const ApiPageView = ({
   response,
   handleTab,
   tab,
+  handleParams,
+  paramsList,
 }: PropsType) => {
   return (
     <Box
@@ -301,9 +305,13 @@ const ApiPageView = ({
           </Box>
         </Box>
         <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
-          {tab === 0 && <BasicTable />}
+          {tab === 0 && (
+            <ParamsTable paramsList={paramsList} handleParams={handleParams} />
+          )}
           {tab === 1 && <AuthTable />}
-          {tab === 2 && <BasicTable />}
+          {tab === 2 && (
+            <ParamsTable paramsList={paramsList} handleParams={handleParams} />
+          )}
           {tab === 3 && <BodyEditor />}
         </Box>
         <Box sx={{ mt: 3 }}>
