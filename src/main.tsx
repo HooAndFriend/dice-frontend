@@ -11,9 +11,6 @@ import App from './App'
 import { Provider } from 'react-redux'
 import { store } from '@/store'
 
-// ** Style Imports
-import '@/style/global.css'
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
