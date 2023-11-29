@@ -30,7 +30,7 @@ const SideMenu = ({}: PropsType) => {
           variant="standard"
           label="search"
           name="word"
-          sx={{ width: '50%' }}
+          sx={{ width: '50%', borderColor: Color.glassGrey }}
         />
         <Box sx={{ mt: 2.5, mr: 2 }}>
           <SearchIcon />
