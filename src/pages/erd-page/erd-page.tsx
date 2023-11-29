@@ -18,7 +18,10 @@ import ReactFlow, {
 
 export const Table = () => {
   return (
-    <Box sx={{ width: 500, backgroundColor: 'white' }}>
+    <Box
+      className="custom-drag-handle"
+      sx={{ width: 500, backgroundColor: 'white' }}
+    >
       <TextField sx={{ width: '100%' }} defaultValue="untitled" />
       <Box
         sx={{
@@ -49,15 +52,18 @@ const nodeTypes = {
 }
 
 const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: <Table /> },
-  { id: '2', position: { x: 0, y: 100 }, data: <Table /> },
+  { id: '1', position: { x: 0, y: 0 }, data: { label: <Table /> } },
+  {
+    id: `2`,
+    dragHandle: '.custom-drag-handle',
+    position: { x: 0, y: 100 },
+    data: { label: <Table /> },
+  },
 ]
-
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }]
 
 const ErdPageView = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+  const [edges, setEdges, onEdgesChange] = useEdgesState([])
 
   return (
     <Box
@@ -74,7 +80,6 @@ const ErdPageView = () => {
       </Box>
       <ContextBox type="SIDE">
         <Box sx={{ width: '100%', height: '100%' }}>
-          {/* <Table /> */}
           <ReactFlowProvider>
             <ReactFlow
               nodes={nodes}
@@ -83,7 +88,7 @@ const ErdPageView = () => {
               onEdgesChange={onEdgesChange}
               nodeTypes={nodeTypes}
             >
-              <Background gap={12} size={1} />
+              {/* <Background /> */}
             </ReactFlow>
           </ReactFlowProvider>
         </Box>
