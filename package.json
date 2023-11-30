@@ -23,9 +23,10 @@
     "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.4",
+    "@mui/material": "^5.14.18",
     "@mui/styles": "^5.13.2",
     "@mui/system": "^5.13.2",
+    "@mui/x-tree-view": "^6.17.0",
     "@reduxjs/toolkit": "^1.9.5",
     "async-mutex": "^0.4.0",
     "aws-sdk": "^2.1505.0",
@@ -37,6 +38,7 @@
     "react-json-editor-ajrm": "^2.5.14",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.12.1",
+    "reactflow": "^11.10.1",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
