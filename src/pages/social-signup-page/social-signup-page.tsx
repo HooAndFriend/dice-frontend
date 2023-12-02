@@ -66,13 +66,13 @@ const SocialSignupPageView = ({
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
             <Box>
-              <Typography variant="h6">Email</Typography>
+              <Typography variant="h6">Nickname</Typography>
               <InputBase
                 type="text"
                 value={user.nickname}
-                name="username"
+                name="nickname"
                 onChange={setUser}
-                placeholder="email"
+                placeholder="nickname"
                 onKeyDown={handleEnter}
                 sx={{
                   mt: 1,
