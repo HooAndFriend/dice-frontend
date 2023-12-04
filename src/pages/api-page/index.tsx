@@ -19,7 +19,6 @@ export interface requestProps {
 const ApiPage = () => {
   const [collectionList, setCollectionList] =
     useState<Collection[]>(CollectionTrash)
-
   const [paramsList, setParamsList] = useState<ApiParams[]>([
     {
       id: 1,
@@ -29,18 +28,6 @@ const ApiPage = () => {
       isCheck: false,
     },
   ])
-
-  const handleAddCollection = () => {
-    setCollectionList((cur) => [
-      ...cur,
-      {
-        id: cur.length + 1,
-        name: 'New Collection',
-        url: '/',
-        item: [],
-      },
-    ])
-  }
 
   const {
     data: request,
@@ -81,7 +68,31 @@ const ApiPage = () => {
     console.log('Hello')
   }
 
+  const handleClickBtn = () => {
+    setParamsList((cur) => [
+      ...cur,
+      {
+        id: cur.length + 1,
+        key: '',
+        value: '',
+        description: '',
+        isCheck: false,
+      },
+    ])
+  }
+
   const handleTab = (tab: number) => setTab(tab)
+  const handleAddCollection = () => {
+    setCollectionList((cur) => [
+      ...cur,
+      {
+        id: cur.length + 1,
+        name: 'New Collection',
+        url: '/',
+        item: [],
+      },
+    ])
+  }
 
   return (
     <ApiPageView
@@ -100,6 +111,7 @@ const ApiPage = () => {
       handleTab={handleTab}
       handleParams={handleParams}
       paramsList={paramsList}
+      handleClickBtn={handleClickBtn}
     />
   )
 }

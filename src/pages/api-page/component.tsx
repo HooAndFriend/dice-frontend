@@ -3,7 +3,6 @@ import Color from '@/constants/color'
 import { ApiParams } from '@/types/collection'
 
 // ** Mui Imports
-
 import {
   TableContainer,
   Checkbox,
@@ -21,8 +20,10 @@ import {
   FormControl,
   Select,
   InputLabel,
+  Typography,
 } from '@mui/material'
 import { ChangeEvent } from 'react'
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 
 // ** Json Imports
 import JSONInput from 'react-json-editor-ajrm'
@@ -96,11 +97,13 @@ const rows = [
 interface ParamsTablePropsType {
   paramsList: ApiParams[]
   handleParams: (e: ChangeEvent<HTMLInputElement>) => void
+  handleClickBtn: () => void
 }
 
 export function ParamsTable({
   paramsList,
   handleParams,
+  handleClickBtn,
 }: ParamsTablePropsType) {
   return (
     <TableContainer>
@@ -187,12 +190,35 @@ export function ParamsTable({
                 <InputBase sx={{ color: Color.glassGrey }} />
               </TableCell>
               <TableCell align="left" size="small">
-                <InputBase sx={{ color: Color.glassGrey }} />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <InputBase sx={{ color: Color.glassGrey, width: '90%' }} />
+                  <RemoveCircleOutlineIcon />
+                </Box>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <Box
+        sx={{
+          backgroundColor: Color.purple,
+          width: '100%',
+          height: 30,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 1,
+        }}
+        onClick={handleClickBtn}
+      >
+        <Typography>+</Typography>
+      </Box>
     </TableContainer>
   )
 }

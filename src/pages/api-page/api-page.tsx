@@ -40,6 +40,7 @@ interface PropsType {
   handleEnter: (e: KeyboardEvent<HTMLInputElement>) => void
   handleTab: (tap: number) => void
   handleParams: (e: ChangeEvent<HTMLInputElement>) => void
+  handleClickBtn: () => void
 }
 
 const ApiPageView = ({
@@ -58,6 +59,7 @@ const ApiPageView = ({
   tab,
   handleParams,
   paramsList,
+  handleClickBtn,
 }: PropsType) => {
   return (
     <Box
@@ -306,11 +308,19 @@ const ApiPageView = ({
         </Box>
         <Box sx={{ mt: 3, height: 200, overflowY: 'scroll' }}>
           {tab === 0 && (
-            <ParamsTable paramsList={paramsList} handleParams={handleParams} />
+            <ParamsTable
+              paramsList={paramsList}
+              handleParams={handleParams}
+              handleClickBtn={handleClickBtn}
+            />
           )}
           {tab === 1 && <AuthTable />}
           {tab === 2 && (
-            <ParamsTable paramsList={paramsList} handleParams={handleParams} />
+            <ParamsTable
+              paramsList={paramsList}
+              handleParams={handleParams}
+              handleClickBtn={handleClickBtn}
+            />
           )}
           {tab === 3 && <BodyEditor />}
         </Box>
