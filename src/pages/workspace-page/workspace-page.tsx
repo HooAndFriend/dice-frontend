@@ -9,7 +9,7 @@ import Color from '@/constants/color'
 
 // ** Component Imports
 import { InputTextField } from '@/components/TextInput'
-import ImagePreview from '@/components/ImagePreview'
+import { ImagePreview } from '@/components/ImagePreview'
 import ImageBox from '@/components/Image'
 import { ContextBox } from '@/components/ContentBox'
 

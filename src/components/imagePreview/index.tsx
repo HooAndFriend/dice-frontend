@@ -13,8 +13,7 @@ interface PropsType {
   borderRadius?: string | number
   setPath: (e: string) => void
 }
-
-const ImagePreview = ({
+export const ImagePreview = ({
   setPath,
   image,
   boxColor,
@@ -104,5 +103,3 @@ const ImagePreview = ({
     </Box>
   )
 }
-
-export default ImagePreview

@@ -5,7 +5,7 @@ import { ChangeEvent } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import ImagePreview from '@/components/ImagePreview'
+import { ImagePreview } from '@/components/ImagePreview'
 import { InputTextField } from '@/components/TextInput'
 
 // ** Constant Imports
