@@ -6,7 +6,7 @@ import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
 import { ImagePreview } from '@/components/ImagePreview'
-import { InputTextField } from '@/components/TextInput'
+import { InputTextField } from '../../components/TextInput'
 
 // ** Constant Imports
 import Color from '@/constants/color'
