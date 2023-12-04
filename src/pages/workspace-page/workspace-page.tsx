@@ -9,7 +9,7 @@ import Color from '@/constants/color'
 
 // ** Component Imports
 import { InputTextField } from '@/components/TextInput'
-import { ImagePreview } from '../../components/ImagePreview'
+import { ImageUploader } from '@/components/ImageUploader'
 import ImageBox from '@/components/Image'
 import { ContextBox } from '@/components/ContentBox'
 
@@ -57,7 +57,10 @@ const WorkspacePageView = ({
                 borderRadius: 12,
               }}
             >
-              <ImagePreview image={worksapce.profile} setPath={handleSetPath} />
+              <ImageUploader
+                image={worksapce.profile}
+                setPath={handleSetPath}
+              />
             </Box>
           </Box>
           <Box sx={{ ml: 10 }}>

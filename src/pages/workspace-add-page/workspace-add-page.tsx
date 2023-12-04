@@ -5,8 +5,8 @@ import { ChangeEvent } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 
 // ** Component Imports
-import { ImagePreview } from '@/components/ImagePreview'
-import { InputTextField } from '../../components/TextInput'
+import { ImageUploader } from '@/components/ImageUploader'
+import { InputTextField } from '@/components/TextInput'
 
 // ** Constant Imports
 import Color from '@/constants/color'
@@ -62,7 +62,7 @@ const WorksapceAddPageView = ({
           }}
         >
           <Box sx={{ width: 100, height: 100 }}>
-            <ImagePreview
+            <ImageUploader
               image={data.profile}
               setPath={handleImage}
               boxColor={Color.lightGrey}

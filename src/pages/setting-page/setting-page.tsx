@@ -10,7 +10,7 @@ import Color from '@/constants/color'
 
 // ** Componet Imports
 import { InputTextField } from '@/components/TextInput'
-import { ImagePreview } from '../../components/ImagePreview'
+import { ImageUploader } from '@/components/ImageUploader'
 
 // ** Type Imporst
 import type { UserV0 } from '@/types/user'
@@ -68,7 +68,7 @@ const SettingPageView = ({
                 borderRadius: 12,
               }}
             >
-              <ImagePreview image={user.profile} setPath={handleSetPath} />
+              <ImageUploader image={user.profile} setPath={handleSetPath} />
             </Box>
           </Box>
           <Box>

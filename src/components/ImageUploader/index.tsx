@@ -13,7 +13,7 @@ interface PropsType {
   borderRadius?: string | number
   setPath: (e: string) => void
 }
-export const ImagePreview = ({
+export const ImageUploader = ({
   setPath,
   image,
   boxColor,
