@@ -8,7 +8,8 @@ WORKDIR /app
 
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN yarn --frozen-lockfile
+RUN yarn --frozen-lockfile --network-timeout 1000000
+
 
 
 FROM base AS builder
