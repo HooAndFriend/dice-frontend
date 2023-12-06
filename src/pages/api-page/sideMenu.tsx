@@ -17,6 +17,12 @@ import Color from '@/constants/color'
 // ** Utils Imports
 import { getColorFromHttpMethod } from '@/utils/color'
 
+// ** Service Imports
+import { useDeleteCollectionMutation } from '@/services'
+
+// ** Context Imports
+import { useError } from '@/context/ErrorContext'
+
 interface PropsType {
   data: Collection[]
   selectedCollectionId: number
@@ -24,6 +30,7 @@ interface PropsType {
   handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddCollection: () => void
   handleSelectedCollection: (collectionId: number) => void
+  refetch: () => void
 }
 
 const SideMenu = ({
@@ -33,18 +40,39 @@ const SideMenu = ({
   search,
   handleSearch,
   handleAddCollection,
+  refetch,
 }: PropsType) => {
+  const [collectionId, setCollectionId] = useState<number>(0)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const open = Boolean(anchorEl)
+
+  const [deleteCollectionApi] = useDeleteCollectionMutation()
+
+  const { onError } = useError()
 
   const handleClose = () => {
     setAnchorEl(null)
   }
 
-  const handleRightClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleRightClick = (e: MouseEvent<HTMLDivElement>, id: number) => {
     e.preventDefault()
     setAnchorEl(e.currentTarget)
+    setCollectionId(id)
+  }
+
+  const handleDeleteCollection = (id: number) => {
+    deleteCollectionApi(id)
+      .unwrap()
+      .then((res) => {
+        if (res.statusCode === 200) {
+          refetch()
+          handleClose()
+        }
+      })
+      .catch((err) => {
+        onError('에러', err.data.message)
+      })
   }
 
   const filterData = useMemo(() => {
@@ -161,7 +189,7 @@ const SideMenu = ({
                 }}
                 key={item.id}
                 onClick={() => handleSelectedCollection(item.id)}
-                onContextMenu={handleRightClick}
+                onContextMenu={(e) => handleRightClick(e, item.id)}
               >
                 <Box
                   sx={{
@@ -173,10 +201,12 @@ const SideMenu = ({
                   }}
                 >
                   <CollectionDropDown
+                    handleDeleteCollection={handleDeleteCollection}
                     anchorEl={anchorEl}
                     open={open}
                     handleClose={handleClose}
                     count={item.request.length}
+                    collectionId={collectionId}
                   />
                   <Box
                     sx={{

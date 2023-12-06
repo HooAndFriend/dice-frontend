@@ -26,8 +26,17 @@ export const collectionApi = api
           body: args,
         }),
       }),
+      deleteCollection: builder.mutation<Response, number>({
+        query: (id) => ({
+          url: `/v1/collection/${id}`,
+          method: 'DELETE',
+        }),
+      }),
     }),
   })
 
-export const { useGetCollectionListQuery, useSaveCollectionMutation } =
-  collectionApi
+export const {
+  useGetCollectionListQuery,
+  useSaveCollectionMutation,
+  useDeleteCollectionMutation,
+} = collectionApi

@@ -5,7 +5,7 @@ import { useState, KeyboardEvent, ChangeEvent, useMemo } from 'react'
 import ApiPageView from './api-page'
 
 // ** Type Imports
-import type { ApiParams, Collection, HttpMethod } from '@/types/collection'
+import type { ApiParams, HttpMethod } from '@/types/collection'
 
 // ** Utils Imports
 import useInput from '@/hooks/useInput'
@@ -40,7 +40,6 @@ const ApiPage = () => {
 
   const {
     data: request,
-    handleInit,
     handleInput,
     handleSelect,
   } = useInput<requestProps>({
@@ -133,6 +132,7 @@ const ApiPage = () => {
       handleParams={handleParams}
       paramsList={paramsList}
       handleClickBtn={handleClickBtn}
+      refetch={refetch}
     />
   )
 }

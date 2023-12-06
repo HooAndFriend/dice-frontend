@@ -51,7 +51,9 @@ interface PropsType {
   anchorEl: HTMLElement | null
   open: boolean
   count: number
+  collectionId: number
   handleClose: () => void
+  handleDeleteCollection: (id: number) => void
 }
 
 export const CollectionDropDown = ({
@@ -59,6 +61,8 @@ export const CollectionDropDown = ({
   handleClose,
   open,
   count,
+  handleDeleteCollection,
+  collectionId,
 }: PropsType) => {
   return (
     <Menu
@@ -71,7 +75,9 @@ export const CollectionDropDown = ({
       }}
     >
       <MenuItem>Add Request</MenuItem>
-      <MenuItem>Delete</MenuItem>
+      <MenuItem onClick={() => handleDeleteCollection(collectionId)}>
+        Delete
+      </MenuItem>
       <MenuItem>Duplicate</MenuItem>
     </Menu>
   )

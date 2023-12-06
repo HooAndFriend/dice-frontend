@@ -41,6 +41,7 @@ interface PropsType {
   handleTab: (tap: number) => void
   handleParams: (e: ChangeEvent<HTMLInputElement>) => void
   handleClickBtn: () => void
+  refetch: () => void
 }
 
 const ApiPageView = ({
@@ -60,6 +61,7 @@ const ApiPageView = ({
   handleParams,
   paramsList,
   handleClickBtn,
+  refetch,
 }: PropsType) => {
   return (
     <Box
@@ -79,6 +81,7 @@ const ApiPageView = ({
           search={search}
           handleSearch={handleSearch}
           handleAddCollection={handleAddCollection}
+          refetch={refetch}
         />
       </Box>
       <ContextBox type="SIDE">
