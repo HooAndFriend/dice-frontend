@@ -1,10 +1,3 @@
-export interface Collection {
-  id: number
-  name: string
-  url: string
-  item: ApiItem[]
-}
-
 export interface ApiItem {
   id: number
   method: HttpMethod
@@ -21,3 +14,26 @@ export interface ApiParams {
 }
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+
+export interface Collection {
+  id: number
+  name: string
+  request: RequestV0[]
+}
+
+export interface RequestV0 {
+  id: number
+  name: string
+  type: HttpMethod
+  endpoint: string
+  authtype: string
+  headerkey: string
+  headervalue: string
+  headerdiscreption: string
+  bodytype: string
+  rawdata: string
+  formdatakey: string
+  formdatavalue: string
+  paramkey: string
+  paramvalue: string
+}

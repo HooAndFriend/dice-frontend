@@ -5,12 +5,7 @@ import { MouseEvent, ChangeEvent, useMemo, useState } from 'react'
 import { Box, InputBase, Typography } from '@mui/material'
 
 // ** Component Imports
-import {
-  ApiAddIcon,
-  ApiImportIcon,
-  CollectionAddIcon,
-  SearchIcon,
-} from '@/components/Icons'
+import { CollectionAddIcon, SearchIcon } from '@/components/Icons'
 import { CollectionDropDown } from './component'
 
 // ** Type Imports
@@ -58,8 +53,8 @@ const SideMenu = ({
       .filter((item) => {
         let count = 0
 
-        for (const _ of item.item) {
-          if (_.name.includes(search) || _.method.includes(search)) {
+        for (const _ of item.request) {
+          if (_.name.includes(search) || _.type.includes(search)) {
             count++
           }
         }
@@ -67,8 +62,8 @@ const SideMenu = ({
         return count > 0
       })
       .map((item) => {
-        const arr = item.item.filter(
-          (_) => _.name.includes(search) || _.method.includes(search),
+        const arr = item.request.filter(
+          (_) => _.name.includes(search) || _.type.includes(search),
         )
 
         return { ...item, item: arr }
@@ -159,7 +154,7 @@ const SideMenu = ({
                 sx={{
                   my: 2,
                   width: '100%',
-                  height: 40 * (item.item.length + 1),
+                  height: 40 * (item.request.length + 1),
                   display: 'flex',
                   justifyContent: 'center',
                   flexDirection: 'column',
@@ -181,7 +176,7 @@ const SideMenu = ({
                     anchorEl={anchorEl}
                     open={open}
                     handleClose={handleClose}
-                    count={item.item.length}
+                    count={item.request.length}
                   />
                   <Box
                     sx={{
@@ -210,7 +205,7 @@ const SideMenu = ({
                     </Typography>
                   </Box>
                 </Box>
-                {item.item.map((_) => (
+                {item.request.map((_) => (
                   <Box
                     sx={{
                       width: '100%',
@@ -226,7 +221,7 @@ const SideMenu = ({
                         width: 40,
                         height: 15,
                         borderRadius: 10,
-                        backgroundColor: getColorFromHttpMethod(_.method),
+                        backgroundColor: getColorFromHttpMethod(_.type),
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -237,7 +232,7 @@ const SideMenu = ({
                         variant="h6"
                         sx={{ color: 'white', fontSize: 8 }}
                       >
-                        {_.method}
+                        {_.type}
                       </Typography>
                     </Box>
                     <Typography variant="body1" sx={{ color: Color.glassGrey }}>
