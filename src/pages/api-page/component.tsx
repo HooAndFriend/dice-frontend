@@ -54,6 +54,7 @@ interface PropsType {
   collectionId: number
   handleClose: () => void
   handleDeleteCollection: (id: number) => void
+  handleSaveRequest: (id: number) => void
 }
 
 export const CollectionDropDown = ({
@@ -63,6 +64,7 @@ export const CollectionDropDown = ({
   count,
   handleDeleteCollection,
   collectionId,
+  handleSaveRequest,
 }: PropsType) => {
   return (
     <Menu
@@ -74,7 +76,9 @@ export const CollectionDropDown = ({
         left: '50px',
       }}
     >
-      <MenuItem>Add Request</MenuItem>
+      <MenuItem onClick={() => handleSaveRequest(collectionId)}>
+        Add Request
+      </MenuItem>
       <MenuItem onClick={() => handleDeleteCollection(collectionId)}>
         Delete
       </MenuItem>

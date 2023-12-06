@@ -18,7 +18,7 @@ import Color from '@/constants/color'
 import { getColorFromHttpMethod } from '@/utils/color'
 
 // ** Service Imports
-import { useDeleteCollectionMutation } from '@/services'
+import { useDeleteCollectionMutation, useSaveRequestMutation } from '@/services'
 
 // ** Context Imports
 import { useError } from '@/context/ErrorContext'
@@ -48,6 +48,7 @@ const SideMenu = ({
   const open = Boolean(anchorEl)
 
   const [deleteCollectionApi] = useDeleteCollectionMutation()
+  const [saveRequestApi] = useSaveRequestMutation()
 
   const { onError } = useError()
 
@@ -59,6 +60,20 @@ const SideMenu = ({
     e.preventDefault()
     setAnchorEl(e.currentTarget)
     setCollectionId(id)
+  }
+
+  const handleSaveRequest = (id: number) => {
+    saveRequestApi({ collectionId: id, name: 'New Request' })
+      .unwrap()
+      .then((res) => {
+        if (res.statusCode === 200) {
+          refetch()
+          handleClose()
+        }
+      })
+      .catch((err) => {
+        onError('에러', err.data.message)
+      })
   }
 
   const handleDeleteCollection = (id: number) => {
@@ -201,12 +216,13 @@ const SideMenu = ({
                   }}
                 >
                   <CollectionDropDown
-                    handleDeleteCollection={handleDeleteCollection}
                     anchorEl={anchorEl}
                     open={open}
                     handleClose={handleClose}
                     count={item.request.length}
                     collectionId={collectionId}
+                    handleDeleteCollection={handleDeleteCollection}
+                    handleSaveRequest={handleSaveRequest}
                   />
                   <Box
                     sx={{
