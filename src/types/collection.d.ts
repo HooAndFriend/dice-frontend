@@ -37,3 +37,8 @@ export interface RequestV0 {
   paramkey: string
   paramvalue: string
 }
+
+export interface CollectionSaveParams {
+  name: string
+  workspaceId: number
+}

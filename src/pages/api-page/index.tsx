@@ -13,10 +13,14 @@ import { isUndefined } from 'lodash'
 import { requestService } from '@/api'
 
 // ** Service Imports
-import { useGetCollectionListQuery } from '@/services'
+import {
+  useGetCollectionListQuery,
+  useSaveCollectionMutation,
+} from '@/services'
 
 // ** Context Imports
 import { useWorkspace } from '@/context/WorkspaceContext'
+import { useError } from '@/context/ErrorContext'
 
 export interface requestProps {
   url: string
@@ -51,7 +55,9 @@ const ApiPage = () => {
   const [response, setResponse] = useState<any>()
 
   const { workspaceId } = useWorkspace()
+  const { onError } = useError()
 
+  const [saveCollectionApi] = useSaveCollectionMutation()
   const { data, refetch } = useGetCollectionListQuery(workspaceId)
 
   const collectionList = useMemo(
@@ -97,15 +103,16 @@ const ApiPage = () => {
 
   const handleTab = (tab: number) => setTab(tab)
   const handleAddCollection = () => {
-    // setCollectionList((cur) => [
-    //   ...cur,
-    //   {
-    //     id: cur.length + 1,
-    //     name: 'New Collection',
-    //     url: '/',
-    //     item: [],
-    //   },
-    // ])
+    saveCollectionApi({ name: 'New Collection', workspaceId })
+      .unwrap()
+      .then((res) => {
+        if (res.statusCode === 200) {
+          refetch()
+        }
+      })
+      .catch((err) => {
+        onError('에러', err.data.message)
+      })
   }
 
   return (

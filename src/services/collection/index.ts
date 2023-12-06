@@ -1,5 +1,7 @@
 import { api } from '..'
 import type { CollectionV0ListResponse } from '@/types/api/collection'
+import type { CollectionSaveParams } from '@/types/collection'
+import type { Response } from '@/types/api'
 
 // Workspace Api CreateApi
 export const collectionApi = api
@@ -17,7 +19,15 @@ export const collectionApi = api
       }),
 
       // Mutation
+      saveCollection: builder.mutation<Response, CollectionSaveParams>({
+        query: (args) => ({
+          url: '/v1/collection',
+          method: 'POST',
+          body: args,
+        }),
+      }),
     }),
   })
 
-export const { useGetCollectionListQuery } = collectionApi
+export const { useGetCollectionListQuery, useSaveCollectionMutation } =
+  collectionApi
