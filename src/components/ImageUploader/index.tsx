@@ -5,7 +5,7 @@ import { ChangeEvent, useEffect, useRef } from 'react'
 import { Box } from '@mui/material'
 
 // ** Aws Imports
-// import AWS from 'aws-sdk'
+import AWS from 'aws-sdk'
 
 interface PropsType {
   image: string
@@ -37,25 +37,26 @@ export const ImageUploader = ({
     const file = event.target.files?.[0]
 
     if (file) {
-      // const s3 = new AWS.S3({
-      //   accessKeyId: import.meta.env.VITE_MINIO_ACCESS_KEY,
-      //   secretAccessKey: import.meta.env.VITE_MINIO_SECRET_KEY,
-      //   endpoint: import.meta.env.VITE_MINIO_ENDPOINT,
-      //   s3ForcePathStyle: true,
-      //   signatureVersion: 'v4',
-      // })
-      // const params = {
-      //   Bucket: import.meta.env.VITE_MINIO_BUCKET_NAME,
-      //   Key: file.name,
-      //   Body: file,
-      // }
-      // s3.upload(params, (err, data) => {
-      //   if (err) {
-      //     console.error(err)
-      //     return
-      //   }
-      //   setPath(data.Location)
-      // })
+      const s3 = new AWS.S3({
+        accessKeyId: import.meta.env.VITE_MINIO_ACCESS_KEY,
+        secretAccessKey: import.meta.env.VITE_MINIO_SECRET_KEY,
+        endpoint: import.meta.env.VITE_MINIO_ENDPOINT,
+        s3ForcePathStyle: true,
+        signatureVersion: 'v4',
+      })
+      const params = {
+        Bucket: import.meta.env.VITE_MINIO_BUCKET_NAME,
+        Key: file.name,
+        Body: file,
+      }
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        console.log(data)
+        setPath(data.Location)
+      })
     }
   }
 
@@ -95,7 +96,7 @@ export const ImageUploader = ({
       )}
       <input
         type="file"
-        accept="image/*"
+        // accept="image/*"
         ref={inputRef}
         onChange={handleImageChange}
         style={{ display: 'none' }}

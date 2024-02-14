@@ -18,6 +18,7 @@ import {
 
 // ** Type Imporst
 import type { SocialType, UserLoginParams } from '@/types/user'
+import { ImageUploader } from '@/components/ImageUploader'
 
 interface PropsType {
   user: UserLoginParams
@@ -34,6 +35,10 @@ const LoginPageView = ({
   handleSocial,
   handleEnter,
 }: PropsType) => {
+  const handleSetPath = (path: string) => {
+    console.log(path)
+    // setWorkspace((cur) => ({ ...cur, profile: path }))
+  }
   return (
     <Box
       sx={{
@@ -66,6 +71,7 @@ const LoginPageView = ({
         >
           <img src="/img/dice.jpeg" width={300} height={300} />
         </Box>
+        <ImageUploader image={''} setPath={handleSetPath} />
         <Box sx={{ width: '1px', height: '90%', backgroundColor: '#909090' }} />
         <Box sx={{ width: '50%', height: '100%' }}>
           <Box

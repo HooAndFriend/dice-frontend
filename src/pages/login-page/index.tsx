@@ -59,6 +59,7 @@ const LoginPage = () => {
         }
       })
       .catch((err) => {
+        console.log(err)
         onError('알림', err.data.message)
       })
   }
